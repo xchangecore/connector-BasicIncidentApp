@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:agr="http://uicds.org/AgreementService" xmlns:ucore="http://ucore.gov/ucore/2.0" xmlns:precisb="http://www.saic.com/precis/2009/06/base" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://uicds.org/AgreementService" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="../../../precis/2009/06/BaseTypes.xsd" namespace="http://www.saic.com/precis/2009/06/base" />
+  <xs:import schemaLocation="../../../ucore/2.0/ucore/2.0/ucore.xsd" namespace="http://ucore.gov/ucore/2.0" />
+  <xs:complexType name="AgreementType">
+    <xs:annotation>
+      <xs:documentation>Comment describing your root element</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="Principals">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="LocalCore" type="precisb:IdentifierType">
+              <xs:annotation>
+                <xs:documentation>The source core of the shared work product or message</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="RemoteCore" type="precisb:IdentifierType">
+              <xs:annotation>
+                <xs:documentation>The receiving core.</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ShareRules" nillable="true">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="ShareRule">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="Condition" type="agr:ConditionType" />
+                  <xs:element minOccurs="0" name="WorkProducts">
+                    <xs:complexType>
+                      <xs:sequence>
+                        <xs:element maxOccurs="unbounded" ref="precisb:Type" />
+                      </xs:sequence>
+                    </xs:complexType>
+                  </xs:element>
+                </xs:sequence>
+                <xs:attribute name="id" type="xs:ID" use="required" />
+                <xs:attribute name="enabled" type="xs:boolean" use="required">
+                  <xs:annotation>
+                    <xs:documentation>Boolean to determine if this share element should be evaluated when determining what to share.</xs:documentation>
+                  </xs:annotation>
+                </xs:attribute>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+          <xs:attribute name="enabled" type="xs:boolean" use="required">
+            <xs:annotation>
+              <xs:documentation>If false, process NO rules.  If true, process rules.</xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Agreement" type="agr:AgreementType" />
+  <xs:complexType name="ConditionType">
+    <xs:sequence>
+      <xs:element name="InterestGroup" type="precisb:CodespaceValueType" />
+      <xs:element minOccurs="0" ref="ucore:TimeInterval" />
+      <xs:element minOccurs="0" ref="ucore:Polygon" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

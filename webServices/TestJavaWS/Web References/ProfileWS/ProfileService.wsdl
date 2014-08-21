@@ -1,0 +1,386 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:tns="http://uicds.org/ProfileService" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:sch="http://uicds.org/ProfileService" targetNamespace="http://uicds.org/ProfileService" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xs:schema xmlns:ps="http://uicds.org/ProfileService" xmlns:nc="http://niem.gov/niem/niem-core/2.0" xmlns:wsnt="http://docs.oasis-open.org/wsn/b-2" xmlns:wsa="http://www.w3.org/2005/08/addressing" xmlns:ims="http://uicds.org/IncidentManagementService" xmlns:wstop="http://docs.oasis-open.org/wsn/t-1" elementFormDefault="qualified" targetNamespace="http://uicds.org/ProfileService" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import schemaLocation="../../../external/niem/niem-core/2.0/niem-core.xsd" namespace="http://niem.gov/niem/niem-core/2.0" />
+      <xs:import schemaLocation="../../../ws-notification/WS-BaseNotification-1_3.xsd" namespace="http://docs.oasis-open.org/wsn/b-2" />
+      <xs:import schemaLocation="../../../ws-notification/WS-Topics-1_3.xsd" namespace="http://docs.oasis-open.org/wsn/t-1" />
+      <xs:import schemaLocation="../../../ws-notification/WS-Addressing-2005_08.xsd" namespace="http://www.w3.org/2005/08/addressing" />
+      <xs:import schemaLocation="../../../services/IncidentManagement/0.1/IncidentManagementService.xsd" namespace="http://uicds.org/IncidentManagementService" />
+      <xs:element name="GetProfileListRequest">
+        <xs:complexType>
+          <xs:all>
+            <xs:element name="queryString" type="xs:string" />
+          </xs:all>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetProfileListResponse">
+        <xs:complexType>
+          <xs:all>
+            <xs:element name="ProfileList" type="ps:ProfileListType" />
+          </xs:all>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CreateProfileRequest">
+        <xs:complexType>
+          <xs:all>
+            <xs:element name="Profile" type="ps:UserProfileType" />
+          </xs:all>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CreateProfileResponse">
+        <xs:complexType>
+          <xs:all>
+            <xs:element name="Profile" type="ps:UserProfileType" />
+          </xs:all>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="UpdateProfileRequest">
+        <xs:complexType>
+          <xs:all>
+            <xs:element name="Profile" type="ps:UserProfileType" />
+          </xs:all>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="UpdateProfileResponse">
+        <xs:complexType>
+          <xs:all>
+            <xs:element name="Profile" type="ps:UserProfileType" />
+          </xs:all>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="DeleteProfileRequest">
+        <xs:complexType>
+          <xs:all>
+            <xs:element name="entityID" type="xs:anyURI" />
+          </xs:all>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="DeleteProfileResponse">
+        <xs:complexType>
+          <xs:all>
+            <xs:element name="entityID" type="xs:anyURI" />
+          </xs:all>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetProfileRequest">
+        <xs:complexType>
+          <xs:all>
+            <xs:element name="entityID" type="xs:anyURI" />
+          </xs:all>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetProfileResponse">
+        <xs:complexType>
+          <xs:all>
+            <xs:element name="Profile" type="ps:UserProfileType" />
+          </xs:all>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="AddInterestRequest">
+        <xs:complexType>
+          <xs:all>
+            <xs:element name="entityID" type="xs:anyURI" />
+            <xs:element name="interest" type="ps:Interest" />
+          </xs:all>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="AddInterestResponse">
+        <xs:complexType>
+          <xs:all>
+            <xs:element name="profile" type="ps:ProfileType" />
+          </xs:all>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="RemoveInterestRequest">
+        <xs:complexType>
+          <xs:all>
+            <xs:element name="entityID" type="xs:anyURI" />
+            <xs:element name="interest" type="ps:Interest" />
+          </xs:all>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="RemoveInterestResponse">
+        <xs:complexType>
+          <xs:all>
+            <xs:element name="profile" type="ps:ProfileType" />
+          </xs:all>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="IncidentRecord" type="ps:EntityRecordType" />
+      <xs:element name="EntityRecordList">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="record" type="ps:EntityRecordType" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="EntityRecord" type="ps:EntityRecordType" />
+      <xs:element name="Profile" type="ps:UserProfileType" />
+      <xs:complexType name="EntityRecordType">
+        <xs:sequence>
+          <xs:element name="id" type="xs:anyURI" />
+          <xs:element name="name" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="NamespaceMapItemType">
+        <xs:sequence>
+          <xs:element name="prefix" type="xs:string" />
+          <xs:element name="uri" type="xs:anyURI" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="NamespaceMapType">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="item" type="ps:NamespaceMapItemType" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ProfileType">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="ref" type="ps:EntityRecordType" />
+          <xs:element minOccurs="0" maxOccurs="1" name="agreements">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element minOccurs="0" maxOccurs="unbounded" name="agreement" type="ps:EntityRecordType" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element minOccurs="0" maxOccurs="1" name="interests">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element minOccurs="0" maxOccurs="unbounded" name="interest" type="ps:Interest" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element minOccurs="0" maxOccurs="1" name="interfaces">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element minOccurs="0" maxOccurs="unbounded" name="interface" type="wsa:EndpointReferenceType" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ProfileListType">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="Profile" type="ps:ProfileType" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ProfileList" type="ps:ProfileListType" />
+      <xs:complexType name="UserProfileType">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ps:ProfileType">
+            <xs:sequence>
+              <xs:element minOccurs="0" maxOccurs="1" name="entityInfo">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="personInfo" type="nc:PersonType" />
+                    <xs:element name="orgInfo" type="nc:OrganizationType" />
+                    <xs:element name="contactInfo" type="nc:ContactInformationType" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element minOccurs="0" maxOccurs="1" name="incidents">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element minOccurs="0" maxOccurs="unbounded" name="incident" type="ims:IncidentInfoType" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="roles" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="RoleProfileType">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ps:ProfileType" />
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="Interest">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="TopicExpression" type="wstop:ConcreteTopicExpression" />
+          <xs:element minOccurs="0" maxOccurs="1" name="MessageContent" type="wsnt:QueryExpressionType" />
+          <xs:element minOccurs="0" maxOccurs="1" name="NamespaceMap" type="ps:NamespaceMapType" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="UpdateEndpointRequest">
+        <xs:complexType>
+          <xs:all>
+            <xs:element name="entityID" type="xs:anyURI" />
+            <xs:element name="endpoint" type="xs:anyURI" />
+            <xs:element name="isWebService" type="xs:boolean" />
+          </xs:all>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="UpdateEndpointResponse">
+        <xs:complexType>
+          <xs:all>
+            <xs:element name="profile" type="ps:ProfileType" />
+          </xs:all>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="UpdateEndpointRequest">
+    <wsdl:part name="UpdateEndpointRequest" element="sch:UpdateEndpointRequest" />
+  </wsdl:message>
+  <wsdl:message name="CreateProfileRequest">
+    <wsdl:part name="CreateProfileRequest" element="sch:CreateProfileRequest" />
+  </wsdl:message>
+  <wsdl:message name="UpdateProfileRequest">
+    <wsdl:part name="UpdateProfileRequest" element="sch:UpdateProfileRequest" />
+  </wsdl:message>
+  <wsdl:message name="AddInterestRequest">
+    <wsdl:part name="AddInterestRequest" element="sch:AddInterestRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetProfileListRequest">
+    <wsdl:part name="GetProfileListRequest" element="sch:GetProfileListRequest" />
+  </wsdl:message>
+  <wsdl:message name="RemoveInterestRequest">
+    <wsdl:part name="RemoveInterestRequest" element="sch:RemoveInterestRequest" />
+  </wsdl:message>
+  <wsdl:message name="DeleteProfileRequest">
+    <wsdl:part name="DeleteProfileRequest" element="sch:DeleteProfileRequest" />
+  </wsdl:message>
+  <wsdl:message name="CreateProfileResponse">
+    <wsdl:part name="CreateProfileResponse" element="sch:CreateProfileResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteProfileResponse">
+    <wsdl:part name="DeleteProfileResponse" element="sch:DeleteProfileResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetProfileRequest">
+    <wsdl:part name="GetProfileRequest" element="sch:GetProfileRequest" />
+  </wsdl:message>
+  <wsdl:message name="AddInterestResponse">
+    <wsdl:part name="AddInterestResponse" element="sch:AddInterestResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetProfileListResponse">
+    <wsdl:part name="GetProfileListResponse" element="sch:GetProfileListResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateProfileResponse">
+    <wsdl:part name="UpdateProfileResponse" element="sch:UpdateProfileResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetProfileResponse">
+    <wsdl:part name="GetProfileResponse" element="sch:GetProfileResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateEndpointResponse">
+    <wsdl:part name="UpdateEndpointResponse" element="sch:UpdateEndpointResponse" />
+  </wsdl:message>
+  <wsdl:message name="RemoveInterestResponse">
+    <wsdl:part name="RemoveInterestResponse" element="sch:RemoveInterestResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ProfileService">
+    <wsdl:operation name="AddInterest">
+      <wsdl:input name="AddInterestRequest" message="sch:AddInterestRequest" />
+      <wsdl:output name="AddInterestResponse" message="sch:AddInterestResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateProfile">
+      <wsdl:input name="CreateProfileRequest" message="sch:CreateProfileRequest" />
+      <wsdl:output name="CreateProfileResponse" message="sch:CreateProfileResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteProfile">
+      <wsdl:input name="DeleteProfileRequest" message="sch:DeleteProfileRequest" />
+      <wsdl:output name="DeleteProfileResponse" message="sch:DeleteProfileResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveInterest">
+      <wsdl:input name="RemoveInterestRequest" message="sch:RemoveInterestRequest" />
+      <wsdl:output name="RemoveInterestResponse" message="sch:RemoveInterestResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProfileList">
+      <wsdl:input name="GetProfileListRequest" message="sch:GetProfileListRequest" />
+      <wsdl:output name="GetProfileListResponse" message="sch:GetProfileListResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateEndpoint">
+      <wsdl:input name="UpdateEndpointRequest" message="sch:UpdateEndpointRequest" />
+      <wsdl:output name="UpdateEndpointResponse" message="sch:UpdateEndpointResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateProfile">
+      <wsdl:input name="UpdateProfileRequest" message="sch:UpdateProfileRequest" />
+      <wsdl:output name="UpdateProfileResponse" message="sch:UpdateProfileResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProfile">
+      <wsdl:input name="GetProfileRequest" message="sch:GetProfileRequest" />
+      <wsdl:output name="GetProfileResponse" message="sch:GetProfileResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ProfileServiceSoap11" type="sch:ProfileService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AddInterest">
+      <soap:operation soapAction="" />
+      <wsdl:input name="AddInterestRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="AddInterestResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateProfile">
+      <soap:operation soapAction="" />
+      <wsdl:input name="CreateProfileRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="CreateProfileResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteProfile">
+      <soap:operation soapAction="" />
+      <wsdl:input name="DeleteProfileRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="DeleteProfileResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveInterest">
+      <soap:operation soapAction="" />
+      <wsdl:input name="RemoveInterestRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="RemoveInterestResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProfileList">
+      <soap:operation soapAction="" />
+      <wsdl:input name="GetProfileListRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetProfileListResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateEndpoint">
+      <soap:operation soapAction="" />
+      <wsdl:input name="UpdateEndpointRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="UpdateEndpointResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateProfile">
+      <soap:operation soapAction="" />
+      <wsdl:input name="UpdateProfileRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="UpdateProfileResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProfile">
+      <soap:operation soapAction="" />
+      <wsdl:input name="GetProfileRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetProfileResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ProfileServiceService">
+    <wsdl:port name="ProfileServiceSoap11" binding="sch:ProfileServiceSoap11">
+      <soap:address location="http://localhost:8080/uicds/core/ws/services/ProfileService" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

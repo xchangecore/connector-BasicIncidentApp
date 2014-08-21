@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:sch="http://uicds.org/LEITSCService" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://uicds.org/LEITSCService" targetNamespace="http://uicds.org/LEITSCService" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <schema xmlns:precisb="http://www.saic.com/precis/2009/06/base" xmlns:preciss="http://www.saic.com/precis/2009/06/structures" elementFormDefault="qualified" targetNamespace="http://uicds.org/LEITSCService" xmlns="http://www.w3.org/2001/XMLSchema">
+      <import schemaLocation="../../../precis/2009/06/BaseTypes.xsd" namespace="http://www.saic.com/precis/2009/06/base" />
+      <import schemaLocation="../../../precis/2009/06/Structures.xsd" namespace="http://www.saic.com/precis/2009/06/structures" />
+      <element name="PostDetailedCFSMessageRequest">
+        <complexType>
+          <sequence>
+            <any />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="PostDetailedCFSMessageResponse">
+        <complexType>
+          <sequence>
+            <element name="leitscIncidentID" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetLEITSCIncidentRequest">
+        <complexType>
+          <sequence>
+            <element name="leitscIncidentID" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetLEITSCIncidentResponse">
+        <complexType>
+          <sequence>
+            <element ref="preciss:WorkProduct" />
+          </sequence>
+        </complexType>
+      </element>
+    </schema>
+  </wsdl:types>
+  <wsdl:message name="GetLEITSCIncidentRequest">
+    <wsdl:part name="GetLEITSCIncidentRequest" element="tns:GetLEITSCIncidentRequest" />
+  </wsdl:message>
+  <wsdl:message name="PostDetailedCFSMessageResponse">
+    <wsdl:part name="PostDetailedCFSMessageResponse" element="tns:PostDetailedCFSMessageResponse" />
+  </wsdl:message>
+  <wsdl:message name="PostDetailedCFSMessageRequest">
+    <wsdl:part name="PostDetailedCFSMessageRequest" element="tns:PostDetailedCFSMessageRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetLEITSCIncidentResponse">
+    <wsdl:part name="GetLEITSCIncidentResponse" element="tns:GetLEITSCIncidentResponse" />
+  </wsdl:message>
+  <wsdl:portType name="LEITSCService">
+    <wsdl:operation name="GetLEITSCIncident">
+      <wsdl:input name="GetLEITSCIncidentRequest" message="tns:GetLEITSCIncidentRequest" />
+      <wsdl:output name="GetLEITSCIncidentResponse" message="tns:GetLEITSCIncidentResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="PostDetailedCFSMessage">
+      <wsdl:input name="PostDetailedCFSMessageRequest" message="tns:PostDetailedCFSMessageRequest" />
+      <wsdl:output name="PostDetailedCFSMessageResponse" message="tns:PostDetailedCFSMessageResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="LEITSCServiceSoap11" type="tns:LEITSCService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetLEITSCIncident">
+      <soap:operation soapAction="" />
+      <wsdl:input name="GetLEITSCIncidentRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetLEITSCIncidentResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PostDetailedCFSMessage">
+      <soap:operation soapAction="" />
+      <wsdl:input name="PostDetailedCFSMessageRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="PostDetailedCFSMessageResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="LEITSCServiceService">
+    <wsdl:port name="LEITSCServiceSoap11" binding="tns:LEITSCServiceSoap11">
+      <soap:address location="http://localhost:80/uicds/core/ws/services/LEITSCService" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

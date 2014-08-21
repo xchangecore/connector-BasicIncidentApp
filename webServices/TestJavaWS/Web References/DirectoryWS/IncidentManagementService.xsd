@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:ims="http://uicds.org/IncidentManagementService" xmlns:Q1="http://uicds.org/WorkProductService" xmlns:s="http://niem.gov/niem/structures/2.0" xmlns:as="http://uicds.org/AlertService" xmlns:cap="http://niem.gov/niem/edxl-cap/2.0" xmlns:ns1="urn:oasis:names:tc:emergency:cap:1.1" xmlns:preciss="http://www.saic.com/precis/2009/06/structures" xmlns:de="urn:oasis:names:tc:emergency:EDXL:DE:1.0" xmlns:inc="http://uicds.org/incident" elementFormDefault="qualified" targetNamespace="http://uicds.org/IncidentManagementService" xmlns="http://www.w3.org/2001/XMLSchema">
+  <import schemaLocation="../../../services/Alert/0.1/AlertService.xsd" namespace="http://uicds.org/AlertService" />
+  <import schemaLocation="../../../external/niem/external/cap/1.1/cap.xsd" namespace="urn:oasis:names:tc:emergency:cap:1.1" />
+  <import schemaLocation="../../../external/niem/structures/2.0/structures.xsd" namespace="http://niem.gov/niem/structures/2.0" />
+  <import schemaLocation="../../../services/IncidentManagement/0.1/Incident.xsd" namespace="http://uicds.org/incident" />
+  <import schemaLocation="../../../services/WorkProduct/0.1/WorkProductService.xsd" namespace="http://uicds.org/WorkProductService" />
+  <import schemaLocation="../../../precis/2009/06/Structures.xsd" namespace="http://www.saic.com/precis/2009/06/structures" />
+  <element name="CreateIncidentFromCapRequest" type="as:UICDSAlertAdapterType" />
+  <element name="CreateIncidentFromCapResponse">
+    <complexType>
+      <sequence>
+        <element ref="Q1:WorkProductPublicationResponse" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="CreateIncidentRequest" type="inc:UICDSIncidentType" />
+  <element name="CreateIncidentResponse">
+    <complexType>
+      <sequence>
+        <element ref="Q1:WorkProductPublicationResponse" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="UpdateIncidentRequest">
+    <complexType>
+      <all>
+        <element ref="preciss:WorkProductIdentification" />
+        <element name="incident" type="inc:UICDSIncidentType" />
+      </all>
+    </complexType>
+  </element>
+  <element name="UpdateIncidentResponse">
+    <complexType>
+      <sequence>
+        <element ref="Q1:WorkProductPublicationResponse" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="ShareIncidentRequest" type="ims:ShareIncidentRequestType" />
+  <complexType name="ShareIncidentRequestType">
+    <sequence>
+      <element name="IncidentId" type="string" />
+      <element name="CoreName" type="string" />
+    </sequence>
+  </complexType>
+  <element name="ShareIncidentResponse" type="ims:ShareIncidentResponseType" />
+  <complexType name="ShareIncidentResponseType">
+    <sequence>
+      <element name="IncidentShareSucessful" type="boolean" />
+    </sequence>
+  </complexType>
+  <element name="GetIncidentRequest">
+    <complexType>
+      <all>
+        <element ref="preciss:WorkProductIdentification" />
+      </all>
+    </complexType>
+  </element>
+  <complexType name="GetIncidentRequestType">
+    <sequence>
+      <element name="IncidentId" type="string" />
+    </sequence>
+  </complexType>
+  <element name="GetIncidentResponse">
+    <complexType>
+      <sequence>
+        <element ref="preciss:WorkProduct" />
+      </sequence>
+    </complexType>
+  </element>
+  <complexType name="IncidentStateType">
+    <complexContent mixed="false">
+      <extension base="s:MetadataType">
+        <sequence>
+          <element name="state">
+            <simpleType>
+              <restriction base="string">
+                <enumeration value="new" />
+                <enumeration value="share" />
+                <enumeration value="join" />
+                <enumeration value="resign" />
+                <enumeration value="update" />
+              </restriction>
+            </simpleType>
+          </element>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <element name="IncidentState" type="ims:IncidentStateType" />
+  <complexType name="IncidentListType">
+    <sequence>
+      <element minOccurs="0" maxOccurs="unbounded" name="IncidentInfo" type="ims:IncidentInfoType" />
+    </sequence>
+  </complexType>
+  <complexType name="IncidentInfoType">
+    <sequence>
+      <element name="Id" type="string" />
+      <element name="WorkProductId" type="string" />
+      <element name="Name" type="string" />
+      <element name="Description" type="string" />
+      <element name="Date" type="string" />
+      <element name="Latitude" type="double" />
+      <element name="Longitude" type="double" />
+      <element name="OwningCore" type="string" />
+    </sequence>
+  </complexType>
+  <element name="IncidentList" type="ims:IncidentListType" />
+  <element name="IncidentInfo" type="ims:IncidentInfoType" />
+</schema>

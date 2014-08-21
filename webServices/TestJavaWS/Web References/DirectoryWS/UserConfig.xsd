@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:uc="http://uicds.org/UserConfig" elementFormDefault="qualified" targetNamespace="http://uicds.org/UserConfig" xmlns="http://www.w3.org/2001/XMLSchema">
+  <simpleType name="UserStatusType">
+    <restriction base="string">
+      <enumeration value="Online" />
+      <enumeration value="Offline" />
+      <enumeration value="Other" />
+    </restriction>
+  </simpleType>
+  <complexType name="UserConfigType">
+    <sequence>
+      <element name="id" type="string" />
+      <element name="name" type="string" />
+      <element name="OnlineStatus" type="uc:UserStatusType" />
+      <element name="coreName" type="string" />
+    </sequence>
+  </complexType>
+  <complexType name="UserConfigListType">
+    <sequence>
+      <element maxOccurs="unbounded" name="User" type="uc:UserConfigType" />
+    </sequence>
+  </complexType>
+  <element name="UserConfig" type="uc:UserConfigType" />
+  <element name="UserList" type="uc:UserConfigListType">
+    <annotation>
+      <documentation>
+                Configuration object for a UICDS User.
+            </documentation>
+    </annotation>
+  </element>
+</schema>

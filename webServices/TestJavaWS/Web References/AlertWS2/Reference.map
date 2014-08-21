@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DiscoveryClientResultsFile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Results>
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="https://149.8.167.229/uicds/niem-2.0/structures/2.0/structures.xsd" filename="structures.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.ContractReference" url="https://149.8.167.229/uicds/ws/AlertService.wsdl" filename="AlertService.wsdl" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="https://149.8.167.229/uicds/niem-2.0/external/cap/1.1/cap.xsd" filename="cap.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="https://149.8.167.229/uicds/uicds/StringList.xsd" filename="StringList.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="https://149.8.167.229/uicds/niem-2.0/external/de/1.0/de.xsd" filename="de.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="https://149.8.167.229/uicds/niem-2.0/appinfo/2.0/appinfo.xsd" filename="appinfo.xsd" />
+  </Results>
+</DiscoveryClientResultsFile>

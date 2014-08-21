@@ -1,0 +1,903 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{46254E13-209E-4D70-8578-2FF1AF5A20CD}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>UICDS_Services</RootNamespace>
+    <AssemblyName>UICDS-Services</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Class1.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\AgreementService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\AlertService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\BroadcastService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\DirectoryService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\IAPService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\IncidentCommandService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\IncidentManagementService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\LEITSCService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\LoggingService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\MapService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\NotificationService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\ResourceInstanceService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\ResourceProfileService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\SensorService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\TaskingService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\WorkProductService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="WorkProductPartialSerialization.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="http://localhost/uicds/core/ws/services/AgreementService.wsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\AgreementService\</RelPath>
+      <UpdateFromURL>http://localhost/uicds/core/ws/services/AgreementService.wsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>UICDS_Services_AgreementService_AgreementServiceService</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://localhost/uicds/core/ws/services/AlertService.wsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\AlertService\</RelPath>
+      <UpdateFromURL>http://localhost/uicds/core/ws/services/AlertService.wsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>UICDS_Services_AlertService_AlertServiceService</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://localhost/uicds/core/ws/services/BroadcastService.wsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\BroadcastService\</RelPath>
+      <UpdateFromURL>http://localhost/uicds/core/ws/services/BroadcastService.wsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>UICDS_Services_BroadcastService_BroadcastServiceService</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://localhost/uicds/core/ws/services/DirectoryService.wsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\DirectoryService\</RelPath>
+      <UpdateFromURL>http://localhost/uicds/core/ws/services/DirectoryService.wsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>UICDS_Services_DirectoryService_DirectoryServiceService</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://localhost/uicds/core/ws/services/IAPService.wsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\IAPService\</RelPath>
+      <UpdateFromURL>http://localhost/uicds/core/ws/services/IAPService.wsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>UICDS_Services_IAPService_IAPServiceService</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://localhost/uicds/core/ws/services/IncidentCommandService.wsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\IncidentCommandService\</RelPath>
+      <UpdateFromURL>http://localhost/uicds/core/ws/services/IncidentCommandService.wsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>UICDS_Services_IncidentCommandService_IncidentCommandServiceService</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://localhost/uicds/core/ws/services/IncidentManagementService.wsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\IncidentManagementService\</RelPath>
+      <UpdateFromURL>http://localhost/uicds/core/ws/services/IncidentManagementService.wsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>UICDS_Services_IncidentManagementService_IncidentManagementServiceService</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://localhost/uicds/core/ws/services/LEITSCService.wsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\LEITSCService\</RelPath>
+      <UpdateFromURL>http://localhost/uicds/core/ws/services/LEITSCService.wsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>UICDS_Services_LEITSCService_LEITSCServiceService</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://localhost/uicds/core/ws/services/LoggingService.wsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\LoggingService\</RelPath>
+      <UpdateFromURL>http://localhost/uicds/core/ws/services/LoggingService.wsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>UICDS_Services_LoggingService_LoggingServiceService</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://localhost/uicds/core/ws/services/MapService.wsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\MapService\</RelPath>
+      <UpdateFromURL>http://localhost/uicds/core/ws/services/MapService.wsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>UICDS_Services_MapService_MapServiceService</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://localhost/uicds/core/ws/services/NotificationService.wsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\NotificationService\</RelPath>
+      <UpdateFromURL>http://localhost/uicds/core/ws/services/NotificationService.wsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>UICDS_Services_NotificationService_NotificationServiceService</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://localhost/uicds/core/ws/services/ResourceInstanceService.wsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\ResourceInstanceService\</RelPath>
+      <UpdateFromURL>http://localhost/uicds/core/ws/services/ResourceInstanceService.wsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>UICDS_Services_ResourceInstanceService_ResourceInstanceServiceService</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://localhost/uicds/core/ws/services/ResourceProfileService.wsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\ResourceProfileService\</RelPath>
+      <UpdateFromURL>http://localhost/uicds/core/ws/services/ResourceProfileService.wsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>UICDS_Services_ResourceProfileService_ResourceProfileServiceService</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://localhost/uicds/core/ws/services/SensorService.wsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\SensorService\</RelPath>
+      <UpdateFromURL>http://localhost/uicds/core/ws/services/SensorService.wsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>UICDS_Services_SensorService_SensorServiceService</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://localhost/uicds/core/ws/services/TaskingService.wsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\TaskingService\</RelPath>
+      <UpdateFromURL>http://localhost/uicds/core/ws/services/TaskingService.wsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>UICDS_Services_TaskingService_TaskingServiceService</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://localhost/uicds/core/ws/services/WorkProductService.wsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\WorkProductService\</RelPath>
+      <UpdateFromURL>http://localhost/uicds/core/ws/services/WorkProductService.wsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>UICDS_Services_WorkProductService_WorkProductServiceService</CachedSettingsPropName>
+    </WebReferenceUrl>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\AgreementService\Agreement.xsd" />
+    <None Include="Web References\AgreementService\AgreementService.wsdl" />
+    <None Include="Web References\AgreementService\BaseTypes.xsd" />
+    <None Include="Web References\AgreementService\CreateAgreementResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\AgreementService\DDMS-GeospatialCoverage.xsd" />
+    <None Include="Web References\AgreementService\DDMS-Globals.xsd" />
+    <None Include="Web References\AgreementService\DDMS-v2_0.xsd" />
+    <None Include="Web References\AgreementService\GeospatialCoverage_attributeVocabularyDefinitions.xsd" />
+    <None Include="Web References\AgreementService\GetAgreementListResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\AgreementService\GetAgreementResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\AgreementService\IC-ISM-v2.xsd" />
+    <None Include="Web References\AgreementService\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\AgreementService\RescindAgreementResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\AgreementService\ucore.xsd" />
+    <None Include="Web References\AgreementService\ucore_gml_profile.xsd" />
+    <None Include="Web References\AgreementService\ulex-codes.xsd" />
+    <None Include="Web References\AgreementService\ulex-library.xsd" />
+    <None Include="Web References\AgreementService\ulex.xsd" />
+    <None Include="Web References\AgreementService\UpdateAgreementResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\AgreementService\xlinks.xsd" />
+    <None Include="Web References\AlertService\AlertService.wsdl" />
+    <None Include="Web References\AlertService\BaseTypes.xsd" />
+    <None Include="Web References\AlertService\CancelAlertResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\AlertService\cap.xsd" />
+    <None Include="Web References\AlertService\CreateAlertResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\AlertService\DDMS-GeospatialCoverage.xsd" />
+    <None Include="Web References\AlertService\DDMS-Globals.xsd" />
+    <None Include="Web References\AlertService\DDMS-v2_0.xsd" />
+    <None Include="Web References\AlertService\GeospatialCoverage_attributeVocabularyDefinitions.xsd" />
+    <None Include="Web References\AlertService\GetAlertByAlertIdResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\AlertService\GetAlertResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\AlertService\GetListOfAlertsResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\AlertService\IC-ISM-v2.xsd" />
+    <None Include="Web References\AlertService\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\AlertService\Structures.xsd" />
+    <None Include="Web References\AlertService\ucore.xsd" />
+    <None Include="Web References\AlertService\ucore_gml_profile.xsd" />
+    <None Include="Web References\AlertService\ulex-codes.xsd" />
+    <None Include="Web References\AlertService\ulex-library.xsd" />
+    <None Include="Web References\AlertService\ulex.xsd" />
+    <None Include="Web References\AlertService\WorkProductData.xsd" />
+    <None Include="Web References\AlertService\WorkProductService.xsd" />
+    <None Include="Web References\AlertService\xlinks.xsd" />
+    <None Include="Web References\BroadcastService\appinfo.xsd" />
+    <None Include="Web References\BroadcastService\BroadcastMessageResponseType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\BroadcastService\BroadcastService.wsdl" />
+    <None Include="Web References\BroadcastService\de.xsd" />
+    <None Include="Web References\BroadcastService\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\BroadcastService\structures.xsd" />
+    <None Include="Web References\DirectoryService\BaseTypes.xsd" />
+    <None Include="Web References\DirectoryService\CoreConfig.xsd" />
+    <None Include="Web References\DirectoryService\DDMS-GeospatialCoverage.xsd" />
+    <None Include="Web References\DirectoryService\DDMS-Globals.xsd" />
+    <None Include="Web References\DirectoryService\DDMS-v2_0.xsd" />
+    <None Include="Web References\DirectoryService\DirectoryService.wsdl" />
+    <None Include="Web References\DirectoryService\DirectoryServiceData.xsd" />
+    <None Include="Web References\DirectoryService\ExternalDataSourceConfig.xsd" />
+    <None Include="Web References\DirectoryService\ExternalToolConfig.xsd" />
+    <None Include="Web References\DirectoryService\GeospatialCoverage_attributeVocabularyDefinitions.xsd" />
+    <None Include="Web References\DirectoryService\GetCoreListResponseType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\DirectoryService\GetExternalDataSourceListResponseType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\DirectoryService\GetExternalToolListResponseType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\DirectoryService\GetIncidentListResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\DirectoryService\GetServiceListResponseType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\DirectoryService\GetSOSListResponseType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\DirectoryService\IC-ISM-v2.xsd" />
+    <None Include="Web References\DirectoryService\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\DirectoryService\ServiceConfig.xsd" />
+    <None Include="Web References\DirectoryService\SOSConfig.xsd" />
+    <None Include="Web References\DirectoryService\Structures.xsd" />
+    <None Include="Web References\DirectoryService\ucore.xsd" />
+    <None Include="Web References\DirectoryService\ucore_gml_profile.xsd" />
+    <None Include="Web References\DirectoryService\ulex-codes.xsd" />
+    <None Include="Web References\DirectoryService\ulex-library.xsd" />
+    <None Include="Web References\DirectoryService\ulex.xsd" />
+    <None Include="Web References\DirectoryService\WorkProductData.xsd" />
+    <None Include="Web References\DirectoryService\WorkProductService.xsd" />
+    <None Include="Web References\DirectoryService\xlinks.xsd" />
+    <None Include="Web References\IAPService\appinfo.xsd" />
+    <None Include="Web References\IAPService\AttachWorkProductToIAPResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\IAPService\BaseTypes.xsd" />
+    <None Include="Web References\IAPService\CreateIAPResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\IAPService\CreateICSFormResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\IAPService\DDMS-GeospatialCoverage.xsd" />
+    <None Include="Web References\IAPService\DDMS-Globals.xsd" />
+    <None Include="Web References\IAPService\DDMS-v2_0.xsd" />
+    <None Include="Web References\IAPService\GeospatialCoverage_attributeVocabularyDefinitions.xsd" />
+    <None Include="Web References\IAPService\GetApprovedIAPResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\IAPService\GetIAPResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\IAPService\GetICSFormListResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\IAPService\GetICSFormResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\IAPService\IAPService.wsdl" />
+    <None Include="Web References\IAPService\IC-ISM-v2.xsd" />
+    <None Include="Web References\IAPService\ICSFormCommon.xsd" />
+    <None Include="Web References\IAPService\iso_3166.xsd" />
+    <None Include="Web References\IAPService\nga.xsd" />
+    <None Include="Web References\IAPService\niem-core.xsd" />
+    <None Include="Web References\IAPService\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\IAPService\SetApprovedIAPResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\IAPService\Structures.xsd" />
+    <None Include="Web References\IAPService\structures0.xsd" />
+    <None Include="Web References\IAPService\ucore.xsd" />
+    <None Include="Web References\IAPService\ucore_gml_profile.xsd" />
+    <None Include="Web References\IAPService\ulex-codes.xsd" />
+    <None Include="Web References\IAPService\ulex-library.xsd" />
+    <None Include="Web References\IAPService\ulex.xsd" />
+    <None Include="Web References\IAPService\unece_rec20-misc.xsd" />
+    <None Include="Web References\IAPService\UpdateIAPResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\IAPService\UpdateICSFormResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\IAPService\usps_states.xsd" />
+    <None Include="Web References\IAPService\WorkProductData.xsd" />
+    <None Include="Web References\IAPService\WorkProductService.xsd" />
+    <None Include="Web References\IAPService\xlinks.xsd" />
+    <None Include="Web References\IAPService\xsd.xsd" />
+    <None Include="Web References\IncidentCommandService\appinfo.xsd" />
+    <None Include="Web References\IncidentCommandService\BaseTypes.xsd" />
+    <None Include="Web References\IncidentCommandService\CreateCommandStructureResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\IncidentCommandService\DDMS-GeospatialCoverage.xsd" />
+    <None Include="Web References\IncidentCommandService\DDMS-Globals.xsd" />
+    <None Include="Web References\IncidentCommandService\DDMS-v2_0.xsd" />
+    <None Include="Web References\IncidentCommandService\GeospatialCoverage_attributeVocabularyDefinitions.xsd" />
+    <None Include="Web References\IncidentCommandService\GetCommandStructureByIncidentResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\IncidentCommandService\GetCommandStructureResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\IncidentCommandService\IC-ISM-v2.xsd" />
+    <None Include="Web References\IncidentCommandService\IncidentCommandService.wsdl" />
+    <None Include="Web References\IncidentCommandService\OrganizationElement.xsd" />
+    <None Include="Web References\IncidentCommandService\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\IncidentCommandService\Structures.xsd" />
+    <None Include="Web References\IncidentCommandService\structures0.xsd" />
+    <None Include="Web References\IncidentCommandService\ucore.xsd" />
+    <None Include="Web References\IncidentCommandService\ucore_gml_profile.xsd" />
+    <None Include="Web References\IncidentCommandService\ulex-codes.xsd" />
+    <None Include="Web References\IncidentCommandService\ulex-library.xsd" />
+    <None Include="Web References\IncidentCommandService\ulex.xsd" />
+    <None Include="Web References\IncidentCommandService\UpdateCommandStructureResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\IncidentCommandService\WorkProductData.xsd" />
+    <None Include="Web References\IncidentCommandService\WorkProductService.xsd" />
+    <None Include="Web References\IncidentCommandService\xlinks.xsd" />
+    <None Include="Web References\IncidentManagementService\appinfo.xsd" />
+    <None Include="Web References\IncidentManagementService\ArchiveIncidentResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\IncidentManagementService\BaseTypes.xsd" />
+    <None Include="Web References\IncidentManagementService\cap.xsd" />
+    <None Include="Web References\IncidentManagementService\CloseIncidentResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\IncidentManagementService\CreateIncidentFromCapResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\IncidentManagementService\CreateIncidentResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\IncidentManagementService\DDMS-GeospatialCoverage.xsd" />
+    <None Include="Web References\IncidentManagementService\DDMS-Globals.xsd" />
+    <None Include="Web References\IncidentManagementService\DDMS-v2_0.xsd" />
+    <None Include="Web References\IncidentManagementService\GeospatialCoverage_attributeVocabularyDefinitions.xsd" />
+    <None Include="Web References\IncidentManagementService\GetIncidentListResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\IncidentManagementService\GetIncidentResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\IncidentManagementService\IC-ISM-v2.xsd" />
+    <None Include="Web References\IncidentManagementService\IdentifierType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\IncidentManagementService\Incident.xsd" />
+    <None Include="Web References\IncidentManagementService\IncidentManagementService.wsdl" />
+    <None Include="Web References\IncidentManagementService\IncidentManagementServiceData.xsd" />
+    <None Include="Web References\IncidentManagementService\iso_3166.xsd" />
+    <None Include="Web References\IncidentManagementService\nga.xsd" />
+    <None Include="Web References\IncidentManagementService\niem-core.xsd" />
+    <None Include="Web References\IncidentManagementService\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\IncidentManagementService\ShareIncidentResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\IncidentManagementService\Structures.xsd" />
+    <None Include="Web References\IncidentManagementService\structures0.xsd" />
+    <None Include="Web References\IncidentManagementService\ucore.xsd" />
+    <None Include="Web References\IncidentManagementService\ucore_gml_profile.xsd" />
+    <None Include="Web References\IncidentManagementService\ulex-codes.xsd" />
+    <None Include="Web References\IncidentManagementService\ulex-library.xsd" />
+    <None Include="Web References\IncidentManagementService\ulex.xsd" />
+    <None Include="Web References\IncidentManagementService\unece_rec20-misc.xsd" />
+    <None Include="Web References\IncidentManagementService\UpdateIncidentResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\IncidentManagementService\usps_states.xsd" />
+    <None Include="Web References\IncidentManagementService\WorkProductData.xsd" />
+    <None Include="Web References\IncidentManagementService\WorkProductService.xsd" />
+    <None Include="Web References\IncidentManagementService\xlinks.xsd" />
+    <None Include="Web References\IncidentManagementService\xsd.xsd" />
+    <None Include="Web References\LEITSCService\BaseTypes.xsd" />
+    <None Include="Web References\LEITSCService\DDMS-GeospatialCoverage.xsd" />
+    <None Include="Web References\LEITSCService\DDMS-Globals.xsd" />
+    <None Include="Web References\LEITSCService\DDMS-v2_0.xsd" />
+    <None Include="Web References\LEITSCService\GeospatialCoverage_attributeVocabularyDefinitions.xsd" />
+    <None Include="Web References\LEITSCService\GetLEITSCIncidentResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\LEITSCService\IC-ISM-v2.xsd" />
+    <None Include="Web References\LEITSCService\LEITSCService.wsdl" />
+    <None Include="Web References\LEITSCService\PostDetailedCFSMessageResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\LEITSCService\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\LEITSCService\Structures.xsd" />
+    <None Include="Web References\LEITSCService\ucore.xsd" />
+    <None Include="Web References\LEITSCService\ucore_gml_profile.xsd" />
+    <None Include="Web References\LEITSCService\ulex-codes.xsd" />
+    <None Include="Web References\LEITSCService\ulex-library.xsd" />
+    <None Include="Web References\LEITSCService\ulex.xsd" />
+    <None Include="Web References\LEITSCService\xlinks.xsd" />
+    <None Include="Web References\LoggingService\GetLogByHostnameResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\LoggingService\GetLogByLoggerResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\LoggingService\LoggingService.wsdl" />
+    <None Include="Web References\LoggingService\LogResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\LoggingService\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\MapService\BaseTypes.xsd" />
+    <None Include="Web References\MapService\context.xsd" />
+    <None Include="Web References\MapService\DDMS-GeospatialCoverage.xsd" />
+    <None Include="Web References\MapService\DDMS-Globals.xsd" />
+    <None Include="Web References\MapService\DDMS-v2_0.xsd" />
+    <None Include="Web References\MapService\GeospatialCoverage_attributeVocabularyDefinitions.xsd" />
+    <None Include="Web References\MapService\GetLayerResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\MapService\GetMapResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\MapService\IC-ISM-v2.xsd" />
+    <None Include="Web References\MapService\MapService.wsdl" />
+    <None Include="Web References\MapService\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\MapService\Structures.xsd" />
+    <None Include="Web References\MapService\SubmitLayerResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\MapService\SubmitMapResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\MapService\ucore.xsd" />
+    <None Include="Web References\MapService\ucore_gml_profile.xsd" />
+    <None Include="Web References\MapService\ulex-codes.xsd" />
+    <None Include="Web References\MapService\ulex-library.xsd" />
+    <None Include="Web References\MapService\ulex.xsd" />
+    <None Include="Web References\MapService\UpdateLayerResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\MapService\UpdateMapResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\MapService\WorkProduct.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\MapService\WorkProductData.xsd" />
+    <None Include="Web References\MapService\WorkProductPublicationResponseType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\MapService\WorkProductService.xsd" />
+    <None Include="Web References\MapService\xlinks.xsd" />
+    <None Include="Web References\NotificationService\BaseTypes.xsd" />
+    <None Include="Web References\NotificationService\DDMS-GeospatialCoverage.xsd" />
+    <None Include="Web References\NotificationService\DDMS-Globals.xsd" />
+    <None Include="Web References\NotificationService\DDMS-v2_0.xsd" />
+    <None Include="Web References\NotificationService\GeospatialCoverage_attributeVocabularyDefinitions.xsd" />
+    <None Include="Web References\NotificationService\GetCurrentMessageResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\NotificationService\GetMatchingMessagesResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\NotificationService\GetMessagesResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\NotificationService\IC-ISM-v2.xsd" />
+    <None Include="Web References\NotificationService\NotificationService.wsdl" />
+    <None Include="Web References\NotificationService\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\NotificationService\Structures.xsd" />
+    <None Include="Web References\NotificationService\ucore.xsd" />
+    <None Include="Web References\NotificationService\ucore_gml_profile.xsd" />
+    <None Include="Web References\NotificationService\ulex-codes.xsd" />
+    <None Include="Web References\NotificationService\ulex-library.xsd" />
+    <None Include="Web References\NotificationService\ulex.xsd" />
+    <None Include="Web References\NotificationService\WS-Addressing-2005_08.xsd" />
+    <None Include="Web References\NotificationService\WS-BaseFaults-1_2.xsd" />
+    <None Include="Web References\NotificationService\WS-BaseNotification-1_3.xsd" />
+    <None Include="Web References\NotificationService\WS-ResourceLifetime-1_2.xsd" />
+    <None Include="Web References\NotificationService\WS-Topics-1_3.xsd" />
+    <None Include="Web References\NotificationService\xlinks.xsd" />
+    <None Include="Web References\NotificationService\xml.xsd" />
+    <None Include="Web References\ResourceInstanceService\BaseTypes.xsd" />
+    <None Include="Web References\ResourceInstanceService\CheckinResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ResourceInstanceService\CheckoutResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ResourceInstanceService\GetResourceInstanceListResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ResourceInstanceService\GetResourceInstanceResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ResourceInstanceService\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\ResourceInstanceService\RegisterResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ResourceInstanceService\ResourceInstanceService.wsdl" />
+    <None Include="Web References\ResourceInstanceService\UnregisterResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ResourceInstanceService\UpdateEndpointResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ResourceInstanceService\WS-Addressing-2005_08.xsd" />
+    <None Include="Web References\ResourceInstanceService\WS-BaseFaults-1_2.xsd" />
+    <None Include="Web References\ResourceInstanceService\WS-BaseNotification-1_3.xsd" />
+    <None Include="Web References\ResourceInstanceService\WS-ResourceLifetime-1_2.xsd" />
+    <None Include="Web References\ResourceInstanceService\WS-Topics-1_3.xsd" />
+    <None Include="Web References\ResourceInstanceService\xml.xsd" />
+    <None Include="Web References\ResourceProfileService\AddInterestResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ResourceProfileService\BaseTypes.xsd" />
+    <None Include="Web References\ResourceProfileService\CreateProfileResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ResourceProfileService\DeleteProfileResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ResourceProfileService\GetProfileListResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ResourceProfileService\GetProfileResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ResourceProfileService\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\ResourceProfileService\RemoveInterestResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ResourceProfileService\ResourceProfileService.wsdl" />
+    <None Include="Web References\ResourceProfileService\WS-Addressing-2005_08.xsd" />
+    <None Include="Web References\ResourceProfileService\WS-BaseFaults-1_2.xsd" />
+    <None Include="Web References\ResourceProfileService\WS-BaseNotification-1_3.xsd" />
+    <None Include="Web References\ResourceProfileService\WS-ResourceLifetime-1_2.xsd" />
+    <None Include="Web References\ResourceProfileService\WS-Topics-1_3.xsd" />
+    <None Include="Web References\ResourceProfileService\xml.xsd" />
+    <None Include="Web References\SensorService\BaseTypes.xsd" />
+    <None Include="Web References\SensorService\CreateSOIResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\SensorService\DDMS-GeospatialCoverage.xsd" />
+    <None Include="Web References\SensorService\DDMS-Globals.xsd" />
+    <None Include="Web References\SensorService\DDMS-v2_0.xsd" />
+    <None Include="Web References\SensorService\GeospatialCoverage_attributeVocabularyDefinitions.xsd" />
+    <None Include="Web References\SensorService\GetSOIListResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\SensorService\GetSOIResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\SensorService\IC-ISM-v2.xsd" />
+    <None Include="Web References\SensorService\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\SensorService\SensorService.wsdl" />
+    <None Include="Web References\SensorService\Structures.xsd" />
+    <None Include="Web References\SensorService\ucore.xsd" />
+    <None Include="Web References\SensorService\ucore_gml_profile.xsd" />
+    <None Include="Web References\SensorService\ulex-codes.xsd" />
+    <None Include="Web References\SensorService\ulex-library.xsd" />
+    <None Include="Web References\SensorService\ulex.xsd" />
+    <None Include="Web References\SensorService\UpdateSOIResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\SensorService\WorkProductData.xsd" />
+    <None Include="Web References\SensorService\WorkProductService.xsd" />
+    <None Include="Web References\SensorService\xlinks.xsd" />
+    <None Include="Web References\TaskingService\appinfo.xsd" />
+    <None Include="Web References\TaskingService\BaseTypes.xsd" />
+    <None Include="Web References\TaskingService\CreateTaskListResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\TaskingService\DDMS-GeospatialCoverage.xsd" />
+    <None Include="Web References\TaskingService\DDMS-Globals.xsd" />
+    <None Include="Web References\TaskingService\DDMS-v2_0.xsd" />
+    <None Include="Web References\TaskingService\GeospatialCoverage_attributeVocabularyDefinitions.xsd" />
+    <None Include="Web References\TaskingService\GetTaskListByIdResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\TaskingService\GetTaskListResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\TaskingService\IC-ISM-v2.xsd" />
+    <None Include="Web References\TaskingService\iso_3166.xsd" />
+    <None Include="Web References\TaskingService\nga.xsd" />
+    <None Include="Web References\TaskingService\niem-core.xsd" />
+    <None Include="Web References\TaskingService\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\TaskingService\structures.xsd" />
+    <None Include="Web References\TaskingService\Structures0.xsd" />
+    <None Include="Web References\TaskingService\TaskingService.wsdl" />
+    <None Include="Web References\TaskingService\ucore.xsd" />
+    <None Include="Web References\TaskingService\ucore_gml_profile.xsd" />
+    <None Include="Web References\TaskingService\ulex-codes.xsd" />
+    <None Include="Web References\TaskingService\ulex-library.xsd" />
+    <None Include="Web References\TaskingService\ulex.xsd" />
+    <None Include="Web References\TaskingService\unece_rec20-misc.xsd" />
+    <None Include="Web References\TaskingService\UpdateTaskListResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\TaskingService\usps_states.xsd" />
+    <None Include="Web References\TaskingService\WorkProductData.xsd" />
+    <None Include="Web References\TaskingService\WorkProductService.xsd" />
+    <None Include="Web References\TaskingService\WS-Addressing-2005_08.xsd" />
+    <None Include="Web References\TaskingService\WS-BaseFaults-1_2.xsd" />
+    <None Include="Web References\TaskingService\WS-BaseNotification-1_3.xsd" />
+    <None Include="Web References\TaskingService\WS-ResourceLifetime-1_2.xsd" />
+    <None Include="Web References\TaskingService\WS-Topics-1_3.xsd" />
+    <None Include="Web References\TaskingService\xlinks.xsd" />
+    <None Include="Web References\TaskingService\xml.xsd" />
+    <None Include="Web References\TaskingService\xsd.xsd" />
+    <None Include="Web References\WorkProductService\ArchiveProductResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\WorkProductService\AssociateWorkProductToInterestGroupResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\WorkProductService\BaseTypes.xsd" />
+    <None Include="Web References\WorkProductService\CloseProductResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\WorkProductService\DDMS-GeospatialCoverage.xsd" />
+    <None Include="Web References\WorkProductService\DDMS-Globals.xsd" />
+    <None Include="Web References\WorkProductService\DDMS-v2_0.xsd" />
+    <None Include="Web References\WorkProductService\GeospatialCoverage_attributeVocabularyDefinitions.xsd" />
+    <None Include="Web References\WorkProductService\GetAssociatedWorkProductListResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\WorkProductService\GetProductResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\WorkProductService\IC-ISM-v2.xsd" />
+    <None Include="Web References\WorkProductService\PublishProductResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\WorkProductService\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\WorkProductService\Structures.xsd" />
+    <None Include="Web References\WorkProductService\ucore.xsd" />
+    <None Include="Web References\WorkProductService\ucore_gml_profile.xsd" />
+    <None Include="Web References\WorkProductService\ulex-codes.xsd" />
+    <None Include="Web References\WorkProductService\ulex-library.xsd" />
+    <None Include="Web References\WorkProductService\ulex.xsd" />
+    <None Include="Web References\WorkProductService\WorkProductData.xsd" />
+    <None Include="Web References\WorkProductService\WorkProductService.wsdl" />
+    <None Include="Web References\WorkProductService\xlinks.xsd" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

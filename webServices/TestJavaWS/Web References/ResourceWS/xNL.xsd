@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="urn:oasis:names:tc:ciq:xnl:3" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="urn:oasis:names:tc:ciq:xnl:3" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:include schemaLocation="xNL-types.xsd" />
+  <xs:import schemaLocation="xLink.xsd" namespace="http://www.w3.org/1999/xlink" />
+  <xs:annotation>
+    <xs:documentation> 
+		Specification Name: OASIS CIQ TC - extensible Name Language (xNL) 
+		Description: Defines the W3C schema for representing party names
+		Produced by: OASIS Customer Information Quality Technical Committee
+		Version: 3.0  
+		Status: Public Review Draft
+		Copyright: 2006, OASIS
+		Last Modified: 05 April 2006
+		Last Modified by: Ram Kumar 
+		NOTE: Do not modify this schema as it will break specifications compatibility 
+		</xs:documentation>
+  </xs:annotation>
+  <xs:attributeGroup name="grAbbreviation">
+    <xs:annotation>
+      <xs:documentation>A group of attributes for internal reuse.</xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="Abbreviation" type="xs:boolean">
+      <xs:annotation>
+        <xs:documentation>Indicates if the value is an abbreviation or initial</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="grDataQuality">
+    <xs:annotation>
+      <xs:documentation>A group of attributes for internal reuse.</xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="DataQuality" type="DataQualityEnumeration">
+      <xs:annotation>
+        <xs:documentation>This attribute indicates what level of trust can be given to the parent element. Omit this attribute if the data quality is unknown.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="ValidFrom" type="xs:dateTime">
+      <xs:annotation>
+        <xs:documentation>The first date when the name is valid. Inclusive.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="ValidTo" type="xs:dateTime">
+      <xs:annotation>
+        <xs:documentation>The last date when the name is valid. Inclusive.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:element name="PartyName" type="PartyNameType">
+    <xs:annotation>
+      <xs:documentation>Container for defining a name of a Person, an Organisation or combination of the above as a joint name.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="PartyNameType">
+    <xs:annotation>
+      <xs:documentation>Reusable complex type</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="NameLine">
+        <xs:annotation>
+          <xs:documentation>Define name as a free format text. Use this when the type of the entity (person or organisation) is unknown, or is not broken down into individual elements (e.g. unstructured, unparsed) or is beyond the provided types.</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:simpleContent>
+            <xs:extension base="string">
+              <xs:attribute name="Type" type="string">
+                <xs:annotation>
+                  <xs:documentation>Type define what this free format name line could mean. For example, the Type could be "Unknown" </xs:documentation>
+                </xs:annotation>
+              </xs:attribute>
+              <xs:attributeGroup ref="grDataQuality" />
+              <xs:attributeGroup ref="grAbbreviation" />
+              <xs:anyAttribute namespace="##other" processContents="lax" />
+            </xs:extension>
+          </xs:simpleContent>
+        </xs:complexType>
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PersonName">
+        <xs:annotation>
+          <xs:documentation>Container for person name details.</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:complexContent mixed="false">
+            <xs:extension base="PersonNameType">
+              <xs:sequence>
+                <xs:element minOccurs="0" maxOccurs="unbounded" name="KnownAs">
+                  <xs:annotation>
+                    <xs:documentation>Sometimes the same person is known by different unofficial or official names. If name is structured, use this element. Else, Alias Enumeration in NameElement is fine</xs:documentation>
+                  </xs:annotation>
+                  <xs:complexType>
+                    <xs:complexContent mixed="false">
+                      <xs:extension base="PersonNameType" />
+                    </xs:complexContent>
+                  </xs:complexType>
+                </xs:element>
+              </xs:sequence>
+              <xs:attribute name="ID" type="xs:string">
+                <xs:annotation>
+                  <xs:documentation>Globally unique identifier of the entity. </xs:documentation>
+                </xs:annotation>
+              </xs:attribute>
+            </xs:extension>
+          </xs:complexContent>
+        </xs:complexType>
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="OrganisationName">
+        <xs:annotation>
+          <xs:documentation>A container for organisation name details.</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:complexContent mixed="false">
+            <xs:extension base="OrganisationNameType">
+              <xs:sequence>
+                <xs:element minOccurs="0" maxOccurs="unbounded" name="KnownAs">
+                  <xs:annotation>
+                    <xs:documentation>Any other names the organisation can be known under. if name is structured, use this element. Else Alias Enumeration in NameElement is fine</xs:documentation>
+                  </xs:annotation>
+                  <xs:complexType>
+                    <xs:complexContent mixed="false">
+                      <xs:extension base="OrganisationNameType" />
+                    </xs:complexContent>
+                  </xs:complexType>
+                </xs:element>
+              </xs:sequence>
+              <xs:attribute name="ID" type="xs:string">
+                <xs:annotation>
+                  <xs:documentation>Globally unique identifier of the entity. </xs:documentation>
+                </xs:annotation>
+              </xs:attribute>
+            </xs:extension>
+          </xs:complexContent>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="ID" type="xs:string">
+      <xs:annotation>
+        <xs:documentation>Globally unique identifier of the entity. </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="JointNameConnector" type="string">
+      <xs:annotation>
+        <xs:documentation>The connector used to join more than one person name. Example: Mr Hunt AND Mrs Clark, where AND is the JointNameConnector. The flow is from the preceding to the following. If there is more than 2 names then all names are connected using this connector in the natural order.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attributeGroup ref="grDataQuality" />
+    <xs:attributeGroup ref="xlink:grLocatorOrResource" />
+    <xs:anyAttribute namespace="##other" processContents="lax" />
+  </xs:complexType>
+  <xs:complexType name="PersonNameType">
+    <xs:annotation>
+      <xs:documentation>Reusable complex type</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="NameElement">
+        <xs:annotation>
+          <xs:documentation>Name or part of a name defined as a free format text. </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:simpleContent>
+            <xs:extension base="string">
+              <xs:attribute name="ElementType" type="PersonNameElementEnumeration">
+                <xs:annotation>
+                  <xs:documentation>Clarifies the meaning of the element.Could be first name, middle name, etc. that is defined in the enumeration list. Omit this attribute if the type of the name element is not known.</xs:documentation>
+                </xs:annotation>
+              </xs:attribute>
+              <xs:attributeGroup ref="grAbbreviation" />
+              <xs:anyAttribute namespace="##other" processContents="lax" />
+            </xs:extension>
+          </xs:simpleContent>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+    <xs:attributeGroup ref="grDataQuality" />
+    <xs:attribute name="AliasType" type="PersonNameAliasTypeEnumeration">
+      <xs:annotation>
+        <xs:documentation>Enumerated list of common types of aliases or name types.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:anyAttribute namespace="##other" processContents="lax" />
+  </xs:complexType>
+  <xs:complexType name="OrganisationNameType">
+    <xs:annotation>
+      <xs:documentation>Reusable complex type</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="NameElement">
+        <xs:annotation>
+          <xs:documentation>Name of the organisation. E.g. ACME Inc.</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:simpleContent>
+            <xs:extension base="string">
+              <xs:attribute name="ElementType" type="OrganisationNameElementEnumeration">
+                <xs:annotation>
+                  <xs:documentation>Clarifies the meaning of the element. Example: name, type . Omit this attribute if the type of the name element is not known.</xs:documentation>
+                </xs:annotation>
+              </xs:attribute>
+              <xs:attributeGroup ref="grAbbreviation" />
+              <xs:anyAttribute namespace="##other" processContents="lax" />
+            </xs:extension>
+          </xs:simpleContent>
+        </xs:complexType>
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SubdivisionName">
+        <xs:annotation>
+          <xs:documentation>A container for organisation subdivision name details, e.g. Hardware Department.</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:simpleContent>
+            <xs:extension base="string">
+              <xs:attributeGroup ref="grAbbreviation" />
+              <xs:anyAttribute namespace="##other" processContents="lax" />
+            </xs:extension>
+          </xs:simpleContent>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+    <xs:attributeGroup ref="grDataQuality" />
+    <xs:attribute name="AliasType" type="OrganisationNameAliasTypeEnumeration">
+      <xs:annotation>
+        <xs:documentation>Enumerated list of common types of aliases or name types.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:anyAttribute namespace="##other" processContents="lax" />
+  </xs:complexType>
+</xs:schema>

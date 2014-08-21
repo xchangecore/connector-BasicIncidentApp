@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DiscoveryClientResultsFile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Results>
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://localhost/uicds/ucore/2.0/import/ULEX1.0PD/xsd/ulex/ulex/1.0/ulex.xsd" filename="ulex.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://localhost/uicds/services/IncidentManagement/0.1/Incident.xsd" filename="Incident.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://localhost/uicds/services/WorkProduct/0.1/WorkProductService.xsd" filename="WorkProductService.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.ContractReference" url="http://localhost/uicds/core/ws/services/IncidentManagementService.wsdl" filename="IncidentManagementService.wsdl" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://localhost/uicds/ucore/2.0/ucore/2.0/ucore.xsd" filename="ucore.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://localhost/uicds/external/niem/unece_rec20-misc/2.0/unece_rec20-misc.xsd" filename="unece_rec20-misc.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://localhost/uicds/precis/2009/06/BaseTypes.xsd" filename="BaseTypes.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://localhost/uicds/external/niem/proxy/xsd/2.0/xsd.xsd" filename="xsd.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://localhost/uicds/ucore/2.0/import/ICISM_2.1/IC-ISM-v2.1.xsd" filename="IC-ISM-v2.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://localhost/uicds/external/niem/usps_states/2.0/usps_states.xsd" filename="usps_states.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://localhost/uicds/precis/2009/06/Structures.xsd" filename="Structures.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://localhost/uicds/external/niem/niem-core/2.0/niem-core.xsd" filename="niem-core.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://localhost/uicds/external/niem/nga/2.0/nga.xsd" filename="nga.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://localhost/uicds/ucore/2.0/import/DDMS_2.0/ns/DDMS/2.0/DDMS-v2_0.xsd" filename="DDMS-v2_0.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://localhost/uicds/ucore/2.0/import/UCore_GML_Profile_2.0/ucore_gml_profile.xsd" filename="ucore_gml_profile.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://localhost/uicds/external/niem/iso_3166/2.0/iso_3166.xsd" filename="iso_3166.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://localhost/uicds/external/niem/appinfo/2.0/appinfo.xsd" filename="appinfo.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://localhost/uicds/ucore/2.0/import/ULEX1.0PD/xsd/ulex/ulex-library/1.0/ulex-library.xsd" filename="ulex-library.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://localhost/uicds/external/niem/structures/2.0/structures.xsd" filename="structures0.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://localhost/uicds/external/niem/external/cap/1.1/cap.xsd" filename="cap.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://localhost/uicds/ucore/2.0/import/ULEX1.0PD/xsd/ulex/ulex-codes/1.0/ulex-codes.xsd" filename="ulex-codes.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://localhost/uicds/external/xlink/1.0.0/xlinks.xsd" filename="xlinks.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://localhost/uicds/ucore/2.0/import/DDMS_2.0/ns/DDMS/2.0/GeospatialCoverage_attributeVocabularyDefinitions.xsd" filename="GeospatialCoverage_attributeVocabularyDefinitions.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://localhost/uicds/services/IncidentManagement/0.1/IncidentManagementServiceData.xsd" filename="IncidentManagementServiceData.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://localhost/uicds/services/WorkProduct/0.1/WorkProductData.xsd" filename="WorkProductData.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://localhost/uicds/ucore/2.0/import/DDMS_2.0/ns/DDMS/2.0/DDMS-Globals.xsd" filename="DDMS-Globals.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://localhost/uicds/ucore/2.0/import/DDMS_2.0/ns/DDMS/2.0/DDMS-GeospatialCoverage.xsd" filename="DDMS-GeospatialCoverage.xsd" />
+  </Results>
+</DiscoveryClientResultsFile>

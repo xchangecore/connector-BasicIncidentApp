@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:s="http://niem.gov/niem/structures/2.0" xmlns:org="http://uicds.org/OrganizationElement" elementFormDefault="qualified" targetNamespace="http://uicds.org/OrganizationElement" xmlns="http://www.w3.org/2001/XMLSchema">
+  <import schemaLocation="../../../external/niem/structures/2.0/structures.xsd" namespace="http://niem.gov/niem/structures/2.0" />
+  <complexType name="UICDSIncidentCommandStructureType">
+    <complexContent mixed="false">
+      <extension base="s:ComplexObjectType">
+        <sequence>
+          <element name="incidentList">
+            <complexType>
+              <sequence>
+                <element maxOccurs="unbounded" name="id" type="string" />
+              </sequence>
+            </complexType>
+          </element>
+          <element name="operationPeriod" type="string" />
+          <element name="dateTime" type="dateTime" />
+          <element name="organization" type="org:UICDSOrganizationElementType" />
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <element name="IncidentCommandStructure" type="org:UICDSIncidentCommandStructureType" />
+  <complexType name="UICDSOrganizationElementType">
+    <complexContent mixed="false">
+      <extension base="s:ComplexObjectType">
+        <sequence>
+          <element name="OrganizationName" type="string" />
+          <element name="OrganizationType" type="string" />
+          <element name="PersonInCharge" type="org:UICDSOrganizationPositionType" />
+          <sequence>
+            <element minOccurs="0" maxOccurs="unbounded" name="Staff" type="org:UICDSOrganizationPositionType" />
+            <element minOccurs="0" maxOccurs="unbounded" name="Organization" type="org:UICDSOrganizationElementType" />
+          </sequence>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <simpleType name="UICDSOrganizationTypeType">
+    <restriction base="string">
+      <enumeration value="Office" />
+      <enumeration value="Section" />
+      <enumeration value="Branch" />
+      <enumeration value="Division" />
+      <enumeration value="Group" />
+      <enumeration value="Unit" />
+      <enumeration value="Strike Team/Task Force" />
+    </restriction>
+  </simpleType>
+  <simpleType name="UICDSOrganizationNameType">
+    <restriction base="string">
+      <enumeration value="Incident Command" />
+      <enumeration value="Operations" />
+      <enumeration value="Planning" />
+      <enumeration value="Logistics" />
+      <enumeration value="Finance" />
+    </restriction>
+  </simpleType>
+  <complexType name="UICDSOrganizationPositionType">
+    <complexContent mixed="false">
+      <extension base="s:ComplexObjectType">
+        <sequence>
+          <element name="RoleProfileRef" type="anyURI" />
+          <element name="PersonProfileRef" type="anyURI" />
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <element name="OrganizatioinType" type="org:UICDSOrganizationTypeType" />
+  <element name="OrganizationPosition" type="org:UICDSOrganizationPositionType" />
+  <element name="OrganizationName" type="org:UICDSOrganizationNameType" />
+  <element name="Organization" type="org:UICDSOrganizationElementType" />
+</schema>

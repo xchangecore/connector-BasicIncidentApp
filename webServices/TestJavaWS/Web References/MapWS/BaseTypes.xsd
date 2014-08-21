@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:ucore="http://ucore.gov/ucore/2.0" xmlns:precisb="http://www.saic.com/precis/2009/06/base" xmlns:ulex="ulex:message:structure:1.0" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.saic.com/precis/2009/06/base" version="1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:attribute name="label" type="xs:string" />
+  <xs:attribute name="codespace" type="xs:string" />
+  <xs:attribute name="namespace" type="xs:string" />
+  <xs:attribute name="mimetype" type="xs:string" />
+  <xs:complexType name="CodespaceValueType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute ref="precisb:label" use="optional" />
+        <xs:attribute ref="precisb:codespace" use="optional" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="IdentifierType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute ref="precisb:label" use="optional" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="VersionType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute ref="precisb:label" use="optional" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="ChecksumType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string" />
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="DateTimeType">
+    <xs:simpleContent>
+      <xs:extension base="xs:dateTime" />
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="IntegerType">
+    <xs:simpleContent>
+      <xs:extension base="xs:nonNegativeInteger" />
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="UserMessageType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string" />
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:simpleType name="StateType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Active" />
+      <xs:enumeration value="Inactive" />
+      <xs:enumeration value="Archive" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="ProcessingStateType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Accepted" />
+      <xs:enumeration value="Rejected" />
+      <xs:enumeration value="Pending" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="Identifier" type="precisb:IdentifierType" />
+  <xs:element name="Version" type="precisb:VersionType" />
+  <xs:element name="Checksum" type="precisb:ChecksumType" />
+  <xs:element name="Type" type="precisb:CodespaceValueType" />
+  <xs:element name="State" type="precisb:StateType" />
+  <xs:element name="Created" type="precisb:DateTimeType" />
+  <xs:element name="CreatedBy" type="precisb:IdentifierType" />
+  <xs:element name="LastUpdated" type="precisb:DateTimeType" />
+  <xs:element name="LastUpdatedBy" type="precisb:IdentifierType" />
+  <xs:element name="Kilobytes" type="precisb:IntegerType" />
+  <xs:element name="MimeType" type="precisb:CodespaceValueType" />
+  <xs:element name="AssociatedGroups">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="precisb:Identifier" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Status" type="precisb:ProcessingStateType" />
+  <xs:element name="ACT" type="precisb:IdentifierType" />
+  <xs:element name="Message" type="precisb:UserMessageType" />
+  <xs:complexType name="IdentificationType">
+    <xs:sequence>
+      <xs:element ref="precisb:Identifier" />
+      <xs:element ref="precisb:Version" />
+      <xs:element ref="precisb:Type" />
+      <xs:element ref="precisb:Checksum" />
+      <xs:element ref="precisb:State" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="IdentificationListType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Identification" type="precisb:IdentificationType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PropertiesType">
+    <xs:sequence>
+      <xs:element minOccurs="0" ref="precisb:Created" />
+      <xs:element minOccurs="0" ref="precisb:CreatedBy" />
+      <xs:element minOccurs="0" ref="precisb:LastUpdated" />
+      <xs:element minOccurs="0" ref="precisb:LastUpdatedBy" />
+      <xs:element minOccurs="0" ref="precisb:Kilobytes" />
+      <xs:element minOccurs="0" ref="precisb:MimeType" />
+      <xs:element minOccurs="0" ref="precisb:AssociatedGroups" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ProcessingStatusType">
+    <xs:sequence>
+      <xs:element ref="precisb:Status" />
+      <xs:element minOccurs="0" ref="precisb:ACT" />
+      <xs:element minOccurs="0" ref="precisb:Message" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

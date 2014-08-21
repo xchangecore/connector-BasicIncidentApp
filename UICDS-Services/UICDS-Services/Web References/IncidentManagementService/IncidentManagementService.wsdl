@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:sch="http://uicds.org/IncidentManagementService" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://uicds.org/IncidentManagementService" targetNamespace="http://uicds.org/IncidentManagementService" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <schema xmlns:preciss="http://www.saic.com/precis/2009/06/structures" xmlns:inc="http://uicds.org/incident" xmlns:wps="http://uicds.org/WorkProductService" xmlns:ims="http://uicds.org/IncidentManagementService" xmlns:Q1="http://niem.gov/niem/niem-core/2.0" xmlns:cap="urn:oasis:names:tc:emergency:cap:1.1" xmlns:precisb="http://www.saic.com/precis/2009/06/base" elementFormDefault="qualified" targetNamespace="http://uicds.org/IncidentManagementService" xmlns="http://www.w3.org/2001/XMLSchema">
+      <import schemaLocation="../../../external/niem/external/cap/1.1/cap.xsd" namespace="urn:oasis:names:tc:emergency:cap:1.1" />
+      <import schemaLocation="../../../services/IncidentManagement/0.1/Incident.xsd" namespace="http://uicds.org/incident" />
+      <import schemaLocation="../../../services/WorkProduct/0.1/WorkProductService.xsd" namespace="http://uicds.org/WorkProductService" />
+      <import schemaLocation="../../../precis/2009/06/Structures.xsd" namespace="http://www.saic.com/precis/2009/06/structures" />
+      <import schemaLocation="../../../precis/2009/06/BaseTypes.xsd" namespace="http://www.saic.com/precis/2009/06/base" />
+      <include schemaLocation="../../../services/IncidentManagement/0.1/IncidentManagementServiceData.xsd" />
+      <element name="CreateIncidentFromCapRequest">
+        <complexType>
+          <sequence>
+            <element ref="cap:alert" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CreateIncidentFromCapResponse">
+        <complexType>
+          <sequence>
+            <element ref="wps:WorkProductPublicationResponse" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CreateIncidentRequest">
+        <complexType>
+          <sequence>
+            <element ref="inc:Incident" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CreateIncidentResponse">
+        <complexType>
+          <sequence>
+            <element ref="wps:WorkProductPublicationResponse" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="UpdateIncidentRequest">
+        <complexType>
+          <all>
+            <element ref="preciss:WorkProductIdentification" />
+            <element ref="inc:Incident" />
+          </all>
+        </complexType>
+      </element>
+      <element name="UpdateIncidentResponse">
+        <complexType>
+          <sequence>
+            <element ref="wps:WorkProductPublicationResponse" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ShareIncidentRequest">
+        <complexType>
+          <sequence>
+            <element name="IncidentID" type="string" />
+            <element name="CoreName" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ShareIncidentResponse">
+        <complexType>
+          <sequence>
+            <element name="IncidentShareSucessful" type="boolean" />
+            <element name="ErrorString" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetIncidentRequest">
+        <complexType>
+          <all>
+            <element ref="preciss:WorkProductIdentification" />
+          </all>
+        </complexType>
+      </element>
+      <element name="GetIncidentResponse">
+        <complexType>
+          <sequence>
+            <element ref="preciss:WorkProduct" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetIncidentListRequest" />
+      <element name="GetIncidentListResponse">
+        <complexType>
+          <sequence>
+            <element ref="wps:WorkProductList" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetListOfClosedIncidentRequest" type="boolean" />
+      <element name="GetListOfClosedIncidentResponse">
+        <complexType>
+          <sequence>
+            <element minOccurs="0" maxOccurs="unbounded" ref="precisb:Identifier" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ArchiveIncidentRequest">
+        <complexType>
+          <sequence>
+            <element name="IncidentID" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ArchiveIncidentResponse">
+        <complexType>
+          <sequence>
+            <element ref="preciss:WorkProductProcessingStatus" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CloseIncidentRequest">
+        <complexType>
+          <sequence>
+            <element name="IncidentID" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CloseIncidentResponse">
+        <complexType>
+          <sequence>
+            <element ref="preciss:WorkProductProcessingStatus" />
+          </sequence>
+        </complexType>
+      </element>
+    </schema>
+  </wsdl:types>
+  <wsdl:message name="ArchiveIncidentRequest">
+    <wsdl:part name="ArchiveIncidentRequest" element="tns:ArchiveIncidentRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetListOfClosedIncidentResponse">
+    <wsdl:part name="GetListOfClosedIncidentResponse" element="tns:GetListOfClosedIncidentResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetIncidentResponse">
+    <wsdl:part name="GetIncidentResponse" element="tns:GetIncidentResponse" />
+  </wsdl:message>
+  <wsdl:message name="ShareIncidentRequest">
+    <wsdl:part name="ShareIncidentRequest" element="tns:ShareIncidentRequest" />
+  </wsdl:message>
+  <wsdl:message name="ShareIncidentResponse">
+    <wsdl:part name="ShareIncidentResponse" element="tns:ShareIncidentResponse" />
+  </wsdl:message>
+  <wsdl:message name="CloseIncidentRequest">
+    <wsdl:part name="CloseIncidentRequest" element="tns:CloseIncidentRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetListOfClosedIncidentRequest">
+    <wsdl:part name="GetListOfClosedIncidentRequest" element="tns:GetListOfClosedIncidentRequest" />
+  </wsdl:message>
+  <wsdl:message name="CreateIncidentFromCapRequest">
+    <wsdl:part name="CreateIncidentFromCapRequest" element="tns:CreateIncidentFromCapRequest" />
+  </wsdl:message>
+  <wsdl:message name="CloseIncidentResponse">
+    <wsdl:part name="CloseIncidentResponse" element="tns:CloseIncidentResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetIncidentListResponse">
+    <wsdl:part name="GetIncidentListResponse" element="tns:GetIncidentListResponse" />
+  </wsdl:message>
+  <wsdl:message name="ArchiveIncidentResponse">
+    <wsdl:part name="ArchiveIncidentResponse" element="tns:ArchiveIncidentResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateIncidentRequest">
+    <wsdl:part name="CreateIncidentRequest" element="tns:CreateIncidentRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetIncidentListRequest">
+    <wsdl:part name="GetIncidentListRequest" element="tns:GetIncidentListRequest" />
+  </wsdl:message>
+  <wsdl:message name="CreateIncidentFromCapResponse">
+    <wsdl:part name="CreateIncidentFromCapResponse" element="tns:CreateIncidentFromCapResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateIncidentResponse">
+    <wsdl:part name="UpdateIncidentResponse" element="tns:UpdateIncidentResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetIncidentRequest">
+    <wsdl:part name="GetIncidentRequest" element="tns:GetIncidentRequest" />
+  </wsdl:message>
+  <wsdl:message name="UpdateIncidentRequest">
+    <wsdl:part name="UpdateIncidentRequest" element="tns:UpdateIncidentRequest" />
+  </wsdl:message>
+  <wsdl:message name="CreateIncidentResponse">
+    <wsdl:part name="CreateIncidentResponse" element="tns:CreateIncidentResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IncidentManagementService">
+    <wsdl:operation name="CreateIncident">
+      <wsdl:input name="CreateIncidentRequest" message="tns:CreateIncidentRequest" />
+      <wsdl:output name="CreateIncidentResponse" message="tns:CreateIncidentResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateIncidentFromCap">
+      <wsdl:input name="CreateIncidentFromCapRequest" message="tns:CreateIncidentFromCapRequest" />
+      <wsdl:output name="CreateIncidentFromCapResponse" message="tns:CreateIncidentFromCapResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="ShareIncident">
+      <wsdl:input name="ShareIncidentRequest" message="tns:ShareIncidentRequest" />
+      <wsdl:output name="ShareIncidentResponse" message="tns:ShareIncidentResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetListOfClosedIncident">
+      <wsdl:input name="GetListOfClosedIncidentRequest" message="tns:GetListOfClosedIncidentRequest" />
+      <wsdl:output name="GetListOfClosedIncidentResponse" message="tns:GetListOfClosedIncidentResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateIncident">
+      <wsdl:input name="UpdateIncidentRequest" message="tns:UpdateIncidentRequest" />
+      <wsdl:output name="UpdateIncidentResponse" message="tns:UpdateIncidentResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetIncidentList">
+      <wsdl:input name="GetIncidentListRequest" message="tns:GetIncidentListRequest" />
+      <wsdl:output name="GetIncidentListResponse" message="tns:GetIncidentListResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="CloseIncident">
+      <wsdl:input name="CloseIncidentRequest" message="tns:CloseIncidentRequest" />
+      <wsdl:output name="CloseIncidentResponse" message="tns:CloseIncidentResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetIncident">
+      <wsdl:input name="GetIncidentRequest" message="tns:GetIncidentRequest" />
+      <wsdl:output name="GetIncidentResponse" message="tns:GetIncidentResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="ArchiveIncident">
+      <wsdl:input name="ArchiveIncidentRequest" message="tns:ArchiveIncidentRequest" />
+      <wsdl:output name="ArchiveIncidentResponse" message="tns:ArchiveIncidentResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="IncidentManagementServiceSoap11" type="tns:IncidentManagementService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CreateIncident">
+      <soap:operation soapAction="" />
+      <wsdl:input name="CreateIncidentRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="CreateIncidentResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateIncidentFromCap">
+      <soap:operation soapAction="" />
+      <wsdl:input name="CreateIncidentFromCapRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="CreateIncidentFromCapResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ShareIncident">
+      <soap:operation soapAction="" />
+      <wsdl:input name="ShareIncidentRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="ShareIncidentResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetListOfClosedIncident">
+      <soap:operation soapAction="" />
+      <wsdl:input name="GetListOfClosedIncidentRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetListOfClosedIncidentResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateIncident">
+      <soap:operation soapAction="" />
+      <wsdl:input name="UpdateIncidentRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="UpdateIncidentResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetIncidentList">
+      <soap:operation soapAction="" />
+      <wsdl:input name="GetIncidentListRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetIncidentListResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CloseIncident">
+      <soap:operation soapAction="" />
+      <wsdl:input name="CloseIncidentRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="CloseIncidentResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetIncident">
+      <soap:operation soapAction="" />
+      <wsdl:input name="GetIncidentRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetIncidentResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ArchiveIncident">
+      <soap:operation soapAction="" />
+      <wsdl:input name="ArchiveIncidentRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="ArchiveIncidentResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="IncidentManagementServiceService">
+    <wsdl:port name="IncidentManagementServiceSoap11" binding="tns:IncidentManagementServiceSoap11">
+      <soap:address location="http://localhost:80/uicds/core/ws/services/IncidentManagementService" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

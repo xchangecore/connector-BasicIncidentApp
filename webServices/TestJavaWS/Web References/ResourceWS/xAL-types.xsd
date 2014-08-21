@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="urn:oasis:names:tc:ciq:xal:3" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="urn:oasis:names:tc:ciq:xal:3" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:annotation>
+    <xs:documentation> 
+		Specification Name: OASIS CIQ TC - extensible Address Language  Types(xAL-types) 
+		Description: Defines the W3C schema that provides enumeration lists to support
+		xAL specification
+		Produced by: OASIS Customer Information Quality Technical Committee
+		Version: 3.0  
+		Status: Public Review Draft
+		Copyright: 2006, OASIS
+		Last Modified: 05 April 2006
+		Last Modified by: Ram Kumar
+		NOTE: This is the schema that users can customise the enumeration lists to meet their
+		exchange requirements 
+		</xs:documentation>
+  </xs:annotation>
+  <xs:simpleType name="string">
+    <xs:annotation>
+      <xs:documentation>A common format for a constrained string.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="255" />
+      <xs:whiteSpace value="collapse" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="AdministrativeAreaElementTypeEnumeration">
+    <xs:annotation>
+      <xs:documentation>A list of administrative area name types</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Name">
+        <xs:annotation>
+          <xs:documentation>Only name of the administrative area without its type, e.g. NSW, CA, Quebec</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Type">
+        <xs:annotation>
+          <xs:documentation>The type of the area, e.g. state, district, province, etc.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="NameAndType">
+        <xs:annotation>
+          <xs:documentation>Full name of an administrative area that also includes its type, e.g. Nothern Lakes District</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="CountryElementTypeEnumeration">
+    <xs:annotation>
+      <xs:documentation>A list of country name types</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Name">
+        <xs:annotation>
+          <xs:documentation>Only name of the administrative area without its type, e.g. NSW, CA, Quebec</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Type" />
+      <xs:enumeration value="ISO-3166" />
+      <xs:enumeration value="" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="DataQualityEnumeration">
+    <xs:annotation>
+      <xs:documentation>A list of values to indicate the level of reliability of the data.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Valid">
+        <xs:annotation>
+          <xs:documentation>The data was validated and is considered to be true and correct.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Invalid">
+        <xs:annotation>
+          <xs:documentation>Indicates that at least some part of the content is known to be incorrect.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="LocalityElementTypeEnumeration">
+    <xs:annotation>
+      <xs:documentation>A list of locality name types</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Lot">
+        <xs:annotation>
+          <xs:documentation>Lot has different meaning depending on the country. E.g. NZ uses Lot for an unoccupied piece of land, usally for sale; AU uses Lot for any piece of land, not necessary unoccupied; densely populated Asian countries use Lot in terms of a block or buildings. There other usages.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Name">
+        <xs:annotation>
+          <xs:documentation>Indicates that the value of the element is a name of some locality.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Type">
+        <xs:annotation>
+          <xs:documentation>Indicates that the value of the element is a type of the locality.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ReferenceLocation">
+        <xs:annotation>
+          <xs:documentation>Free text description of some other location and how this location relates to it, e.g. 5km from the highway to the hills, near Mt Bruce, via Hornsby, etc.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="NameAndType">
+        <xs:annotation>
+          <xs:documentation>Full name of the locality that also may include its type.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="NumberElementTypeEnumeration">
+    <xs:annotation>
+      <xs:documentation>A list of name types for commonly used Number type</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="RangeFrom">
+        <xs:annotation>
+          <xs:documentation>Indicates that the element contains the lower value of a range, e.g. 25 in 25-37</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Range">
+        <xs:annotation>
+          <xs:documentation>Indicates that the value is a range, e.g. 25-37</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="RangeTo">
+        <xs:annotation>
+          <xs:documentation>Indicates that the element contains the top value of a range, e.g. 25 in 25-37</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Prefix">
+        <xs:annotation>
+          <xs:documentation>Indocates that the element contains some value that is important, but not exactly the number itself. E.g. PoBox can be a prefix in PoBox 2020</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Suffix">
+        <xs:annotation>
+          <xs:documentation>Indocates that the element contains some value that is important, but not exactly the number itself. E.g. 'bis' in '45 bis'</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Number">
+        <xs:annotation>
+          <xs:documentation>Indicates that the value is number, e.g. 2020 in PoBox 2020. The actual value can be alpha-numeric. </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Separator">
+        <xs:annotation>
+          <xs:documentation>Indicates that the value is a separator that is expected to be preserved. Examples are / - #, etc.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Extension">
+        <xs:annotation>
+          <xs:documentation>Indicates that the value is an extension number of some identifier, e.g. 01 in Private Bag 2330-01, where the main number of the private bag is 2330</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="PremisesElementTypeEnumeration">
+    <xs:annotation>
+      <xs:documentation>A list of name types for premise</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="BuildingName">
+        <xs:annotation>
+          <xs:documentation>Commonly used or official name of the building.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Location">
+        <xs:annotation>
+          <xs:documentation>Where in the building the address is located, e.g. lobby, ground floor, penthouse, or where in a larger complex (e.g. airport) the address is located.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Lot">
+        <xs:annotation>
+          <xs:documentation>Lot has different meaning depending on the country. E.g. NZ uses Lot for an unoccupied piece of land, usally for sale; AU uses Lot for any piece of land, not necessary unoccupied; densely populated Asian countries use Lot in terms of a block or buildings. There other usages.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="PremisesType">
+        <xs:annotation>
+          <xs:documentation>E.g. flat, shop, block, apartment, complex, retirement village, hospital, university campus, etc.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="SubPremisesConnector">
+        <xs:annotation>
+          <xs:documentation>Free text description that is required to logically connect the 2 premises</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="InternalThoroughfare">
+        <xs:annotation>
+          <xs:documentation>Roads and streets within boundaries of larger complexes such as hospitals, airports, etc.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ReferenceLocation">
+        <xs:annotation>
+          <xs:documentation>Free text description of some other location and how this premises relates to it, e.g. 300m from water station, new the police station, etc.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="ThoroughfareElementTypeEnumeration">
+    <xs:annotation>
+      <xs:documentation>A list of name types for thoroughfare</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="NameOnly">
+        <xs:annotation>
+          <xs:documentation>Just the name part, such as Baker in Baker Street.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Direction">
+        <xs:annotation>
+          <xs:documentation>The directional part of the name, such as North in Baker Street North</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Type">
+        <xs:annotation>
+          <xs:documentation>E.g. street, road, drive, crescent, etc.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="NameAndNumber">
+        <xs:annotation>
+          <xs:documentation>This value indicates that the element contains the street name and street number. E.g. 39 Baker Street</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="SubThoroughfareConnector">
+        <xs:annotation>
+          <xs:documentation>When more than one street name is required to identify the location this type can be used to connect them with values such as CORNER OF or VIA.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ReferenceLocation">
+        <xs:annotation>
+          <xs:documentation>Free text description of some other location and how this thoroughfare relates to it, e.g. 300m from water station, new the police station, etc.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

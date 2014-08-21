@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:sch="http://uicds.org/NotificationService" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://uicds.org/NotificationService" targetNamespace="http://uicds.org/NotificationService" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <schema xmlns:wsnt="http://docs.oasis-open.org/wsn/b-2" xmlns:precisb="http://www.saic.com/precis/2009/06/base" xmlns:wsa="http://www.w3.org/2005/08/addressing" xmlns:ns="http://uicds.org/NotificationService" xmlns:preciss="http://www.saic.com/precis/2009/06/structures" elementFormDefault="qualified" targetNamespace="http://uicds.org/NotificationService" xmlns="http://www.w3.org/2001/XMLSchema">
+      <import schemaLocation="../../../ws-notification/WS-BaseNotification-1_3.xsd" namespace="http://docs.oasis-open.org/wsn/b-2" />
+      <import schemaLocation="../../../ws-notification/WS-Addressing-2005_08.xsd" namespace="http://www.w3.org/2005/08/addressing" />
+      <import schemaLocation="../../../precis/2009/06/Structures.xsd" namespace="http://www.saic.com/precis/2009/06/structures" />
+      <import schemaLocation="../../../precis/2009/06/BaseTypes.xsd" namespace="http://www.saic.com/precis/2009/06/base" />
+      <element name="GetCurrentMessageRequest">
+        <complexType>
+          <sequence>
+            <element name="Topic" type="wsnt:TopicExpressionType" />
+            <any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetCurrentMessageResponse">
+        <complexType>
+          <sequence>
+            <any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetMessagesRequest">
+        <complexType>
+          <sequence>
+            <element name="MaximumNumber" type="nonNegativeInteger" />
+            <any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+          </sequence>
+          <anyAttribute />
+        </complexType>
+      </element>
+      <element name="GetMessagesResponse">
+        <complexType>
+          <sequence>
+            <element minOccurs="0" maxOccurs="unbounded" name="NotificationMessage" type="wsnt:NotificationMessageHolderType" />
+            <any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+          </sequence>
+          <anyAttribute />
+        </complexType>
+      </element>
+      <element name="NotifyRequest">
+        <complexType>
+          <sequence>
+            <element maxOccurs="unbounded" name="NotificationMessage" type="wsnt:NotificationMessageHolderType" />
+            <any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+          </sequence>
+        </complexType>
+      </element>
+      <complexType name="WorkProductNotificationType">
+        <sequence>
+          <element minOccurs="0" ref="preciss:WorkProductProcessingStatus" />
+          <element minOccurs="0" ref="preciss:WorkProduct" />
+        </sequence>
+      </complexType>
+      <element name="WorkProductNotification" type="ns:WorkProductNotificationType" />
+      <element name="GetMatchingMessagesRequest">
+        <complexType>
+          <all>
+            <element name="ID" type="precisb:IdentifierType" />
+          </all>
+        </complexType>
+      </element>
+      <element name="GetMatchingMessagesResponse">
+        <complexType>
+          <sequence>
+            <element ref="preciss:WorkProductIdentificationList" />
+          </sequence>
+        </complexType>
+      </element>
+      <complexType name="WorkProductDeletedNotificationType">
+        <sequence>
+          <element ref="preciss:WorkProductIdentification" />
+          <element ref="preciss:WorkProductProperties" />
+        </sequence>
+      </complexType>
+      <element name="WorkProductDeletedNotification" type="ns:WorkProductDeletedNotificationType" />
+    </schema>
+  </wsdl:types>
+  <wsdl:message name="GetMatchingMessagesResponse">
+    <wsdl:part name="GetMatchingMessagesResponse" element="tns:GetMatchingMessagesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCurrentMessageResponse">
+    <wsdl:part name="GetCurrentMessageResponse" element="tns:GetCurrentMessageResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetMessagesRequest">
+    <wsdl:part name="GetMessagesRequest" element="tns:GetMessagesRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetCurrentMessageRequest">
+    <wsdl:part name="GetCurrentMessageRequest" element="tns:GetCurrentMessageRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetMessagesResponse">
+    <wsdl:part name="GetMessagesResponse" element="tns:GetMessagesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetMatchingMessagesRequest">
+    <wsdl:part name="GetMatchingMessagesRequest" element="tns:GetMatchingMessagesRequest" />
+  </wsdl:message>
+  <wsdl:message name="NotifyRequest">
+    <wsdl:part name="NotifyRequest" element="tns:NotifyRequest" />
+  </wsdl:message>
+  <wsdl:portType name="NotificationService">
+    <wsdl:operation name="GetMessages">
+      <wsdl:input name="GetMessagesRequest" message="tns:GetMessagesRequest" />
+      <wsdl:output name="GetMessagesResponse" message="tns:GetMessagesResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMatchingMessages">
+      <wsdl:input name="GetMatchingMessagesRequest" message="tns:GetMatchingMessagesRequest" />
+      <wsdl:output name="GetMatchingMessagesResponse" message="tns:GetMatchingMessagesResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrentMessage">
+      <wsdl:input name="GetCurrentMessageRequest" message="tns:GetCurrentMessageRequest" />
+      <wsdl:output name="GetCurrentMessageResponse" message="tns:GetCurrentMessageResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="Notify">
+      <wsdl:input name="NotifyRequest" message="tns:NotifyRequest" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="NotificationServiceSoap11" type="tns:NotificationService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetMessages">
+      <soap:operation soapAction="http://docs.oasis-open.org/wsn/bw-2/PullPoint/GetMessages" />
+      <wsdl:input name="GetMessagesRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetMessagesResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMatchingMessages">
+      <soap:operation soapAction="" />
+      <wsdl:input name="GetMatchingMessagesRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetMatchingMessagesResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrentMessage">
+      <soap:operation soapAction="http://docs.oasis-open.org/wsn/bw-2/NotificationProducer/GetCurrentMessage" />
+      <wsdl:input name="GetCurrentMessageRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetCurrentMessageResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Notify">
+      <soap:operation soapAction="http://docs.oasis-open.org/wsn/bw-2/NotificationConsumer/Notify" />
+      <wsdl:input name="NotifyRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="NotificationServiceService">
+    <wsdl:port name="NotificationServiceSoap11" binding="tns:NotificationServiceSoap11">
+      <soap:address location="http://localhost:80/uicds/core/ws/services/NotificationService" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

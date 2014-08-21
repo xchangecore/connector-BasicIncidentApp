@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:tns="http://uicds.org/AlertService" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:sch="http://uicds.org/AlertService" targetNamespace="http://uicds.org/AlertService" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <schema xmlns:preciss="http://www.saic.com/precis/2009/06/structures" xmlns:wp="http://uicds.org/WorkProductService" xmlns:cap="urn:oasis:names:tc:emergency:cap:1.1" xmlns:as="http://uicds.org/AlertService" elementFormDefault="qualified" targetNamespace="http://uicds.org/AlertService" xmlns="http://www.w3.org/2001/XMLSchema">
+      <import schemaLocation="../../../services/WorkProduct/0.1/WorkProductService.xsd" namespace="http://uicds.org/WorkProductService" />
+      <import schemaLocation="../../../external/niem/external/cap/1.1/cap.xsd" namespace="urn:oasis:names:tc:emergency:cap:1.1" />
+      <import schemaLocation="../../../precis/2009/06/Structures.xsd" namespace="http://www.saic.com/precis/2009/06/structures" />
+      <element name="CreateAlertRequest">
+        <complexType>
+          <all>
+            <element name="incidentId" type="string" />
+            <element ref="cap:alert" />
+          </all>
+        </complexType>
+      </element>
+      <element name="CreateAlertResponse">
+        <complexType>
+          <sequence>
+            <element ref="wp:WorkProductPublicationResponse" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetAlertRequest">
+        <complexType>
+          <all>
+            <element ref="preciss:WorkProductIdentification" />
+          </all>
+        </complexType>
+      </element>
+      <element name="GetAlertResponse">
+        <complexType>
+          <sequence>
+            <element ref="preciss:WorkProduct" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetAlertByAlertIdRequest">
+        <complexType>
+          <all>
+            <element name="AlertID" type="string" />
+          </all>
+        </complexType>
+      </element>
+      <element name="GetAlertByAlertIdResponse">
+        <complexType>
+          <sequence>
+            <element ref="preciss:WorkProduct" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CancelAlertRequest">
+        <complexType>
+          <all>
+            <element ref="preciss:WorkProductIdentification" />
+          </all>
+        </complexType>
+      </element>
+      <element name="CancelAlertResponse">
+        <complexType>
+          <sequence>
+            <element ref="wp:WorkProductPublicationResponse" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetListOfAlertsRequest">
+        <complexType>
+          <all>
+            <element name="incidentId" type="string" />
+          </all>
+        </complexType>
+      </element>
+      <element name="GetListOfAlertsResponse">
+        <complexType>
+          <sequence>
+            <element ref="wp:WorkProductSummaryList" />
+          </sequence>
+        </complexType>
+      </element>
+    </schema>
+  </wsdl:types>
+  <wsdl:message name="GetListOfAlertsResponse">
+    <wsdl:part name="GetListOfAlertsResponse" element="sch:GetListOfAlertsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAlertByAlertIdRequest">
+    <wsdl:part name="GetAlertByAlertIdRequest" element="sch:GetAlertByAlertIdRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetAlertResponse">
+    <wsdl:part name="GetAlertResponse" element="sch:GetAlertResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAlertRequest">
+    <wsdl:part name="GetAlertRequest" element="sch:GetAlertRequest" />
+  </wsdl:message>
+  <wsdl:message name="CreateAlertRequest">
+    <wsdl:part name="CreateAlertRequest" element="sch:CreateAlertRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetListOfAlertsRequest">
+    <wsdl:part name="GetListOfAlertsRequest" element="sch:GetListOfAlertsRequest" />
+  </wsdl:message>
+  <wsdl:message name="CancelAlertResponse">
+    <wsdl:part name="CancelAlertResponse" element="sch:CancelAlertResponse" />
+  </wsdl:message>
+  <wsdl:message name="CancelAlertRequest">
+    <wsdl:part name="CancelAlertRequest" element="sch:CancelAlertRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetAlertByAlertIdResponse">
+    <wsdl:part name="GetAlertByAlertIdResponse" element="sch:GetAlertByAlertIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateAlertResponse">
+    <wsdl:part name="CreateAlertResponse" element="sch:CreateAlertResponse" />
+  </wsdl:message>
+  <wsdl:portType name="AlertService">
+    <wsdl:operation name="GetAlert">
+      <wsdl:input name="GetAlertRequest" message="sch:GetAlertRequest" />
+      <wsdl:output name="GetAlertResponse" message="sch:GetAlertResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="CancelAlert">
+      <wsdl:input name="CancelAlertRequest" message="sch:CancelAlertRequest" />
+      <wsdl:output name="CancelAlertResponse" message="sch:CancelAlertResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetListOfAlerts">
+      <wsdl:input name="GetListOfAlertsRequest" message="sch:GetListOfAlertsRequest" />
+      <wsdl:output name="GetListOfAlertsResponse" message="sch:GetListOfAlertsResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateAlert">
+      <wsdl:input name="CreateAlertRequest" message="sch:CreateAlertRequest" />
+      <wsdl:output name="CreateAlertResponse" message="sch:CreateAlertResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAlertByAlertId">
+      <wsdl:input name="GetAlertByAlertIdRequest" message="sch:GetAlertByAlertIdRequest" />
+      <wsdl:output name="GetAlertByAlertIdResponse" message="sch:GetAlertByAlertIdResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="AlertServiceSoap11" type="sch:AlertService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetAlert">
+      <soap:operation soapAction="" />
+      <wsdl:input name="GetAlertRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetAlertResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CancelAlert">
+      <soap:operation soapAction="" />
+      <wsdl:input name="CancelAlertRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="CancelAlertResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetListOfAlerts">
+      <soap:operation soapAction="" />
+      <wsdl:input name="GetListOfAlertsRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetListOfAlertsResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateAlert">
+      <soap:operation soapAction="" />
+      <wsdl:input name="CreateAlertRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="CreateAlertResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAlertByAlertId">
+      <soap:operation soapAction="" />
+      <wsdl:input name="GetAlertByAlertIdRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetAlertByAlertIdResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="AlertServiceService">
+    <wsdl:port name="AlertServiceSoap11" binding="sch:AlertServiceSoap11">
+      <soap:address location="http://localhost:8080/uicds/core/ws/services/AlertService" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

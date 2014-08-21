@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:dsd="http://uicds.org/DirectoryServiceData" elementFormDefault="qualified" targetNamespace="http://uicds.org/DirectoryServiceData" xmlns="http://www.w3.org/2001/XMLSchema">
+  <complexType name="WorkProductTypeListType">
+    <sequence>
+      <element minOccurs="0" maxOccurs="unbounded" name="productType" type="string" />
+    </sequence>
+  </complexType>
+</schema>

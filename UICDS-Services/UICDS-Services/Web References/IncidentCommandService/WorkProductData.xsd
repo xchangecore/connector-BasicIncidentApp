@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:wp="http://uicds.org/WorkProductService" xmlns:preciss="http://www.saic.com/precis/2009/06/structures" targetNamespace="http://uicds.org/WorkProductService" xmlns="http://www.w3.org/2001/XMLSchema">
+  <import schemaLocation="../../../precis/2009/06/Structures.xsd" namespace="http://www.saic.com/precis/2009/06/structures" />
+  <complexType name="WorkProductPublicationResponseType">
+    <sequence>
+      <element ref="preciss:WorkProductProcessingStatus" />
+      <element minOccurs="0" ref="preciss:WorkProduct" />
+    </sequence>
+  </complexType>
+  <element name="WorkProductList">
+    <complexType>
+      <sequence minOccurs="0" maxOccurs="unbounded">
+        <element ref="preciss:WorkProduct" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="WorkProductPublicationResponse" type="wp:WorkProductPublicationResponseType" />
+</schema>

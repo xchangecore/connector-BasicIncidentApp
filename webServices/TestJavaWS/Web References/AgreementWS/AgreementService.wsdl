@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:tns="http://uicds.org/AgreementService" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:sch="http://uicds.org/AgreementService" targetNamespace="http://uicds.org/AgreementService" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xs:schema xmlns:as="http://uicds.org/AgreementService" elementFormDefault="qualified" targetNamespace="http://uicds.org/AgreementService" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="CreateAgreementRequest">
+        <xs:complexType>
+          <xs:all>
+            <xs:element name="EntityList" type="as:EntityListType" />
+            <xs:element name="Agreement" type="as:AgreementType" />
+          </xs:all>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CreateAgreementResponse">
+        <xs:complexType>
+          <xs:all>
+            <xs:element name="Agreement" type="as:AgreementType" />
+          </xs:all>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="AmendAgreementRequest">
+        <xs:complexType>
+          <xs:all>
+            <xs:element name="EntityList" type="as:EntityListType" />
+            <xs:element name="Agreement" type="as:AgreementType" />
+          </xs:all>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="AmendAgreementResponse">
+        <xs:complexType>
+          <xs:all>
+            <xs:element name="Agreement" type="as:AgreementType" />
+          </xs:all>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="RescindAgreementRequest">
+        <xs:complexType>
+          <xs:all>
+            <xs:element name="entityID" type="xs:anyURI" />
+          </xs:all>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="RescindAgreementResponse">
+        <xs:complexType>
+          <xs:all>
+            <xs:element name="entityID" type="xs:anyURI" />
+          </xs:all>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetAgreementRequest">
+        <xs:complexType>
+          <xs:all>
+            <xs:element name="entityID" type="xs:anyURI" />
+          </xs:all>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetAgreementResponse">
+        <xs:complexType>
+          <xs:all>
+            <xs:element name="Agreement" type="as:AgreementType" />
+          </xs:all>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetAgreementsListRequest">
+        <xs:complexType>
+          <xs:all>
+            <xs:element name="entityID" type="xs:anyURI" />
+            <xs:element minOccurs="0" default="false" name="matchPartials" type="xs:boolean" />
+          </xs:all>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetAgreementsListResponse">
+        <xs:complexType>
+          <xs:all>
+            <xs:element name="Agreements" type="as:EntityListType" />
+          </xs:all>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="AgreementList" type="as:EntityListType" />
+      <xs:element name="Agreement" type="as:AgreementType" />
+      <xs:complexType name="AgreementType">
+        <xs:sequence>
+          <xs:element name="agreementID" type="xs:anyURI" />
+          <xs:element name="summary" type="xs:string" />
+          <xs:element name="Parties" type="as:EntityListType" />
+          <xs:element name="Scope">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="coordinationActions" type="as:CoordinationActionListType" />
+                <xs:element minOccurs="0" name="period">
+                  <xs:complexType>
+                    <xs:sequence>
+                      <xs:element name="begin" type="xs:dateTime" />
+                      <xs:element name="end" type="xs:dateTime" />
+                    </xs:sequence>
+                  </xs:complexType>
+                </xs:element>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element minOccurs="0" name="Contract">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="contractRef" type="xs:anyURI" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="EntityListType">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" name="entityID" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="CoordinationActionType">
+        <xs:sequence>
+          <xs:element name="incidentType" type="xs:string" />
+          <xs:element name="actionType" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="CoordinationActionListType">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" name="action" type="as:CoordinationActionType" />
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="GetAgreementRequest">
+    <wsdl:part name="GetAgreementRequest" element="sch:GetAgreementRequest" />
+  </wsdl:message>
+  <wsdl:message name="AmendAgreementResponse">
+    <wsdl:part name="AmendAgreementResponse" element="sch:AmendAgreementResponse" />
+  </wsdl:message>
+  <wsdl:message name="RescindAgreementResponse">
+    <wsdl:part name="RescindAgreementResponse" element="sch:RescindAgreementResponse" />
+  </wsdl:message>
+  <wsdl:message name="RescindAgreementRequest">
+    <wsdl:part name="RescindAgreementRequest" element="sch:RescindAgreementRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetAgreementResponse">
+    <wsdl:part name="GetAgreementResponse" element="sch:GetAgreementResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAgreementsListRequest">
+    <wsdl:part name="GetAgreementsListRequest" element="sch:GetAgreementsListRequest" />
+  </wsdl:message>
+  <wsdl:message name="AmendAgreementRequest">
+    <wsdl:part name="AmendAgreementRequest" element="sch:AmendAgreementRequest" />
+  </wsdl:message>
+  <wsdl:message name="CreateAgreementResponse">
+    <wsdl:part name="CreateAgreementResponse" element="sch:CreateAgreementResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateAgreementRequest">
+    <wsdl:part name="CreateAgreementRequest" element="sch:CreateAgreementRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetAgreementsListResponse">
+    <wsdl:part name="GetAgreementsListResponse" element="sch:GetAgreementsListResponse" />
+  </wsdl:message>
+  <wsdl:portType name="AgreementService">
+    <wsdl:operation name="CreateAgreement">
+      <wsdl:input name="CreateAgreementRequest" message="sch:CreateAgreementRequest" />
+      <wsdl:output name="CreateAgreementResponse" message="sch:CreateAgreementResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="RescindAgreement">
+      <wsdl:input name="RescindAgreementRequest" message="sch:RescindAgreementRequest" />
+      <wsdl:output name="RescindAgreementResponse" message="sch:RescindAgreementResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAgreementsList">
+      <wsdl:input name="GetAgreementsListRequest" message="sch:GetAgreementsListRequest" />
+      <wsdl:output name="GetAgreementsListResponse" message="sch:GetAgreementsListResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="AmendAgreement">
+      <wsdl:input name="AmendAgreementRequest" message="sch:AmendAgreementRequest" />
+      <wsdl:output name="AmendAgreementResponse" message="sch:AmendAgreementResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAgreement">
+      <wsdl:input name="GetAgreementRequest" message="sch:GetAgreementRequest" />
+      <wsdl:output name="GetAgreementResponse" message="sch:GetAgreementResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="AgreementServiceSoap11" type="sch:AgreementService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CreateAgreement">
+      <soap:operation soapAction="" />
+      <wsdl:input name="CreateAgreementRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="CreateAgreementResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RescindAgreement">
+      <soap:operation soapAction="" />
+      <wsdl:input name="RescindAgreementRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="RescindAgreementResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAgreementsList">
+      <soap:operation soapAction="" />
+      <wsdl:input name="GetAgreementsListRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetAgreementsListResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AmendAgreement">
+      <soap:operation soapAction="" />
+      <wsdl:input name="AmendAgreementRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="AmendAgreementResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAgreement">
+      <soap:operation soapAction="" />
+      <wsdl:input name="GetAgreementRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetAgreementResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="AgreementServiceService">
+    <wsdl:port name="AgreementServiceSoap11" binding="sch:AgreementServiceSoap11">
+      <soap:address location="http://localhost:80/uicds/core/ws/services/AgreementService" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

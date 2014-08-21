@@ -1,0 +1,30 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="TestJavaWS.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="TestJavaWS_AgreementWS_AgreementServiceService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:80/uicds/core/ws/services/AgreementService</Value>
+    </Setting>
+    <Setting Name="TestJavaWS_ProfileWS_ProfileServiceService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:80/uicds/core/ws/services/ProfileService</Value>
+    </Setting>
+    <Setting Name="TestJavaWS_AlertWS_AlertServiceService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:80/uicds/core/ws/services/AlertService</Value>
+    </Setting>
+    <Setting Name="TestJavaWS_IncidentManagementWS_IncidentManagementServiceService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:80/uicds/core/ws/services/IncidentManagementService</Value>
+    </Setting>
+    <Setting Name="TestJavaWS_SensorWS_SensorServiceService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:80/uicds/core/ws/services/SensorSerivce</Value>
+    </Setting>
+    <Setting Name="TestJavaWS_IncidentCommandWS_IncidentCommandServiceService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:80/uicds/core/ws/services/IncidentCommandService</Value>
+    </Setting>
+    <Setting Name="TestJavaWS_NotificationWS_NotificationServiceService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:80/uicds/core/ws/services/NotificationService</Value>
+    </Setting>
+    <Setting Name="TestJavaWS_DirectoryWS_DirectoryServiceService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:80/uicds/core/ws/services/DirectoryService</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

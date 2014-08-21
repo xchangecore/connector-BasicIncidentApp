@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DiscoveryClientResultsFile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Results>
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://localhost:8080/uicds/external/edxl-rm/1.0/xAL.xsd" filename="xAL.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://localhost:8080/uicds/external/edxl-rm/1.0/EDXL-RMRequisitionResource.xsd" filename="EDXL-RMRequisitionResource.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://localhost:8080/uicds/external/edxl-rm/1.0/EDXL-RMRequestQuote.xsd" filename="EDXL-RMRequestQuote.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://localhost:8080/uicds/external/edxl-rm/1.0/EDXL-RMRequestExtendedDeploymentDuration.xsd" filename="EDXL-RMRequestExtendedDeploymentDuration.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://localhost:8080/uicds/external/edxl-rm/1.0/EDXL-RMRequestResource.xsd" filename="EDXL-RMRequestResource.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://localhost:8080/uicds/external/niem/appinfo/2.0/appinfo.xsd" filename="appinfo.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://localhost:8080/uicds/external/edxl-rm/1.0/gml-oasis.xsd" filename="gml-oasis.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://localhost:8080/uicds/external/niem/external/de/1.0/de.xsd" filename="de.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://localhost:8080/uicds/external/edxl-rm/1.0/geo-oasis.xsd" filename="geo-oasis.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://localhost:8080/uicds/external/edxl-rm/1.0/EDXL-RMOfferUnsolicitedResource.xsd" filename="EDXL-RMOfferUnsolicitedResource.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://localhost:8080/uicds/external/edxl-rm/1.0/EDXL-RMRequestReturn.xsd" filename="EDXL-RMRequestReturn.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://localhost:8080/uicds/external/edxl-rm/1.0/xNL.xsd" filename="xNL.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://localhost:8080/uicds/ws-notification/WS-Addressing-2005_08.xsd" filename="WS-Addressing-2005_08.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://localhost:8080/uicds/external/edxl-rm/1.0/EDXL-RMCommitResource.xsd" filename="EDXL-RMCommitResource.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.ContractReference" url="http://localhost:8080/uicds/core/ws/services/ResourceService.wsdl" filename="ResourceService.wsdl" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://localhost:8080/uicds/external/edxl-rm/1.0/EDXL-RMCommonTypes.xsd" filename="EDXL-RMCommonTypes.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://localhost:8080/uicds/external/edxl-rm/1.0/EDXL-RMResponseToRequestQuote.xsd" filename="EDXL-RMResponseToRequestQuote.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://localhost:8080/uicds/external/edxl-rm/1.0/EDXL-RMReference.xsd" filename="EDXL-RMReference.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://localhost:8080/uicds/external/niem/structures/2.0/structures.xsd" filename="structures.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://localhost:8080/uicds/external/edxl-rm/1.0/EDXL-RMReleaseResource.xsd" filename="EDXL-RMReleaseResource.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://localhost:8080/uicds/external/edxl-rm/1.0/xPIL.xsd" filename="xPIL.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://localhost:8080/uicds/external/edxl-rm/1.0/EDXL-RMRequestInformation.xsd" filename="EDXL-RMRequestInformation.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://localhost:8080/uicds/external/xlink/1.0.0/xlinks.xsd" filename="xlinks.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://localhost:8080/uicds/external/edxl-rm/1.0/EDXL-RMReportResourceDeploymentStatus.xsd" filename="EDXL-RMReportResourceDeploymentStatus.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://localhost:8080/uicds/external/edxl-rm/1.0/EDXL-RMRequestResourceDeploymentStatus.xsd" filename="EDXL-RMRequestResourceDeploymentStatus.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://localhost:8080/uicds/external/edxl-rm/1.0/EDXL-RMResponseToRequestExtendedDeploymentDuration.xsd" filename="EDXL-RMResponseToRequestExtendedDeploymentDuration.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://localhost:8080/uicds/external/edxl-rm/1.0/EDXL-RMResponseToRequestReturn.xsd" filename="EDXL-RMResponseToRequestReturn.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://localhost:8080/uicds/external/edxl-rm/1.0/EDXL-RMResponseToRequestInformation.xsd" filename="EDXL-RMResponseToRequestInformation.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://localhost:8080/uicds/external/edxl-rm/1.0/EDXL-RMResponseToRequestResource.xsd" filename="EDXL-RMResponseToRequestResource.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://localhost:8080/uicds/external/edxl-rm/1.0/xLink.xsd" filename="xLink.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://localhost:8080/uicds/external/edxl-rm/1.0/xAL-types.xsd" filename="xAL-types.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://localhost:8080/uicds/external/edxl-rm/1.0/xPIL-types.xsd" filename="xPIL-types.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://localhost:8080/uicds/external/edxl-rm/1.0/xNL-types.xsd" filename="xNL-types.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://localhost:8080/uicds/services/ResourceManagement/0.1/ResourceData.xsd" filename="ResourceData.xsd" />
+  </Results>
+</DiscoveryClientResultsFile>

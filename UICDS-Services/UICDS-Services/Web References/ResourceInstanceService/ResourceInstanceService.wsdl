@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:sch="http://uicds.org/ResourceInstanceService" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://uicds.org/ResourceInstanceService" targetNamespace="http://uicds.org/ResourceInstanceService" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xs:schema xmlns:precisb="http://www.saic.com/precis/2009/06/base" xmlns:wsa="http://www.w3.org/2005/08/addressing" xmlns:wstop="http://docs.oasis-open.org/wsn/t-1" xmlns:wsnt="http://docs.oasis-open.org/wsn/b-2" xmlns:ris="http://uicds.org/ResourceInstanceService" elementFormDefault="qualified" targetNamespace="http://uicds.org/ResourceInstanceService" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import schemaLocation="../../../ws-notification/WS-Topics-1_3.xsd" namespace="http://docs.oasis-open.org/wsn/t-1" />
+      <xs:import schemaLocation="../../../ws-notification/WS-Addressing-2005_08.xsd" namespace="http://www.w3.org/2005/08/addressing" />
+      <xs:import schemaLocation="../../../ws-notification/WS-BaseNotification-1_3.xsd" namespace="http://docs.oasis-open.org/wsn/b-2" />
+      <xs:import schemaLocation="../../../precis/2009/06/BaseTypes.xsd" namespace="http://www.saic.com/precis/2009/06/base" />
+      <xs:element name="RegisterRequest">
+        <xs:annotation>
+          <xs:documentation>Register an application with the UICDS core. 
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="ID" type="precisb:IdentifierType">
+              <xs:annotation>
+                <xs:documentation>UICDS identifier - should be the same name as that used for authentication.
+						</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="LocalResourceID" type="precisb:IdentifierType">
+              <xs:annotation>
+                <xs:documentation>Local system identifier - identifier used by the local system for this resource.
+						</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="ResourceProfileID" type="precisb:IdentifierType">
+              <xs:annotation>
+                <xs:documentation>Resource Profile identifier - UICDS resource profile this application will represent.
+						</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="RegisterResponse">
+        <xs:annotation>
+          <xs:documentation>Response RegisterResource which contains the resource instance information.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:all>
+            <xs:element name="ResourceInstance" type="ris:ResourceInstance" />
+          </xs:all>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="UnregisterRequest">
+        <xs:annotation>
+          <xs:documentation>Unregister an application with the UICDS core.  This will destroy the applications endpoint and all the notifications on the endpoint and allow an application with the same ID to register again. Returns the ID of the unregistered application.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="ID" type="precisb:IdentifierType">
+              <xs:annotation>
+                <xs:documentation>UICDS identifier - should be the same name as that used for authentication.
+						</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="UnregisterResponse">
+        <xs:annotation>
+          <xs:documentation>Check-In a resource instance with the UICDS core.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="ID" type="precisb:IdentifierType">
+              <xs:annotation>
+                <xs:documentation>UICDS identifier - should be the same name as that used for authentication.
+						</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CheckinRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="ID" type="precisb:IdentifierType">
+              <xs:annotation>
+                <xs:documentation>UICDS identifier - should be the same name as that used for authentication.
+						</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="LocalResourceID" type="precisb:IdentifierType">
+              <xs:annotation>
+                <xs:documentation>Local system identifier - identifier used by the local system for this resource.
+						</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element minOccurs="0" name="ResourceProfileID" type="precisb:IdentifierType">
+              <xs:annotation>
+                <xs:documentation>Resource Profile identifier - UICDS resource profile this application will represent.
+						</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CheckinResponse">
+        <xs:complexType>
+          <xs:all>
+            <xs:element name="ResourceInstance" type="ris:ResourceInstance" />
+          </xs:all>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CheckoutRequest">
+        <xs:complexType>
+          <xs:all>
+            <xs:element name="ResourceInstance" type="ris:ResourceInstance" />
+          </xs:all>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CheckoutResponse">
+        <xs:complexType>
+          <xs:all>
+            <xs:element name="ResourceInstance" type="ris:ResourceInstance" />
+          </xs:all>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetResourceInstanceListRequest">
+        <xs:complexType>
+          <xs:all>
+            <xs:element name="QueryString" type="xs:string" />
+          </xs:all>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetResourceInstanceListResponse">
+        <xs:complexType>
+          <xs:all>
+            <xs:element name="ResourceInstanceList" type="ris:ResourceInstanceListType" />
+          </xs:all>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetResourceInstanceRequest">
+        <xs:complexType>
+          <xs:all>
+            <xs:element name="ID" type="precisb:IdentifierType" />
+          </xs:all>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetResourceInstanceResponse">
+        <xs:complexType>
+          <xs:all>
+            <xs:element name="ResourceInstance" type="ris:ResourceInstance" />
+          </xs:all>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="UpdateEndpointRequest">
+        <xs:annotation>
+          <xs:documentation>Change the endpoint for delivering notifications.  The endpoint must implement the WS-Notification 1.3 Notify interface. 
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:all>
+            <xs:element name="ID" type="precisb:IdentifierType" />
+            <xs:element name="Endpoint" type="xs:anyURI" />
+            <xs:element name="IsWebService" type="xs:boolean" />
+          </xs:all>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="UpdateEndpointResponse">
+        <xs:complexType>
+          <xs:all>
+            <xs:element name="ResourceInstance" type="ris:ResourceInstance" />
+          </xs:all>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="ResourceInstanceListType">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="ResourceInstance" type="ris:ResourceInstance" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ResourceInstanceList" type="ris:ResourceInstanceListType" />
+      <xs:complexType name="ResourceInstance">
+        <xs:sequence>
+          <xs:element name="ID" type="precisb:IdentifierType" />
+          <xs:element name="Description" type="xs:string" />
+          <xs:element name="SourceIdentification">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="LocalResourceID" type="precisb:IdentifierType" />
+                <xs:element name="CoreID" type="xs:string" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="Keyword" type="precisb:CodespaceValueType" />
+          <xs:element minOccurs="0" name="Endpoints">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element maxOccurs="unbounded" name="Endpoint" type="wsa:EndpointReferenceType" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element minOccurs="0" name="ProfileIDs">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element maxOccurs="unbounded" name="ProfileID" type="precisb:IdentifierType" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="UpdateEndpointRequest">
+    <wsdl:part name="UpdateEndpointRequest" element="tns:UpdateEndpointRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetResourceInstanceListRequest">
+    <wsdl:part name="GetResourceInstanceListRequest" element="tns:GetResourceInstanceListRequest" />
+  </wsdl:message>
+  <wsdl:message name="RegisterRequest">
+    <wsdl:part name="RegisterRequest" element="tns:RegisterRequest" />
+  </wsdl:message>
+  <wsdl:message name="UnregisterResponse">
+    <wsdl:part name="UnregisterResponse" element="tns:UnregisterResponse" />
+  </wsdl:message>
+  <wsdl:message name="UnregisterRequest">
+    <wsdl:part name="UnregisterRequest" element="tns:UnregisterRequest" />
+  </wsdl:message>
+  <wsdl:message name="CheckinResponse">
+    <wsdl:part name="CheckinResponse" element="tns:CheckinResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetResourceInstanceListResponse">
+    <wsdl:part name="GetResourceInstanceListResponse" element="tns:GetResourceInstanceListResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetResourceInstanceResponse">
+    <wsdl:part name="GetResourceInstanceResponse" element="tns:GetResourceInstanceResponse" />
+  </wsdl:message>
+  <wsdl:message name="CheckoutResponse">
+    <wsdl:part name="CheckoutResponse" element="tns:CheckoutResponse" />
+  </wsdl:message>
+  <wsdl:message name="CheckoutRequest">
+    <wsdl:part name="CheckoutRequest" element="tns:CheckoutRequest" />
+  </wsdl:message>
+  <wsdl:message name="UpdateEndpointResponse">
+    <wsdl:part name="UpdateEndpointResponse" element="tns:UpdateEndpointResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetResourceInstanceRequest">
+    <wsdl:part name="GetResourceInstanceRequest" element="tns:GetResourceInstanceRequest" />
+  </wsdl:message>
+  <wsdl:message name="CheckinRequest">
+    <wsdl:part name="CheckinRequest" element="tns:CheckinRequest" />
+  </wsdl:message>
+  <wsdl:message name="RegisterResponse">
+    <wsdl:part name="RegisterResponse" element="tns:RegisterResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ResourceInstanceService">
+    <wsdl:operation name="Checkout">
+      <wsdl:input name="CheckoutRequest" message="tns:CheckoutRequest" />
+      <wsdl:output name="CheckoutResponse" message="tns:CheckoutResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetResourceInstanceList">
+      <wsdl:input name="GetResourceInstanceListRequest" message="tns:GetResourceInstanceListRequest" />
+      <wsdl:output name="GetResourceInstanceListResponse" message="tns:GetResourceInstanceListResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetResourceInstance">
+      <wsdl:input name="GetResourceInstanceRequest" message="tns:GetResourceInstanceRequest" />
+      <wsdl:output name="GetResourceInstanceResponse" message="tns:GetResourceInstanceResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="Register">
+      <wsdl:input name="RegisterRequest" message="tns:RegisterRequest" />
+      <wsdl:output name="RegisterResponse" message="tns:RegisterResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateEndpoint">
+      <wsdl:input name="UpdateEndpointRequest" message="tns:UpdateEndpointRequest" />
+      <wsdl:output name="UpdateEndpointResponse" message="tns:UpdateEndpointResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="Checkin">
+      <wsdl:input name="CheckinRequest" message="tns:CheckinRequest" />
+      <wsdl:output name="CheckinResponse" message="tns:CheckinResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="Unregister">
+      <wsdl:input name="UnregisterRequest" message="tns:UnregisterRequest" />
+      <wsdl:output name="UnregisterResponse" message="tns:UnregisterResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ResourceInstanceServiceSoap11" type="tns:ResourceInstanceService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Checkout">
+      <soap:operation soapAction="" />
+      <wsdl:input name="CheckoutRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="CheckoutResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetResourceInstanceList">
+      <soap:operation soapAction="" />
+      <wsdl:input name="GetResourceInstanceListRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetResourceInstanceListResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetResourceInstance">
+      <soap:operation soapAction="" />
+      <wsdl:input name="GetResourceInstanceRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetResourceInstanceResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Register">
+      <soap:operation soapAction="" />
+      <wsdl:input name="RegisterRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="RegisterResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateEndpoint">
+      <soap:operation soapAction="" />
+      <wsdl:input name="UpdateEndpointRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="UpdateEndpointResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Checkin">
+      <soap:operation soapAction="" />
+      <wsdl:input name="CheckinRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="CheckinResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Unregister">
+      <soap:operation soapAction="" />
+      <wsdl:input name="UnregisterRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="UnregisterResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ResourceInstanceServiceService">
+    <wsdl:port name="ResourceInstanceServiceSoap11" binding="tns:ResourceInstanceServiceSoap11">
+      <soap:address location="http://localhost:80/uicds/core/ws/services/ResourceInstanceService" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

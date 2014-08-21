@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:ulex="ulex:message:structure:1.0" xmlns:ucore="http://ucore.gov/ucore/2.0" xmlns:preciss="http://www.saic.com/precis/2009/06/structures" xmlns:precisb="http://www.saic.com/precis/2009/06/base" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.saic.com/precis/2009/06/structures" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="BaseTypes.xsd" namespace="http://www.saic.com/precis/2009/06/base" />
+  <xs:import schemaLocation="../../../ucore/2.0/import/ULEX1.0PD/xsd/ulex/ulex/1.0/ulex.xsd" namespace="ulex:message:structure:1.0" />
+  <xs:import schemaLocation="../../../ucore/2.0/ucore/2.0/ucore.xsd" namespace="http://ucore.gov/ucore/2.0" />
+  <xs:element name="WorkProductIdentification" substitutionGroup="ulex:PackageMetadataExtensionAbstract" type="precisb:IdentificationType" />
+  <xs:element name="WorkProductIdentificationList" type="precisb:IdentificationListType" />
+  <xs:element name="WorkProductProperties" substitutionGroup="ulex:PackageMetadataExtensionAbstract" type="precisb:PropertiesType" />
+  <xs:element name="WorkProductProcessingStatus" type="precisb:ProcessingStatusType" />
+  <xs:element name="WorkProduct">
+    <xs:complexType>
+      <xs:complexContent mixed="false">
+        <xs:extension base="ulex:DataItemPackageType" />
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

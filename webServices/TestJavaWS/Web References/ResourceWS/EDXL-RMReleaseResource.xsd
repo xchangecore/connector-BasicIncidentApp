@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:rm="urn:oasis:names:tc:emergency:EDXL:RM:1.0" xmlns="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:oasis:names:tc:emergency:EDXL:RM:1.0:ReleaseResource" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:import schemaLocation="EDXL-RMCommonTypes.xsd" namespace="urn:oasis:names:tc:emergency:EDXL:RM:1.0" />
+  <xsd:element name="EDXLResourceMessage">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="MessageID" type="rm:MessageIDType" />
+        <xsd:element name="SentDateTime" type="rm:DateTimeType" />
+        <xsd:element name="MessageContentType">
+          <xsd:simpleType>
+            <xsd:restriction base="rm:MessageContentTypeType">
+              <xsd:enumeration value="Release Resource" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element minOccurs="0" maxOccurs="1" name="MessageDescription" type="rm:MessageDescriptionType" />
+        <xsd:element name="OriginatingMessageID" type="rm:MessageIDType" />
+        <xsd:element minOccurs="0" maxOccurs="1" name="PrecedingMessageID" type="rm:MessageIDType" />
+        <xsd:element minOccurs="0" maxOccurs="unbounded" name="IncidentInformation" type="rm:IncidentInformationType" />
+        <xsd:element minOccurs="0" maxOccurs="1" name="MessageRecall" type="rm:MessageRecallType" />
+        <xsd:element minOccurs="0" maxOccurs="unbounded" name="Funding" type="rm:FundingType" />
+        <xsd:element minOccurs="1" maxOccurs="unbounded" name="ContactInformation" type="rm:ContactInformationType" />
+        <xsd:element minOccurs="1" maxOccurs="unbounded" name="ResourceInformation">
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="SequenceNumber" type="rm:SequenceNumberType" />
+              <xsd:element minOccurs="0" maxOccurs="1" name="ResponseInformation" type="rm:ResponseInformationType" />
+              <xsd:element name="Resource">
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element minOccurs="0" maxOccurs="1" name="ResourceID" type="rm:ResourceIDType" />
+                    <xsd:element minOccurs="0" maxOccurs="1" name="Name" type="rm:ResourceNameType" />
+                    <xsd:element minOccurs="0" maxOccurs="1" name="TypeStructure" type="rm:ValueListType" />
+                    <xsd:element minOccurs="0" maxOccurs="1" name="TypeInfo" type="rm:TypeInfoType" />
+                    <xsd:element minOccurs="0" maxOccurs="unbounded" name="Keyword" type="rm:ValueListType" />
+                    <xsd:element minOccurs="0" maxOccurs="1" name="Description" type="rm:DescriptionType" />
+                    <xsd:element minOccurs="0" maxOccurs="1" name="Credentials" type="rm:CredentialsType" />
+                    <xsd:element minOccurs="0" maxOccurs="1" name="Certifications" type="rm:CertificationsType" />
+                    <xsd:element minOccurs="0" maxOccurs="1" name="SpecialRequirements" type="rm:SpecialRequirementsType" />
+                    <xsd:element minOccurs="0" maxOccurs="1" name="ResponsibleParty" type="rm:ContactInformationType" />
+                    <xsd:element minOccurs="0" maxOccurs="1" name="OwnershipInformation" type="rm:OwnershipInformationType" />
+                    <xsd:element minOccurs="0" maxOccurs="1" name="ResourceStatus">
+                      <xsd:complexType>
+                        <xsd:sequence>
+                          <xsd:element minOccurs="0" maxOccurs="1" name="DeploymentStatus" type="rm:ValueListType" />
+                          <xsd:element minOccurs="0" maxOccurs="1" name="Availability" type="rm:AvailabilityType" />
+                        </xsd:sequence>
+                      </xsd:complexType>
+                    </xsd:element>
+                  </xsd:sequence>
+                </xsd:complexType>
+              </xsd:element>
+              <xsd:element minOccurs="0" maxOccurs="1" name="AssignmentInformation">
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="Quantity" type="rm:QuantityType" />
+                    <xsd:element minOccurs="0" maxOccurs="1" name="Restrictions" type="rm:RestrictionsType" />
+                    <xsd:element minOccurs="0" maxOccurs="1" name="AnticipatedFunction" type="rm:AnticipatedFunctionType" />
+                    <xsd:element minOccurs="0" maxOccurs="1" name="PriceQuote" type="rm:PriceQuoteType" />
+                    <xsd:element minOccurs="0" maxOccurs="1" name="OrderID" type="rm:OrderIDType" />
+                    <xsd:element minOccurs="0" maxOccurs="1" name="AssignmentInstructions" type="rm:AssignmentInstructionsType" />
+                  </xsd:sequence>
+                </xsd:complexType>
+              </xsd:element>
+              <xsd:element minOccurs="0" maxOccurs="unbounded" name="ScheduleInformation">
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="ScheduleType">
+                      <xsd:simpleType>
+                        <xsd:restriction base="rm:ScheduleTypeType">
+                          <xsd:enumeration value="ActualReturnDeparture" />
+                          <xsd:enumeration value="Current" />
+                          <xsd:enumeration value="RequestedArrival" />
+                          <xsd:enumeration value="EstimatedArrival" />
+                          <xsd:enumeration value="ActualArrival" />
+                          <xsd:enumeration value="RequestedDeparture" />
+                          <xsd:enumeration value="EstimatedDeparture" />
+                          <xsd:enumeration value="ActualDeparture" />
+                          <xsd:enumeration value="RequestedReturnDeparture" />
+                          <xsd:enumeration value="RequestedReturnArrival" />
+                          <xsd:enumeration value="BeginAvailable" />
+                          <xsd:enumeration value="EndAvailable" />
+                          <xsd:enumeration value="Committed" />
+                          <xsd:enumeration value="ReportTo" />
+                          <xsd:enumeration value="EstimatedReturnDeparture" />
+                          <xsd:enumeration value="EstimatedReturnArrival" />
+                          <xsd:enumeration value="Route" />
+                        </xsd:restriction>
+                      </xsd:simpleType>
+                    </xsd:element>
+                    <xsd:element minOccurs="0" maxOccurs="1" name="DateTime" type="rm:DateTimeType" />
+                    <xsd:element minOccurs="0" maxOccurs="1" name="Location" type="rm:LocationType" />
+                  </xsd:sequence>
+                </xsd:complexType>
+              </xsd:element>
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>

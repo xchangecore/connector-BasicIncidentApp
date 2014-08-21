@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:sl="http://uicds.dctd.saic.com/schemas/StringList" elementFormDefault="qualified" targetNamespace="http://uicds.dctd.saic.com/schemas/StringList" xmlns="http://www.w3.org/2001/XMLSchema">
+  <annotation>
+    <documentation> String list used for any purpose. Zero to many cardinality.</documentation>
+  </annotation>
+  <element name="StringList" type="sl:StringListType" />
+  <complexType name="StringListType">
+    <sequence>
+      <element minOccurs="0" maxOccurs="unbounded" name="StringValue" type="string" />
+    </sequence>
+  </complexType>
+</schema>

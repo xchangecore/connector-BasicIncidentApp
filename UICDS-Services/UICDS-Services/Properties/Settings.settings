@@ -1,0 +1,54 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="UICDS_Services.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="UICDS_Services_IncidentManagementService_IncidentManagementServiceService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:80/uicds/core/ws/services/IncidentManagementService</Value>
+    </Setting>
+    <Setting Name="UICDS_Services_ResourceProfileService_ResourceProfileServiceService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:80/uicds/core/ws/services/ResourceProfileService</Value>
+    </Setting>
+    <Setting Name="UICDS_Services_ResourceInstanceService_ResourceInstanceServiceService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:80/uicds/core/ws/services/ResourceInstanceService</Value>
+    </Setting>
+    <Setting Name="UICDS_Services_DirectoryService_DirectoryServiceService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:80/uicds/core/ws/services/DirectoryService</Value>
+    </Setting>
+    <Setting Name="UICDS_Services_MapService_MapServiceService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:80/uicds/core/ws/services/MapService</Value>
+    </Setting>
+    <Setting Name="UICDS_Services_AgreementService_AgreementServiceService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:80/uicds/core/ws/services/AgreementService</Value>
+    </Setting>
+    <Setting Name="UICDS_Services_AlertService_AlertServiceService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:80/uicds/core/ws/services/AlertService</Value>
+    </Setting>
+    <Setting Name="UICDS_Services_BroadcastService_BroadcastServiceService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:80/uicds/core/ws/services/BroadcastService</Value>
+    </Setting>
+    <Setting Name="UICDS_Services_IAPService_IAPServiceService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:80/uicds/core/ws/services/IAPService</Value>
+    </Setting>
+    <Setting Name="UICDS_Services_IncidentCommandService_IncidentCommandServiceService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:80/uicds/core/ws/services/IncidentCommandService</Value>
+    </Setting>
+    <Setting Name="UICDS_Services_LEITSCService_LEITSCServiceService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:80/uicds/core/ws/services/LEITSCService</Value>
+    </Setting>
+    <Setting Name="UICDS_Services_LoggingService_LoggingServiceService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:80/uicds/core/ws/services/LoggingService</Value>
+    </Setting>
+    <Setting Name="UICDS_Services_NotificationService_NotificationServiceService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:80/uicds/core/ws/services/NotificationService</Value>
+    </Setting>
+    <Setting Name="UICDS_Services_SensorService_SensorServiceService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:80/uicds/core/ws/services/SensorSerivce</Value>
+    </Setting>
+    <Setting Name="UICDS_Services_TaskingService_TaskingServiceService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:80/uicds/core/ws/Services/TaskingService</Value>
+    </Setting>
+    <Setting Name="UICDS_Services_WorkProductService_WorkProductServiceService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:80/uicds/core/ws/services/WorkProductService</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

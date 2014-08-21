@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:sch="http://uicds.org/ResourceProfileService" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://uicds.org/ResourceProfileService" targetNamespace="http://uicds.org/ResourceProfileService" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xs:schema xmlns:rps="http://uicds.org/ResourceProfileService" xmlns:precisb="http://www.saic.com/precis/2009/06/base" xmlns:wsa="http://www.w3.org/2005/08/addressing" xmlns:wstop="http://docs.oasis-open.org/wsn/t-1" xmlns:wsnt="http://docs.oasis-open.org/wsn/b-2" xmlns:ris="http://uicds.org/ResourceInstanceService" elementFormDefault="qualified" targetNamespace="http://uicds.org/ResourceProfileService" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import schemaLocation="../../../ws-notification/WS-Topics-1_3.xsd" namespace="http://docs.oasis-open.org/wsn/t-1" />
+      <xs:import schemaLocation="../../../ws-notification/WS-Addressing-2005_08.xsd" namespace="http://www.w3.org/2005/08/addressing" />
+      <xs:import schemaLocation="../../../ws-notification/WS-BaseNotification-1_3.xsd" namespace="http://docs.oasis-open.org/wsn/b-2" />
+      <xs:import schemaLocation="../../../precis/2009/06/BaseTypes.xsd" namespace="http://www.saic.com/precis/2009/06/base" />
+      <xs:element name="GetProfileListRequest">
+        <xs:complexType>
+          <xs:all>
+            <xs:element name="QueryString" type="xs:string" />
+          </xs:all>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetProfileListResponse">
+        <xs:complexType>
+          <xs:all>
+            <xs:element name="ProfileList" type="rps:ResourceProfileListType" />
+          </xs:all>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CreateProfileRequest">
+        <xs:complexType>
+          <xs:all>
+            <xs:element name="Profile" type="rps:ResourceProfile" />
+          </xs:all>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CreateProfileResponse">
+        <xs:complexType>
+          <xs:all>
+            <xs:element name="Profile" type="rps:ResourceProfile" />
+          </xs:all>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="DeleteProfileRequest">
+        <xs:complexType>
+          <xs:all>
+            <xs:element name="ID" type="precisb:IdentifierType" />
+          </xs:all>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="DeleteProfileResponse">
+        <xs:complexType>
+          <xs:all>
+            <xs:element name="ID" type="precisb:IdentifierType" />
+          </xs:all>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetProfileRequest">
+        <xs:complexType>
+          <xs:all>
+            <xs:element name="ID" type="precisb:IdentifierType" />
+          </xs:all>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetProfileResponse">
+        <xs:complexType>
+          <xs:all>
+            <xs:element name="Profile" type="rps:ResourceProfile" />
+          </xs:all>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="AddInterestRequest">
+        <xs:complexType>
+          <xs:all>
+            <xs:element name="ID" type="precisb:IdentifierType" />
+            <xs:element name="Interest" type="rps:Interest" />
+          </xs:all>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="AddInterestResponse">
+        <xs:complexType>
+          <xs:all>
+            <xs:element name="Profile" type="rps:ResourceProfile" />
+          </xs:all>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="RemoveInterestRequest">
+        <xs:complexType>
+          <xs:all>
+            <xs:element name="ID" type="precisb:IdentifierType" />
+            <xs:element name="Interest" type="rps:Interest" />
+          </xs:all>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="RemoveInterestResponse">
+        <xs:complexType>
+          <xs:all>
+            <xs:element name="Profile" type="rps:ResourceProfile" />
+          </xs:all>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="ResourceProfileListType">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="ResourceProfile" type="rps:ResourceProfile" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ResourceProfileList" type="rps:ResourceProfileListType" />
+      <xs:complexType name="ResourceProfile">
+        <xs:sequence>
+          <xs:element name="ID" type="precisb:IdentifierType" />
+          <xs:element name="Description" type="xs:string" />
+          <xs:element minOccurs="0" name="ResourceTyping">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element maxOccurs="unbounded" name="Type" type="precisb:CodespaceValueType" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element minOccurs="0" name="Interests">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element minOccurs="0" maxOccurs="unbounded" name="Interest" type="rps:Interest" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Interest">
+        <xs:sequence>
+          <xs:element name="TopicExpression" type="wstop:ConcreteTopicExpression" />
+          <xs:element minOccurs="0" name="MessageContent" type="wsnt:QueryExpressionType" />
+          <xs:element minOccurs="0" name="NamespaceMap" type="precisb:NamespaceMapType" />
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="AddInterestResponse">
+    <wsdl:part name="AddInterestResponse" element="tns:AddInterestResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetProfileRequest">
+    <wsdl:part name="GetProfileRequest" element="tns:GetProfileRequest" />
+  </wsdl:message>
+  <wsdl:message name="CreateProfileRequest">
+    <wsdl:part name="CreateProfileRequest" element="tns:CreateProfileRequest" />
+  </wsdl:message>
+  <wsdl:message name="DeleteProfileResponse">
+    <wsdl:part name="DeleteProfileResponse" element="tns:DeleteProfileResponse" />
+  </wsdl:message>
+  <wsdl:message name="RemoveInterestResponse">
+    <wsdl:part name="RemoveInterestResponse" element="tns:RemoveInterestResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateProfileResponse">
+    <wsdl:part name="CreateProfileResponse" element="tns:CreateProfileResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteProfileRequest">
+    <wsdl:part name="DeleteProfileRequest" element="tns:DeleteProfileRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetProfileResponse">
+    <wsdl:part name="GetProfileResponse" element="tns:GetProfileResponse" />
+  </wsdl:message>
+  <wsdl:message name="RemoveInterestRequest">
+    <wsdl:part name="RemoveInterestRequest" element="tns:RemoveInterestRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetProfileListRequest">
+    <wsdl:part name="GetProfileListRequest" element="tns:GetProfileListRequest" />
+  </wsdl:message>
+  <wsdl:message name="AddInterestRequest">
+    <wsdl:part name="AddInterestRequest" element="tns:AddInterestRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetProfileListResponse">
+    <wsdl:part name="GetProfileListResponse" element="tns:GetProfileListResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ResourceProfileService">
+    <wsdl:operation name="AddInterest">
+      <wsdl:input name="AddInterestRequest" message="tns:AddInterestRequest" />
+      <wsdl:output name="AddInterestResponse" message="tns:AddInterestResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateProfile">
+      <wsdl:input name="CreateProfileRequest" message="tns:CreateProfileRequest" />
+      <wsdl:output name="CreateProfileResponse" message="tns:CreateProfileResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteProfile">
+      <wsdl:input name="DeleteProfileRequest" message="tns:DeleteProfileRequest" />
+      <wsdl:output name="DeleteProfileResponse" message="tns:DeleteProfileResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProfileList">
+      <wsdl:input name="GetProfileListRequest" message="tns:GetProfileListRequest" />
+      <wsdl:output name="GetProfileListResponse" message="tns:GetProfileListResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveInterest">
+      <wsdl:input name="RemoveInterestRequest" message="tns:RemoveInterestRequest" />
+      <wsdl:output name="RemoveInterestResponse" message="tns:RemoveInterestResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProfile">
+      <wsdl:input name="GetProfileRequest" message="tns:GetProfileRequest" />
+      <wsdl:output name="GetProfileResponse" message="tns:GetProfileResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ResourceProfileServiceSoap11" type="tns:ResourceProfileService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AddInterest">
+      <soap:operation soapAction="" />
+      <wsdl:input name="AddInterestRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="AddInterestResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateProfile">
+      <soap:operation soapAction="" />
+      <wsdl:input name="CreateProfileRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="CreateProfileResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteProfile">
+      <soap:operation soapAction="" />
+      <wsdl:input name="DeleteProfileRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="DeleteProfileResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProfileList">
+      <soap:operation soapAction="" />
+      <wsdl:input name="GetProfileListRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetProfileListResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveInterest">
+      <soap:operation soapAction="" />
+      <wsdl:input name="RemoveInterestRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="RemoveInterestResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProfile">
+      <soap:operation soapAction="" />
+      <wsdl:input name="GetProfileRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetProfileResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ResourceProfileServiceService">
+    <wsdl:port name="ResourceProfileServiceSoap11" binding="tns:ResourceProfileServiceSoap11">
+      <soap:address location="http://localhost:80/uicds/core/ws/services/ResourceProfileService" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

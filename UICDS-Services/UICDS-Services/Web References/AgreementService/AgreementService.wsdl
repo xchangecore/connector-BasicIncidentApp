@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:sch="http://uicds.org/AgreementService" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://uicds.org/AgreementService" targetNamespace="http://uicds.org/AgreementService" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xs:schema xmlns:as="http://uicds.org/AgreementService" elementFormDefault="qualified" targetNamespace="http://uicds.org/AgreementService" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:include schemaLocation="../../../services/Agreement/0.1/Agreement.xsd" />
+      <xs:element name="CreateAgreementRequest">
+        <xs:complexType>
+          <xs:all>
+            <xs:element name="Agreement" type="as:AgreementType" />
+          </xs:all>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CreateAgreementResponse">
+        <xs:complexType>
+          <xs:all>
+            <xs:element name="Agreement" type="as:AgreementType" />
+          </xs:all>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="UpdateAgreementRequest">
+        <xs:complexType>
+          <xs:all>
+            <xs:element name="Agreement" type="as:AgreementType" />
+          </xs:all>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="UpdateAgreementResponse">
+        <xs:complexType>
+          <xs:all>
+            <xs:element name="Agreement" type="as:AgreementType" />
+          </xs:all>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="RescindAgreementRequest">
+        <xs:complexType>
+          <xs:all>
+            <xs:element name="CoreID" type="xs:anyURI" />
+          </xs:all>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="RescindAgreementResponse">
+        <xs:complexType>
+          <xs:all>
+            <xs:element name="CoreID" type="xs:anyURI" />
+          </xs:all>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetAgreementRequest">
+        <xs:complexType>
+          <xs:all>
+            <xs:element name="CoreID" type="xs:anyURI" />
+          </xs:all>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetAgreementResponse">
+        <xs:complexType>
+          <xs:all>
+            <xs:element name="Agreement" type="as:AgreementType" />
+          </xs:all>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetAgreementListRequest">
+        <xs:complexType />
+      </xs:element>
+      <xs:element name="GetAgreementListResponse">
+        <xs:complexType>
+          <xs:all>
+            <xs:element ref="as:AgreementList" />
+          </xs:all>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="AgreementListType">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" ref="as:Agreement" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="AgreementList" type="as:AgreementListType" />
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="GetAgreementRequest">
+    <wsdl:part name="GetAgreementRequest" element="tns:GetAgreementRequest" />
+  </wsdl:message>
+  <wsdl:message name="RescindAgreementResponse">
+    <wsdl:part name="RescindAgreementResponse" element="tns:RescindAgreementResponse" />
+  </wsdl:message>
+  <wsdl:message name="RescindAgreementRequest">
+    <wsdl:part name="RescindAgreementRequest" element="tns:RescindAgreementRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetAgreementListRequest">
+    <wsdl:part name="GetAgreementListRequest" element="tns:GetAgreementListRequest" />
+  </wsdl:message>
+  <wsdl:message name="UpdateAgreementRequest">
+    <wsdl:part name="UpdateAgreementRequest" element="tns:UpdateAgreementRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetAgreementResponse">
+    <wsdl:part name="GetAgreementResponse" element="tns:GetAgreementResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateAgreementResponse">
+    <wsdl:part name="UpdateAgreementResponse" element="tns:UpdateAgreementResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAgreementListResponse">
+    <wsdl:part name="GetAgreementListResponse" element="tns:GetAgreementListResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateAgreementResponse">
+    <wsdl:part name="CreateAgreementResponse" element="tns:CreateAgreementResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateAgreementRequest">
+    <wsdl:part name="CreateAgreementRequest" element="tns:CreateAgreementRequest" />
+  </wsdl:message>
+  <wsdl:portType name="AgreementService">
+    <wsdl:operation name="CreateAgreement">
+      <wsdl:input name="CreateAgreementRequest" message="tns:CreateAgreementRequest" />
+      <wsdl:output name="CreateAgreementResponse" message="tns:CreateAgreementResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="RescindAgreement">
+      <wsdl:input name="RescindAgreementRequest" message="tns:RescindAgreementRequest" />
+      <wsdl:output name="RescindAgreementResponse" message="tns:RescindAgreementResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAgreement">
+      <wsdl:input name="UpdateAgreementRequest" message="tns:UpdateAgreementRequest" />
+      <wsdl:output name="UpdateAgreementResponse" message="tns:UpdateAgreementResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAgreementList">
+      <wsdl:input name="GetAgreementListRequest" message="tns:GetAgreementListRequest" />
+      <wsdl:output name="GetAgreementListResponse" message="tns:GetAgreementListResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAgreement">
+      <wsdl:input name="GetAgreementRequest" message="tns:GetAgreementRequest" />
+      <wsdl:output name="GetAgreementResponse" message="tns:GetAgreementResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="AgreementServiceSoap11" type="tns:AgreementService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CreateAgreement">
+      <soap:operation soapAction="" />
+      <wsdl:input name="CreateAgreementRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="CreateAgreementResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RescindAgreement">
+      <soap:operation soapAction="" />
+      <wsdl:input name="RescindAgreementRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="RescindAgreementResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAgreement">
+      <soap:operation soapAction="" />
+      <wsdl:input name="UpdateAgreementRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="UpdateAgreementResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAgreementList">
+      <soap:operation soapAction="" />
+      <wsdl:input name="GetAgreementListRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetAgreementListResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAgreement">
+      <soap:operation soapAction="" />
+      <wsdl:input name="GetAgreementRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetAgreementResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="AgreementServiceService">
+    <wsdl:port name="AgreementServiceSoap11" binding="tns:AgreementServiceSoap11">
+      <soap:address location="http://localhost:80/uicds/core/ws/services/AgreementService" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

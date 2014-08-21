@@ -1,0 +1,442 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="urn:oasis:names:tc:ciq:xpil:3" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="urn:oasis:names:tc:ciq:xpil:3" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:annotation>
+    <xs:documentation> 
+		Specification Name: OASIS CIQ TC - extensible Party Information Language Types (xPIL-types)
+		Description: Defines the W3C schema that provides enumeration lists to support
+		xPIL. 
+		Produced by: OASIS Customer Information Quality Technical Committee
+		Version: 3.0 
+		Status: Public Review Draft
+		Copyright: 2006, OASIS
+		Last Modified: 05 April 2006
+		Last Modified by: Ram Kumar 
+		NOTE: This is the schema that users can customise the enumeration lists to meet their
+		exchange requirements 
+		</xs:documentation>
+  </xs:annotation>
+  <xs:simpleType name="string">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="255" />
+      <xs:whiteSpace value="collapse" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="AccountElementEnumeration">
+    <xs:annotation>
+      <xs:documentation>List of information types used for account details</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="AccountID">
+        <xs:annotation>
+          <xs:documentation>The unique name, number or mixed account identifier, e.g. bank account number</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="IssuingAuthority">
+        <xs:annotation>
+          <xs:documentation>The organisation that assings and manages the account, e.g. a bank, taxation office, power supplier, etc.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="AccountType">
+        <xs:annotation>
+          <xs:documentation>Commonly recognised names, such as IRD number (for NZ), SSN (for US), ABN (for AU), etc.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="BirthInfoElementEnumeration">
+    <xs:annotation>
+      <xs:documentation>List of information types used for birth information</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="BirthStar">
+        <xs:annotation>
+          <xs:documentation>Commonly used in some oriental cultures</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="BirthPlace">
+        <xs:annotation>
+          <xs:documentation>A free text descriprion of the birth place, e.g. country name, region, etc.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="BirthSign">
+        <xs:annotation>
+          <xs:documentation>Specific to some cultures</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="ContactNumberElementEnumeration">
+    <xs:annotation>
+      <xs:documentation>List of information types used for phone number details</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="CountryCode">
+        <xs:annotation>
+          <xs:documentation>No internation access numbers are expected. E.g. 1 for US, 44 for UK</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="AreaCode">
+        <xs:annotation>
+          <xs:documentation>No national access numbers are expected.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="LocalNumber">
+        <xs:annotation>
+          <xs:documentation>Local number as would be used by others within the same dialing area.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Extension">
+        <xs:annotation>
+          <xs:documentation>An extention to the number that is usually handled by some PABX</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Pin">
+        <xs:annotation>
+          <xs:documentation>E.g. special access code</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Separator">
+        <xs:annotation>
+          <xs:documentation>Any text that is not part of the phone number, but has some informational content, e.g. Ext. </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="NationalNumber">
+        <xs:annotation>
+          <xs:documentation>Area code with local number if one line. May include national acces numbers.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="InternationalNumber">
+        <xs:annotation>
+          <xs:documentation>Full international number in one line. May include international acces numbers.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="DataQualityEnumeration">
+    <xs:annotation>
+      <xs:documentation>List of values to indicate the level of reliabitliy of the data.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Valid">
+        <xs:annotation>
+          <xs:documentation>The data was validated and is considered to be true and correct.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Invalid">
+        <xs:annotation>
+          <xs:documentation>Indocates that at least some parts of the contained data is known to be incorrect.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="DocumentElementEnumeration">
+    <xs:annotation>
+      <xs:documentation>List of information types used for document details</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="DocumentType">
+        <xs:annotation>
+          <xs:documentation>E.g. passport, driver's license, credit card, certificate, etc.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="DocumentID">
+        <xs:annotation>
+          <xs:documentation>Usually the number of the document, which can be alphanumeric</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Privilege">
+        <xs:annotation>
+          <xs:documentation>A priveledge the holder of the document was grunted. E.g. security access level</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Restriction">
+        <xs:annotation>
+          <xs:documentation>A restriction imposed on the holder of the document. E.g. learners license</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="GroupName">
+        <xs:annotation>
+          <xs:documentation>A name of a larger group that recognises this document or supports it.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="FeatureElementEnumeration">
+    <xs:annotation>
+      <xs:documentation>List of person's physical features </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Weight" />
+      <xs:enumeration value="Height" />
+      <xs:enumeration value="HairColour" />
+      <xs:enumeration value="EyeColour" />
+      <xs:enumeration value="SkinColour" />
+      <xs:enumeration value="Waist" />
+      <xs:enumeration value="Breast" />
+      <xs:enumeration value="Hip" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="MembershipElementEnumeration">
+    <xs:annotation>
+      <xs:documentation>List of information types used for describing a membership</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="MembershipType">
+        <xs:annotation>
+          <xs:documentation>E.g. professional, sport, union, alumni, etc.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="MembershipNumber">
+        <xs:annotation>
+          <xs:documentation>Membership identifier, e.g. membership number or some other type of ID</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Privilege">
+        <xs:annotation>
+          <xs:documentation>A priveledge that the member can enjoy as part of the membership. E.g. access to free events.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Restriction">
+        <xs:annotation>
+          <xs:documentation>A restriction that the membership imposes on the member, e.g. do not smoke.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="GroupName">
+        <xs:annotation>
+          <xs:documentation>Larger group or alliance name the membership provides access to.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="NumberTypeEnumeration">
+    <xs:annotation>
+      <xs:documentation>A list of name types for commonly used Number type</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="RangeFrom">
+        <xs:annotation>
+          <xs:documentation>Indicates that the element contains the lower value of a range, e.g. 25 in 25-37</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Range">
+        <xs:annotation>
+          <xs:documentation>Indicates that the value is a range, e.g. 25-37</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="RangeTo">
+        <xs:annotation>
+          <xs:documentation>Indicates that the element contains the top value of a range, e.g. 25 in 25-37</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Prefix">
+        <xs:annotation>
+          <xs:documentation>Indocates that the element contains some value that is important, but not exactly the number itself. E.g. PoBox can be a prefix in PoBox 2020</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Suffix">
+        <xs:annotation>
+          <xs:documentation>Indocates that the element contains some value that is important, but not exactly the number itself. E.g. 'bis' in '45 bis'</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Number">
+        <xs:annotation>
+          <xs:documentation>Indicates that the value is number, e.g. 2020 in PoBox 2020. The actual value can be alpha-numeric. </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Separator">
+        <xs:annotation>
+          <xs:documentation>Indicates that the value is a separator that is expected to be preserved. Examples are / - #, etc.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Extension">
+        <xs:annotation>
+          <xs:documentation>Indicates that the value is an extension number of some identifier, e.g. 01 in Private Bag 2330-01, where the main number of the private bag is 2330</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="OccupationElementEnumeration">
+    <xs:annotation>
+      <xs:documentation>List of information types used for describing an occupation</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Role">
+        <xs:annotation>
+          <xs:documentation>The actual role the person carries out.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="PositionTitle" />
+      <xs:enumeration value="ReportsTo">
+        <xs:annotation>
+          <xs:documentation>Name, role or position who the person reports to.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="EmploymentType">
+        <xs:annotation>
+          <xs:documentation>E.g. full-time, part-time, temporary, contract, etc.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="CostCentre">
+        <xs:annotation>
+          <xs:documentation>Commonly used identifier for accounting purposes.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Rank">
+        <xs:annotation>
+          <xs:documentation>A rank in some ranking system, e.g. private, major, superntendant, etc.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="QualificationElementEnumeration">
+    <xs:annotation>
+      <xs:documentation>List of information types used for describing a qualification</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="QualificationName">
+        <xs:annotation>
+          <xs:documentation>Free text name of the qualification</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="MajorSubject">
+        <xs:annotation>
+          <xs:documentation>Name of the major subject of the qualification</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="MinorSubject">
+        <xs:annotation>
+          <xs:documentation>Name of a minor subject of the qualification</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Mark">
+        <xs:annotation>
+          <xs:documentation>A mark (average?) achieved with the qualification.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="CourseDuration">
+        <xs:annotation>
+          <xs:documentation>Free text description of the duration of the course, e.g. 4 years, 1 month, etc.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="CompletionDate">
+        <xs:annotation>
+          <xs:documentation>Free text description of the date when the qualification was completed to the best known precision.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Award">
+        <xs:annotation>
+          <xs:documentation>Award, or distinction that was awarded to the graduate, e.g. honors.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Restriction">
+        <xs:annotation>
+          <xs:documentation>Restrictions imposed on the graduate, e.g. not valid before completion of 2 year practical work under supervision.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Registration">
+        <xs:annotation>
+          <xs:documentation>Details of any professional registration if required for practicing, e.g. for pharmacists, electricians, medical professionals.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="WayOfStudy">
+        <xs:annotation>
+          <xs:documentation>Full time, part time, evening classes, extramural, etc.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="PartyElementTypeEnumeration">
+    <xs:annotation>
+      <xs:documentation>Organisation or Person</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Organisation" />
+      <xs:enumeration value="Person" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="VehicleInfoElementEnumeration">
+    <xs:annotation>
+      <xs:documentation>List of information types used for describing a vehicle</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Make">
+        <xs:annotation>
+          <xs:documentation>Free text make description, e.g. Toyota, Ford</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Model">
+        <xs:annotation>
+          <xs:documentation>Free text model description, e.g. Pajero, Falcon, etc. May include make as in Ford Falcon or Mitsubishi Pajero. If the make information is included then do not put the make as a separate element qualified with Make.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ManufactureDate">
+        <xs:annotation>
+          <xs:documentation>Free text data which can be a full date or a year.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="EngineNumber">
+        <xs:annotation>
+          <xs:documentation>Free text engine number</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ChassisNumber">
+        <xs:annotation>
+          <xs:documentation>Free text chassis number</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="BodyNumber">
+        <xs:annotation>
+          <xs:documentation>Free text body number</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="LicensePlate">
+        <xs:annotation>
+          <xs:documentation>Free text license plate number</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="VisaElementEnumeration">
+    <xs:annotation>
+      <xs:documentation>List of information types used for describing a visa</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Number" />
+      <xs:enumeration value="Code">
+        <xs:annotation>
+          <xs:documentation>Some visas are known by its code number</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="CountryName">
+        <xs:annotation>
+          <xs:documentation>Country name that issued the visa</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="IssuePlace">
+        <xs:annotation>
+          <xs:documentation>Free text description of the issuing place, e.g. country name and office name. For example US Embassy, Prague</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="MaximumStay">
+        <xs:annotation>
+          <xs:documentation>Free text description of the length of maximum stay. E.g. 1 week, 2 months, etc.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Restriction">
+        <xs:annotation>
+          <xs:documentation>Any restrictions imposed on the visa holder, e.g. not for employment.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Privilege">
+        <xs:annotation>
+          <xs:documentation>Any priveledges granted to the visa holder, e.g. departure fee waved, etc.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="SpecialCondition">
+        <xs:annotation>
+          <xs:documentation>Any special conditions imposed on the visa holder.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

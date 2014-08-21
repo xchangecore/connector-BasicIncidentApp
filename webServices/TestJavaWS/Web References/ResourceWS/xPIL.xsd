@@ -1,0 +1,1235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:n="urn:oasis:names:tc:ciq:xnl:3" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:a="urn:oasis:names:tc:ciq:xal:3" xmlns="urn:oasis:names:tc:ciq:xpil:3" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="urn:oasis:names:tc:ciq:xpil:3" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="xLink.xsd" namespace="http://www.w3.org/1999/xlink" />
+  <xs:import schemaLocation="xNL.xsd" namespace="urn:oasis:names:tc:ciq:xnl:3" />
+  <xs:import schemaLocation="xAL.xsd" namespace="urn:oasis:names:tc:ciq:xal:3" />
+  <xs:include schemaLocation="xPIL-types.xsd" />
+  <xs:annotation>
+    <xs:documentation> 
+		Specification Name: OASIS CIQ TC - extensible Party Information Language (xPIL) 
+		Description: Defines the W3C schema for representing party information including 
+		party name and address
+		Produced by: OASIS Customer Information Quality Technical Committee
+		Version: 3.0  
+		Status: Public Review Draft
+		Copyright: 2006, OASIS
+		Last Modified: 05 April 2006
+		Last Modified by: Ram Kumar 
+		NOTE: Do not modify this schema as it will break specifications compatibility 
+		</xs:documentation>
+  </xs:annotation>
+  <xs:element name="Party" type="PartyType">
+    <xs:annotation>
+      <xs:documentation>A container for defining the unique characteristics of a party, which can be an individual or organisation</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:attributeGroup name="grDataQuality">
+    <xs:attribute name="DataQuality" type="DataQualityEnumeration">
+      <xs:annotation>
+        <xs:documentation>This attribute indicates what level of trust can be given to the parent element. Omit this attribute if the data quality is unknown.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="ValidFrom" type="xs:dateTime">
+      <xs:annotation>
+        <xs:documentation>Start Date of the validity of address</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="ValidTo" type="xs:dateTime">
+      <xs:annotation>
+        <xs:documentation>End date of the validity of address</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="grPartyType">
+    <xs:annotation>
+      <xs:documentation>A reusable group of attributes for a customised party details element</xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="PartyType" type="PartyElementTypeEnumeration">
+      <xs:annotation>
+        <xs:documentation>Type of Party(customer). Example: Person, organisation, business, club, association, charity, etc.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="ValidFrom" type="xs:dateTime">
+      <xs:annotation>
+        <xs:documentation>Start Date of the validity of address</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="ValidTo" type="xs:dateTime">
+      <xs:annotation>
+        <xs:documentation>End date of the validity of address</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:complexType name="PartyType">
+    <xs:annotation>
+      <xs:documentation>A container for defining the unique characteristics of a party, which can be an individual or organisation</xs:documentation>
+    </xs:annotation>
+    <xs:all>
+      <xs:element minOccurs="0" ref="FreeTextLines">
+        <xs:annotation>
+          <xs:documentation>Free text description of the party as line 1, line 2, line n. </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" ref="n:PartyName" />
+      <xs:element minOccurs="0" ref="Addresses" />
+      <xs:element minOccurs="0" ref="Accounts" />
+      <xs:element minOccurs="0" ref="Contacts">
+        <xs:annotation>
+          <xs:documentation>A container to define contacts of the party. A contact could be a reference customer for an organisation, a relative of a person such as spouse, children, etc</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" ref="ContactNumbers" />
+      <xs:element minOccurs="0" ref="EmailAddresses" />
+      <xs:element minOccurs="0" ref="Documents" />
+      <xs:element minOccurs="0" ref="Memberships" />
+      <xs:element minOccurs="0" ref="Revenues" />
+      <xs:element minOccurs="0" ref="URLs" />
+      <xs:element minOccurs="0" ref="Vehicles" />
+      <xs:element minOccurs="0" ref="OrganisationInfo" />
+      <xs:element minOccurs="0" ref="StockMarkets" />
+      <xs:element minOccurs="0" ref="PersonInfo" />
+      <xs:element minOccurs="0" ref="BirthInfo" />
+      <xs:element minOccurs="0" ref="CountriesOfResidence" />
+      <xs:element minOccurs="0" ref="Habits" />
+      <xs:element minOccurs="0" ref="Hobbies" />
+      <xs:element minOccurs="0" ref="Languages" />
+      <xs:element minOccurs="0" ref="Nationalities" />
+      <xs:element minOccurs="0" ref="Occupations" />
+      <xs:element minOccurs="0" ref="PhysicalInfo" />
+      <xs:element minOccurs="0" ref="Qualifications" />
+      <xs:element minOccurs="0" ref="Visas" />
+    </xs:all>
+    <xs:attribute name="ID" type="xs:string">
+      <xs:annotation>
+        <xs:documentation>Globally unique identifier of the entity. </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attributeGroup ref="grPartyType" />
+    <xs:attributeGroup ref="xlink:grLocatorOrResource" />
+    <xs:anyAttribute namespace="##other" processContents="lax" />
+  </xs:complexType>
+  <xs:complexType name="DateTime">
+    <xs:annotation>
+      <xs:documentation>Universal structure for dates. To be used throughout this schema wherever date representation is required</xs:documentation>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="xs:dateTime">
+        <xs:attribute name="WeekDay">
+          <xs:annotation>
+            <xs:documentation>Date as full date format (xs:date)</xs:documentation>
+          </xs:annotation>
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:enumeration value="Monday" />
+              <xs:enumeration value="Tuesday" />
+              <xs:enumeration value="Wednesday" />
+              <xs:enumeration value="Thursday" />
+              <xs:enumeration value="Friday" />
+              <xs:enumeration value="Saturday" />
+              <xs:enumeration value="Sunday" />
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:attribute>
+        <xs:attribute name="Week">
+          <xs:annotation>
+            <xs:documentation>Sequntial number of week in a year</xs:documentation>
+          </xs:annotation>
+          <xs:simpleType>
+            <xs:restriction base="xs:int">
+              <xs:minInclusive value="1" />
+              <xs:maxInclusive value="53" />
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:attribute>
+        <xs:attribute name="YearDay">
+          <xs:annotation>
+            <xs:documentation>Sequntial number of week in a year</xs:documentation>
+          </xs:annotation>
+          <xs:simpleType>
+            <xs:restriction base="xs:int">
+              <xs:minInclusive value="1" />
+              <xs:maxInclusive value="366" />
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:attribute>
+        <xs:attribute name="Precision" type="xs:dateTime">
+          <xs:annotation>
+            <xs:documentation>Sequntial number of week in a year</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:anyAttribute namespace="##other" processContents="lax" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="FreeTextLine">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="Type" type="string">
+          <xs:annotation>
+            <xs:documentation>Type of data defined as a free format text.  For example if the free format text is 12345678, then define what "Type" it is say, a phone number, or a customer ID, etc. </xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attributeGroup ref="grDataQuality" />
+        <xs:anyAttribute namespace="##other" processContents="lax" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:element name="FreeTextLines">
+    <xs:annotation>
+      <xs:documentation>Free text description of the party as line 1, line 2, line n</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" name="FreeTextLine" type="FreeTextLine">
+          <xs:annotation>
+            <xs:documentation>Free text description of the party</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+      </xs:sequence>
+      <xs:anyAttribute namespace="##other" processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Accounts">
+    <xs:annotation>
+      <xs:documentation>A container to define the accounts details of the party</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" name="Account">
+          <xs:annotation>
+            <xs:documentation>Account details such as bank account, customer account with a power supplier or Social Security Number</xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="AccountElement">
+                <xs:annotation>
+                  <xs:documentation>Information about the account</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="string">
+                      <xs:attribute name="ElementType" type="AccountElementEnumeration">
+                        <xs:annotation>
+                          <xs:documentation>If present, specifies the type of the information provided as text value of the element.</xs:documentation>
+                        </xs:annotation>
+                      </xs:attribute>
+                      <xs:anyAttribute namespace="##other" processContents="lax" />
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+              <xs:element minOccurs="0" name="Organisation">
+                <xs:annotation>
+                  <xs:documentation>Reference to a Party element that describes the organisation where the account is held.</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                  <xs:attributeGroup ref="xlink:grLocator" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute name="ID" type="xs:string">
+              <xs:annotation>
+                <xs:documentation>Globally unique identifier of the entity. </xs:documentation>
+              </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="OwnershipType" type="string">
+              <xs:annotation>
+                <xs:documentation>Joint, Individual, corporate, etc.</xs:documentation>
+              </xs:annotation>
+            </xs:attribute>
+            <xs:attributeGroup ref="grDataQuality" />
+            <xs:anyAttribute namespace="##other" processContents="lax" />
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:anyAttribute namespace="##other" processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Addresses">
+    <xs:annotation>
+      <xs:documentation>A container for all party addresses</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="a:Address" />
+      </xs:sequence>
+      <xs:anyAttribute namespace="##other" processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Contacts">
+    <xs:annotation>
+      <xs:documentation>A container to define contacts of the party</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" name="Contact">
+          <xs:annotation>
+            <xs:documentation>Full details of the contact</xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:attribute name="ID" type="xs:string">
+              <xs:annotation>
+                <xs:documentation>Globally unique identifier of the entity. </xs:documentation>
+              </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="Type" type="xs:string">
+              <xs:annotation>
+                <xs:documentation>Type of contct. e.g. reference cutomer, personal contcts such as spouse, children, etc</xs:documentation>
+              </xs:annotation>
+            </xs:attribute>
+            <xs:attributeGroup ref="xlink:grLocator" />
+            <xs:anyAttribute namespace="##other" processContents="lax" />
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ContactNumbers">
+    <xs:annotation>
+      <xs:documentation>A container for all kinds of telecommunication lines of party used for contact purposes. e.g. phone, fax, mobile, pager, etc.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" name="ContactNumber">
+          <xs:annotation>
+            <xs:documentation>Universal telecommunication number structure</xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element maxOccurs="unbounded" name="ContactNumberElement">
+                <xs:annotation>
+                  <xs:documentation>Full contact number or part of it.</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="string">
+                      <xs:attribute name="ElementType" type="ContactNumberElementEnumeration">
+                        <xs:annotation>
+                          <xs:documentation>If present, specifies the type of the information provided as text value of the element.</xs:documentation>
+                        </xs:annotation>
+                      </xs:attribute>
+                      <xs:anyAttribute namespace="##other" processContents="lax" />
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute name="ID" type="xs:string">
+              <xs:annotation>
+                <xs:documentation>Globally unique identifier of the entity. </xs:documentation>
+              </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="MediaType" type="string">
+              <xs:annotation>
+                <xs:documentation>Free text explanation of the line type. E.g.: Telephone, Mobile, Fax, modem</xs:documentation>
+              </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="Usage" type="string">
+              <xs:annotation>
+                <xs:documentation>Nature of contact. Example: business, personal, free call, after hours, etc.</xs:documentation>
+              </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="ContactHours" type="string">
+              <xs:annotation>
+                <xs:documentation>Free text expression of contact hours</xs:documentation>
+              </xs:annotation>
+            </xs:attribute>
+            <xs:attributeGroup ref="grDataQuality" />
+            <xs:anyAttribute namespace="##other" processContents="lax" />
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:anyAttribute namespace="##other" processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EmailAddresses">
+    <xs:annotation>
+      <xs:documentation>A container for party email addresses</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" name="EmailAddress">
+          <xs:annotation>
+            <xs:documentation>Email address details</xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:simpleContent>
+              <xs:extension base="string">
+                <xs:attribute name="ID" type="xs:string">
+                  <xs:annotation>
+                    <xs:documentation>Globally unique identifier of the entity. </xs:documentation>
+                  </xs:annotation>
+                </xs:attribute>
+                <xs:attribute name="Usage" type="string">
+                  <xs:annotation>
+                    <xs:documentation>Work, home, temporary, etc.</xs:documentation>
+                  </xs:annotation>
+                </xs:attribute>
+                <xs:attributeGroup ref="grDataQuality" />
+                <xs:anyAttribute namespace="##other" processContents="lax" />
+              </xs:extension>
+            </xs:simpleContent>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:anyAttribute namespace="##other" processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Documents">
+    <xs:annotation>
+      <xs:documentation>A container for identification document and cards of the party that are unique to the party.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" name="Document">
+          <xs:annotation>
+            <xs:documentation>Passports, driver licenses, credit cards, certificates, etc.</xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="DocumentElement">
+                <xs:annotation>
+                  <xs:documentation>Full document desctiption or part of it.</xs:documentation>
+                </xs:annotation>
+                <xs:complexType mixed="true">
+                  <xs:attribute name="ElementType" type="DocumentElementEnumeration">
+                    <xs:annotation>
+                      <xs:documentation>If present, specifies the type of the information provided as text value of the element.</xs:documentation>
+                    </xs:annotation>
+                  </xs:attribute>
+                  <xs:anyAttribute namespace="##other" processContents="lax" />
+                </xs:complexType>
+              </xs:element>
+              <xs:element minOccurs="0" name="NameOnDocument" type="n:PartyNameType">
+                <xs:annotation>
+                  <xs:documentation>Customer Name as on the document if different from the main one.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element minOccurs="0" name="IssuePlace" type="a:AddressType">
+                <xs:annotation>
+                  <xs:documentation>Details of the place where the document was issued, e.g. town name, country name, etc.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element minOccurs="0" name="Issuer">
+                <xs:annotation>
+                  <xs:documentation>Reference to a Party element that describes the issuer.</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                  <xs:attributeGroup ref="xlink:grLocator" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute name="ID" type="xs:string">
+              <xs:annotation>
+                <xs:documentation>Globally unique identifier of the entity. </xs:documentation>
+              </xs:annotation>
+            </xs:attribute>
+            <xs:attributeGroup ref="grDataQuality" />
+            <xs:anyAttribute namespace="##other" processContents="lax" />
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:anyAttribute namespace="##other" processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Memberships">
+    <xs:annotation>
+      <xs:documentation>A container for memberships of party with other organisations (e.g. industry groups).</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" name="Membership">
+          <xs:annotation>
+            <xs:documentation>Membership details</xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="MembershipElement">
+                <xs:annotation>
+                  <xs:documentation>Full description of membership or part of it</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="string">
+                      <xs:attribute name="ElementType" type="MembershipElementEnumeration">
+                        <xs:annotation>
+                          <xs:documentation>If present, specifies the type of the information provided as text value of the element.</xs:documentation>
+                        </xs:annotation>
+                      </xs:attribute>
+                      <xs:anyAttribute namespace="##other" processContents="lax" />
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+              <xs:element minOccurs="0" name="Organisation">
+                <xs:annotation>
+                  <xs:documentation>Reference to a Party element that describes the organisation where the memberships is held.</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                  <xs:attributeGroup ref="xlink:grLocator" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute name="ID" type="xs:string">
+              <xs:annotation>
+                <xs:documentation>Globally unique identifier of the entity. </xs:documentation>
+              </xs:annotation>
+            </xs:attribute>
+            <xs:attributeGroup ref="grDataQuality" />
+            <xs:anyAttribute namespace="##other" processContents="lax" />
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:anyAttribute namespace="##other" processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Revenues">
+    <xs:annotation>
+      <xs:documentation>Container for income / revenue information of the party</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" name="Revenue">
+          <xs:annotation>
+            <xs:documentation>Revenue/Income details</xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:simpleContent>
+              <xs:extension base="xs:decimal">
+                <xs:attribute name="ID" type="xs:string">
+                  <xs:annotation>
+                    <xs:documentation>Globally unique identifier of the entity. </xs:documentation>
+                  </xs:annotation>
+                </xs:attribute>
+                <xs:attribute name="CurrencyCode">
+                  <xs:annotation>
+                    <xs:documentation>A three-letter currency code as per ISO 4217</xs:documentation>
+                  </xs:annotation>
+                  <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                      <xs:length value="3" />
+                    </xs:restriction>
+                  </xs:simpleType>
+                </xs:attribute>
+                <xs:attribute name="PeriodFrom" type="xs:dateTime">
+                  <xs:annotation>
+                    <xs:documentation>Begining of the period. Inclusive.</xs:documentation>
+                  </xs:annotation>
+                </xs:attribute>
+                <xs:attribute name="PeriodTo" type="xs:dateTime">
+                  <xs:annotation>
+                    <xs:documentation>End of the period. Inclusive.</xs:documentation>
+                  </xs:annotation>
+                </xs:attribute>
+                <xs:attribute name="Type" type="string">
+                  <xs:annotation>
+                    <xs:documentation>Defines the type of amount. Example: Total earning, profit, loss, turnover, etc.</xs:documentation>
+                  </xs:annotation>
+                </xs:attribute>
+                <xs:attribute name="Precision">
+                  <xs:annotation>
+                    <xs:documentation>Precision range where the value of the element is in the middle of the range. E.g. </xs:documentation>
+                  </xs:annotation>
+                  <xs:simpleType>
+                    <xs:restriction base="xs:decimal">
+                      <xs:minInclusive value="0" />
+                    </xs:restriction>
+                  </xs:simpleType>
+                </xs:attribute>
+                <xs:attribute name="Source" type="string">
+                  <xs:annotation>
+                    <xs:documentation>Where this revenue / income comes from, e.g. business stream, activity, etc.</xs:documentation>
+                  </xs:annotation>
+                </xs:attribute>
+                <xs:attribute name="AfterTax" type="xs:boolean">
+                  <xs:annotation>
+                    <xs:documentation>If present and set to true indicates that the income / revenue is after tax. </xs:documentation>
+                  </xs:annotation>
+                </xs:attribute>
+                <xs:attributeGroup ref="grDataQuality" />
+                <xs:anyAttribute namespace="##other" processContents="lax" />
+              </xs:extension>
+            </xs:simpleContent>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:anyAttribute namespace="##other" processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="URLs">
+    <xs:annotation>
+      <xs:documentation>URLs of Party</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" name="URL">
+          <xs:annotation>
+            <xs:documentation>URL details</xs:documentation>
+          </xs:annotation>
+          <xs:complexType mixed="true">
+            <xs:attribute name="ID" type="xs:string">
+              <xs:annotation>
+                <xs:documentation>Globally unique identifier of the entity. </xs:documentation>
+              </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="Usage" type="xs:string">
+              <xs:annotation>
+                <xs:documentation>Work, home, temporary, etc.</xs:documentation>
+              </xs:annotation>
+            </xs:attribute>
+            <xs:attributeGroup ref="grDataQuality" />
+            <xs:anyAttribute namespace="##other" processContents="lax" />
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:anyAttribute namespace="##other" processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Vehicles">
+    <xs:annotation>
+      <xs:documentation>A container to define all the vehicles of the party</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" name="Vehicle">
+          <xs:annotation>
+            <xs:documentation>Vehicle Details</xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element maxOccurs="unbounded" name="VehicleElement">
+                <xs:annotation>
+                  <xs:documentation>Full vehicle description of part of it</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="string">
+                      <xs:attribute name="ElementType" type="VehicleInfoElementEnumeration">
+                        <xs:annotation>
+                          <xs:documentation>If present, specifies the type of the information provided as text value of the element.</xs:documentation>
+                        </xs:annotation>
+                      </xs:attribute>
+                      <xs:anyAttribute namespace="##other" processContents="lax" />
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute name="ID" type="xs:string">
+              <xs:annotation>
+                <xs:documentation>Globally unique identifier of the entity. </xs:documentation>
+              </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="Type" type="string">
+              <xs:annotation>
+                <xs:documentation>Type of vehicle. Example: Motorbike, Truck, Car, Bicycle, 4WD, Jeep, etc</xs:documentation>
+              </xs:annotation>
+            </xs:attribute>
+            <xs:attributeGroup ref="grDataQuality" />
+            <xs:anyAttribute namespace="##other" processContents="lax" />
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:anyAttribute namespace="##other" processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OrganisationInfo">
+    <xs:annotation>
+      <xs:documentation>Container for organisation specific details that are not covered in this schema that is common to a party</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attribute name="ID" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Globally unique identifier of the entity. </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="CompanyRegistrationDateTime" type="xs:dateTime">
+        <xs:annotation>
+          <xs:documentation>Date and time (if known) when company was officially registered.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="CompanyRegistrationID" type="string">
+        <xs:annotation>
+          <xs:documentation>Usually, companies have a unique registration ID. Use Account to specify more information on registration details.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="TaxationOfficeID" type="string">
+        <xs:annotation>
+          <xs:documentation>Usually, companies have a unique registration ID with the local taxation office. Use Account to specify more information on registration details.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="OrganisationType" type="string">
+        <xs:annotation>
+          <xs:documentation>Free text description, e.g. Company, Trust, Bank, Society, Club, etc.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="OrganisationNature" type="string">
+        <xs:annotation>
+          <xs:documentation>Commercial, charity, non-commercial, etc.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="NumberOfEmployees" type="string">
+        <xs:annotation>
+          <xs:documentation>Free text description of organisation size in terms of number of employees</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:anyAttribute namespace="##other" processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="NumberOfEmployees">
+    <xs:annotation>
+      <xs:documentation>Free text description of organisation size in terms of number of employees</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="string">
+          <xs:attributeGroup ref="grDataQuality" />
+          <xs:anyAttribute namespace="##other" processContents="lax" />
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="StockMarkets">
+    <xs:annotation>
+      <xs:documentation>A container for stock market  information specific to the organisation</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" name="StockMarket">
+          <xs:annotation>
+            <xs:documentation>A Stock market listing details</xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:attribute name="ID" type="xs:string">
+              <xs:annotation>
+                <xs:documentation>Globally unique identifier of the entity. </xs:documentation>
+              </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="ListedCode" type="string">
+              <xs:annotation>
+                <xs:documentation>The code name for the organisation as listed in the exchange. E.g. MOT for Motorola Inc</xs:documentation>
+              </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="MarketName" type="string">
+              <xs:annotation>
+                <xs:documentation>Free text name of the stock exchange or other market. E.g. NYSE or NZX</xs:documentation>
+              </xs:annotation>
+            </xs:attribute>
+            <xs:attributeGroup ref="grDataQuality" />
+            <xs:anyAttribute namespace="##other" processContents="lax" />
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:anyAttribute namespace="##other" processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PersonInfo">
+    <xs:annotation>
+      <xs:documentation>Container for person specific details that are not covered in this schema that is common to a party</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attribute name="ID" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Globally unique identifier of the entity. </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="TaxationOfficeID" type="string">
+        <xs:annotation>
+          <xs:documentation>Usually, individualts have a unique registration ID with the local taxation office. Use Account to specify more information on registration details.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="MaritalStatus" type="string">
+        <xs:annotation>
+          <xs:documentation>Free text description of the current marital status, e.g. married, separated, divorced, separated, etc.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="Ethnicity" type="string">
+        <xs:annotation>
+          <xs:documentation>Ethnicity of the person, e.g. Asian, Chinese, African, etc.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="Gender" type="string">
+        <xs:annotation>
+          <xs:documentation>Free text gender description.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="Religion" type="string">
+        <xs:annotation>
+          <xs:documentation>Free text name of the religion</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="PhysicalStatus" type="string">
+        <xs:annotation>
+          <xs:documentation>Physical status of the individual, e.g. Living, Deceased, retired, etc.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:anyAttribute namespace="##other" processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BirthInfo">
+    <xs:annotation>
+      <xs:documentation>A container to define the Date of Birth details of a person</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" name="BirthInfoElement">
+          <xs:annotation>
+            <xs:documentation>Birth details of the person</xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:simpleContent>
+              <xs:extension base="string">
+                <xs:attribute name="ElementType" type="BirthInfoElementEnumeration">
+                  <xs:annotation>
+                    <xs:documentation>If present, specifies the type of the information provided as text value of the element.</xs:documentation>
+                  </xs:annotation>
+                </xs:attribute>
+                <xs:anyAttribute namespace="##other" processContents="lax" />
+              </xs:extension>
+            </xs:simpleContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element minOccurs="0" name="BirthPlace" type="a:AddressType">
+          <xs:annotation>
+            <xs:documentation>Defines the place of birth. Can be just a place name or a full address</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="ID" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Globally unique identifier of the entity. </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="BirthDateTime" type="xs:dateTime">
+        <xs:annotation>
+          <xs:documentation>Birth data and time to the known precision. Usually, it is only the date that is known. Leave time as 00:00:00 if not known.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="BirthDateTimePrecision" type="xs:duration">
+        <xs:annotation>
+          <xs:documentation>Specify the duration of the uncertainity preriod as a range where BirthDateTime is in the middle of the range.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attributeGroup ref="grDataQuality" />
+      <xs:anyAttribute namespace="##other" processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CountriesOfResidence">
+    <xs:annotation>
+      <xs:documentation>A container for all citizenships and residencies (Permanent/temporary) of a person.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" name="CountryOfResidence">
+          <xs:annotation>
+            <xs:documentation>Citizenship and residence information in a free-text form.</xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:simpleContent>
+              <xs:extension base="string">
+                <xs:attribute name="ID" type="xs:string">
+                  <xs:annotation>
+                    <xs:documentation>Globally unique identifier of the entity. </xs:documentation>
+                  </xs:annotation>
+                </xs:attribute>
+                <xs:attribute name="ResidencyType" type="string">
+                  <xs:annotation>
+                    <xs:documentation>Work, permanent resident, temporary resident, citizen, refugee, etc.</xs:documentation>
+                  </xs:annotation>
+                </xs:attribute>
+                <xs:attributeGroup ref="grDataQuality" />
+                <xs:anyAttribute namespace="##other" processContents="lax" />
+              </xs:extension>
+            </xs:simpleContent>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:anyAttribute namespace="##other" processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Habits">
+    <xs:annotation>
+      <xs:documentation>A container for a list of habits of a person</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" name="Habit">
+          <xs:annotation>
+            <xs:documentation>Personal habits. E.g. smoking, drinking, gambling, women, etc.</xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:simpleContent>
+              <xs:extension base="string">
+                <xs:attribute name="ID" type="xs:string">
+                  <xs:annotation>
+                    <xs:documentation>Globally unique identifier of the entity. </xs:documentation>
+                  </xs:annotation>
+                </xs:attribute>
+                <xs:attributeGroup ref="grDataQuality" />
+                <xs:anyAttribute namespace="##other" processContents="lax" />
+              </xs:extension>
+            </xs:simpleContent>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:anyAttribute namespace="##other" processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Hobbies">
+    <xs:annotation>
+      <xs:documentation>A container for a list of hobbies of a person</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" name="Hobby">
+          <xs:annotation>
+            <xs:documentation>A hobby of the person. E.g.  craft, sport, recreational activity, etc.</xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:simpleContent>
+              <xs:extension base="string">
+                <xs:attribute name="ID" type="xs:string">
+                  <xs:annotation>
+                    <xs:documentation>Globally unique identifier of the entity. </xs:documentation>
+                  </xs:annotation>
+                </xs:attribute>
+                <xs:attributeGroup ref="grDataQuality" />
+                <xs:anyAttribute namespace="##other" processContents="lax" />
+              </xs:extension>
+            </xs:simpleContent>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:anyAttribute namespace="##other" processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Languages">
+    <xs:annotation>
+      <xs:documentation>A container for a list of languages spoken by a person.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" name="Language">
+          <xs:annotation>
+            <xs:documentation>Name of the language spoken by the person</xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:simpleContent>
+              <xs:extension base="string">
+                <xs:attribute name="ID" type="xs:string">
+                  <xs:annotation>
+                    <xs:documentation>Globally unique identifier of the entity. </xs:documentation>
+                  </xs:annotation>
+                </xs:attribute>
+                <xs:attribute name="Type" type="string">
+                  <xs:annotation>
+                    <xs:documentation>Mother tongue, by birth, etc</xs:documentation>
+                  </xs:annotation>
+                </xs:attribute>
+                <xs:attribute name="Speak" type="string">
+                  <xs:annotation>
+                    <xs:documentation>Indicates ability to speak: yes, no, poor</xs:documentation>
+                  </xs:annotation>
+                </xs:attribute>
+                <xs:attribute name="Read" type="string">
+                  <xs:annotation>
+                    <xs:documentation>Indicates ability to read: yes, no, poor</xs:documentation>
+                  </xs:annotation>
+                </xs:attribute>
+                <xs:attribute name="Write" type="string">
+                  <xs:annotation>
+                    <xs:documentation>Indicates ability to write: yes, no, poor</xs:documentation>
+                  </xs:annotation>
+                </xs:attribute>
+                <xs:attribute name="Listen" type="string">
+                  <xs:annotation>
+                    <xs:documentation>Indicates ability to understand speech: yes, no, poor</xs:documentation>
+                  </xs:annotation>
+                </xs:attribute>
+                <xs:attribute name="Preference" type="string">
+                  <xs:annotation>
+                    <xs:documentation>Indicates preferred language of communication (read and/or write and/or speak)</xs:documentation>
+                  </xs:annotation>
+                </xs:attribute>
+                <xs:attributeGroup ref="grDataQuality" />
+                <xs:anyAttribute namespace="##other" processContents="lax" />
+              </xs:extension>
+            </xs:simpleContent>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:anyAttribute namespace="##other" processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Nationalities">
+    <xs:annotation>
+      <xs:documentation>A container for a list of nationalities of a person</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" name="CountryName">
+          <xs:annotation>
+            <xs:documentation>Name of the country</xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:simpleContent>
+              <xs:extension base="string">
+                <xs:attribute name="ID" type="xs:string">
+                  <xs:annotation>
+                    <xs:documentation>Globally unique identifier of the entity. </xs:documentation>
+                  </xs:annotation>
+                </xs:attribute>
+                <xs:attribute name="NationalityType" type="string">
+                  <xs:annotation>
+                    <xs:documentation>Specifies how the nationality was obtained. e.g. by birth, naturalization, etc</xs:documentation>
+                  </xs:annotation>
+                </xs:attribute>
+                <xs:attributeGroup ref="grDataQuality" />
+                <xs:anyAttribute namespace="##other" processContents="lax" />
+              </xs:extension>
+            </xs:simpleContent>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:anyAttribute namespace="##other" processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Occupations">
+    <xs:annotation>
+      <xs:documentation>A container for a list of occupations of a person</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" name="Occupation">
+          <xs:annotation>
+            <xs:documentation>Occupation details</xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="OccupationElement">
+                <xs:annotation>
+                  <xs:documentation>Full description of the occupation or part of it</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="string">
+                      <xs:attribute name="ElementType" type="OccupationElementEnumeration">
+                        <xs:annotation>
+                          <xs:documentation>If present, specifies the type of the information provided as text value of the element.</xs:documentation>
+                        </xs:annotation>
+                      </xs:attribute>
+                      <xs:anyAttribute namespace="##other" processContents="lax" />
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+              <xs:element minOccurs="0" name="Employer">
+                <xs:annotation>
+                  <xs:documentation>Reference to a Party element that describes the employer.</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                  <xs:attributeGroup ref="xlink:grLocator" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute name="ID" type="xs:string">
+              <xs:annotation>
+                <xs:documentation>Globally unique identifier of the entity. </xs:documentation>
+              </xs:annotation>
+            </xs:attribute>
+            <xs:attributeGroup ref="grDataQuality" />
+            <xs:anyAttribute namespace="##other" processContents="lax" />
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:anyAttribute namespace="##other" processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PhysicalInfo">
+    <xs:annotation>
+      <xs:documentation>A container for physical characteristics of a person</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" name="FreeTextLine" type="FreeTextLine" />
+        <xs:element minOccurs="0" maxOccurs="unbounded" name="Feature">
+          <xs:annotation>
+            <xs:documentation>Description of a physical feature such as hair, height, eye color, etc.</xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:simpleContent>
+              <xs:extension base="string">
+                <xs:attribute name="ElementType" type="FeatureElementEnumeration">
+                  <xs:annotation>
+                    <xs:documentation>If present, specifies the type of the information provided as text value of the element.</xs:documentation>
+                  </xs:annotation>
+                </xs:attribute>
+                <xs:attribute name="UnitType" type="string">
+                  <xs:annotation>
+                    <xs:documentation>Defines the unit of measurement. Example: Inches, feet, cm, meters, days, months, years, kgs, pounds, etc.</xs:documentation>
+                  </xs:annotation>
+                </xs:attribute>
+                <xs:attributeGroup ref="grDataQuality" />
+                <xs:anyAttribute namespace="##other" processContents="lax" />
+              </xs:extension>
+            </xs:simpleContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element minOccurs="0" maxOccurs="unbounded" name="Mark">
+          <xs:annotation>
+            <xs:documentation>Description of body marks, such as scars, tatoos, spots, etc.</xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:simpleContent>
+              <xs:extension base="string">
+                <xs:attribute name="BodyPart" type="string">
+                  <xs:annotation>
+                    <xs:documentation>Free text name/description of the body part where the mark is located</xs:documentation>
+                  </xs:annotation>
+                </xs:attribute>
+                <xs:attribute name="BodyPartMarkLocation" type="string">
+                  <xs:annotation>
+                    <xs:documentation>Free text description of where on the body part the mark is located. E.g. left hand side, front, back, etc</xs:documentation>
+                  </xs:annotation>
+                </xs:attribute>
+                <xs:attributeGroup ref="grDataQuality" />
+                <xs:anyAttribute namespace="##other" processContents="lax" />
+              </xs:extension>
+            </xs:simpleContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element minOccurs="0" maxOccurs="unbounded" name="Disability">
+          <xs:annotation>
+            <xs:documentation>Description of person's disability.</xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:simpleContent>
+              <xs:extension base="string">
+                <xs:attribute name="Cause" type="string">
+                  <xs:annotation>
+                    <xs:documentation>Free text description of the cause of the disability, e.g. birth defect, accident, etc.</xs:documentation>
+                  </xs:annotation>
+                </xs:attribute>
+                <xs:attributeGroup ref="grDataQuality" />
+                <xs:anyAttribute namespace="##other" processContents="lax" />
+              </xs:extension>
+            </xs:simpleContent>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="ID" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Globally unique identifier of the entity. </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="BloodGroup" type="string">
+        <xs:annotation>
+          <xs:documentation>Free text description of the blood group.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:anyAttribute namespace="##other" processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Qualifications">
+    <xs:annotation>
+      <xs:documentation>A container for a list of  qualifications of a person</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" name="Qualification">
+          <xs:annotation>
+            <xs:documentation>Educational qualification</xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="QualificationElement">
+                <xs:annotation>
+                  <xs:documentation>Full / partial name or description of person's qualification</xs:documentation>
+                </xs:annotation>
+                <xs:complexType mixed="true">
+                  <xs:attribute name="ElementType" type="QualificationElementEnumeration">
+                    <xs:annotation>
+                      <xs:documentation>If present, specifies the type of the information provided as text value of the element.</xs:documentation>
+                    </xs:annotation>
+                  </xs:attribute>
+                  <xs:anyAttribute namespace="##other" processContents="lax" />
+                </xs:complexType>
+              </xs:element>
+              <xs:element minOccurs="0" name="Institution">
+                <xs:annotation>
+                  <xs:documentation>Reference to a Party element that describes the institution.</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                  <xs:attributeGroup ref="xlink:grLocator" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute name="ID" type="xs:string">
+              <xs:annotation>
+                <xs:documentation>Globally unique identifier of the entity. </xs:documentation>
+              </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="Status" type="string">
+              <xs:annotation>
+                <xs:documentation>Status of qualification. E.g. completed, incomplete,in progress, on hold, under suspension, etc.</xs:documentation>
+              </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="StartDate" type="xs:date">
+              <xs:annotation>
+                <xs:documentation>When the study commenced</xs:documentation>
+              </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="CompletionDate" type="xs:date">
+              <xs:annotation>
+                <xs:documentation>When the study was completed or expected completion data</xs:documentation>
+              </xs:annotation>
+            </xs:attribute>
+            <xs:attributeGroup ref="grDataQuality" />
+            <xs:anyAttribute namespace="##other" processContents="lax" />
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:anyAttribute namespace="##other" processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Visas">
+    <xs:annotation>
+      <xs:documentation>A container to define the VISAs held by a person (e.g. visitor, temporary, permanent resident, work, etc)</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" name="Visa">
+          <xs:annotation>
+            <xs:documentation>All information about Visa details.</xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element maxOccurs="unbounded" name="VisaElement">
+                <xs:annotation>
+                  <xs:documentation>Visa category number depending upon the type of visa. Example: H-1 for employment visa as in the USA</xs:documentation>
+                </xs:annotation>
+                <xs:complexType mixed="true">
+                  <xs:attribute name="ElementType" type="VisaElementEnumeration">
+                    <xs:annotation>
+                      <xs:documentation>If present, specifies the type of the information provided as text value of the element.</xs:documentation>
+                    </xs:annotation>
+                  </xs:attribute>
+                  <xs:anyAttribute namespace="##other" processContents="lax" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute name="ID" type="xs:string">
+              <xs:annotation>
+                <xs:documentation>Globally unique identifier of the entity. </xs:documentation>
+              </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="IssueDate" type="xs:date" />
+            <xs:attributeGroup ref="grDataQuality" />
+            <xs:anyAttribute namespace="##other" processContents="lax" />
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:anyAttribute namespace="##other" processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

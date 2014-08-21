@@ -1,0 +1,824 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:s="http://niem.gov/niem/structures/2.0" xmlns:nc="http://niem.gov/niem/niem-core/2.0" xmlns:unece="http://niem.gov/niem/unece_rec20-misc/2.0" xmlns:nga="http://niem.gov/niem/nga/2.0" xmlns:i="http://niem.gov/niem/appinfo/2.0" xmlns:niem-xsd="http://niem.gov/niem/proxy/xsd/2.0" targetNamespace="http://niem.gov/niem/niem-core/2.0" version="1" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:import schemaLocation="../../structures/2.0/structures.xsd" namespace="http://niem.gov/niem/structures/2.0" />
+  <xsd:import schemaLocation="../../appinfo/2.0/appinfo.xsd" namespace="http://niem.gov/niem/appinfo/2.0" />
+  <xsd:import schemaLocation="../../nga/2.0/nga.xsd" namespace="http://niem.gov/niem/nga/2.0" />
+  <xsd:import schemaLocation="../../proxy/xsd/2.0/xsd.xsd" namespace="http://niem.gov/niem/proxy/xsd/2.0" />
+  <xsd:import schemaLocation="../../unece_rec20-misc/2.0/unece_rec20-misc.xsd" namespace="http://niem.gov/niem/unece_rec20-misc/2.0" />
+  <xsd:annotation>
+    <xsd:appinfo>
+      <i:ConformantIndicator xmlns:i="http://niem.gov/niem/appinfo/2.0">true</i:ConformantIndicator>
+    </xsd:appinfo>
+  </xsd:annotation>
+  <xsd:complexType name="ActivityType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <i:Base i:namespace="http://niem.gov/niem/structures/2.0" i:name="Object" xmlns:i="http://niem.gov/niem/appinfo/2.0" />
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="s:ComplexObjectType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" ref="nc:ActivityIdentification" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" ref="nc:ActivityCategoryText" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" ref="nc:ActivityDateRepresentation" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" ref="nc:ActivityDescriptionText" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" ref="nc:ActivityName" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" ref="nc:ActivityStatus" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" ref="nc:ActivityReasonText" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" ref="nc:ActivityDisposition" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="AddressType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <i:Base i:namespace="http://niem.gov/niem/structures/2.0" i:name="Object" />
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="s:ComplexObjectType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" ref="nc:AddressRepresentation" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:simpleType name="AngularMinuteSimpleType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <i:Base i:namespace="http://niem.gov/niem/structures/2.0" i:name="Object" />
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:decimal">
+      <xsd:maxExclusive value="60" />
+      <xsd:minInclusive value="0" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="AngularMinuteType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <i:Base i:namespace="http://niem.gov/niem/structures/2.0" i:name="Object" />
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base="nc:AngularMinuteSimpleType">
+        <xsd:attributeGroup ref="s:SimpleObjectAttributeGroup" />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:simpleType name="AngularSecondSimpleType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <i:Base i:namespace="http://niem.gov/niem/structures/2.0" i:name="Object" />
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:decimal">
+      <xsd:maxExclusive value="60" />
+      <xsd:minInclusive value="0" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="AngularSecondType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <i:Base i:namespace="http://niem.gov/niem/structures/2.0" i:name="Object" />
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base="nc:AngularSecondSimpleType">
+        <xsd:attributeGroup ref="s:SimpleObjectAttributeGroup" />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name="AreaType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <i:Base i:namespace="http://niem.gov/niem/structures/2.0" i:name="Object" />
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="s:ComplexObjectType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" ref="nc:AreaPolygonDescriptionText" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" ref="nc:AreaPolygonGeographicCoordinate" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" ref="nc:AreaCircularDescriptionText" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" ref="nc:AreaCircularRegion" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="CapabilityType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <i:Base i:namespace="http://niem.gov/niem/structures/2.0" i:name="Object" />
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="s:ComplexObjectType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" ref="nc:CapabilityGeneralCategoryText" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" ref="nc:CapabilityCategoryText" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" ref="nc:CapabilityDescriptionText" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" ref="nc:CapabilityIsLimitationIndicator" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="CircularRegionType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <i:Base i:namespace="http://niem.gov/niem/structures/2.0" i:name="Object" />
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="s:ComplexObjectType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" ref="nc:CircularRegionCenterCoordinate" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" ref="nc:CircularRegionRadiusLengthMeasure" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="ContactInformationType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <i:Base i:namespace="http://niem.gov/niem/structures/2.0" i:name="Object" />
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="s:ComplexObjectType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" ref="nc:ContactMeans" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="ContactRadioType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <i:Base i:namespace="http://niem.gov/niem/structures/2.0" i:name="Object" />
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="s:ComplexObjectType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" ref="nc:ContactRadioCategoryText" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" ref="nc:ContactRadioChannelText" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" ref="nc:ContactRadioCallSignID" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="CrossStreetType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <i:Base i:namespace="http://niem.gov/niem/structures/2.0" i:name="Object" />
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="s:ComplexObjectType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" ref="nc:CrossStreetDescriptionText" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" ref="nc:CrossStreetRelativeLocation" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="DateType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <i:Base i:namespace="http://niem.gov/niem/structures/2.0" i:name="Object" />
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="s:ComplexObjectType" />
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="DispositionType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <i:Base i:namespace="http://niem.gov/niem/structures/2.0" i:name="Object" />
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="s:ComplexObjectType" />
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="FullTelephoneNumberType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <i:Base i:namespace="http://niem.gov/niem/structures/2.0" i:name="Object" />
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="s:ComplexObjectType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" ref="nc:TelephoneNumberFullID" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" ref="nc:TelephoneSuffixID" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="HighwayType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <i:Base i:namespace="http://niem.gov/niem/structures/2.0" i:name="Object" />
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="s:ComplexObjectType" />
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="IdentificationType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <i:Base i:namespace="http://niem.gov/niem/structures/2.0" i:name="Object" />
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="s:ComplexObjectType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" ref="nc:IdentificationID" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="IncidentType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <i:Base i:name="ActivityType" />
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="nc:ActivityType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" ref="nc:IncidentLocation" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" ref="nc:IncidentEvent" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" ref="nc:IncidentJurisdictionalOrganization" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" ref="nc:IncidentObservationText" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="InstantMessengerType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <i:Base i:namespace="http://niem.gov/niem/structures/2.0" i:name="Object" />
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="s:ComplexObjectType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" ref="nc:InstantMessengerClientName" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" ref="nc:InstantMessengerScreenID" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="InternationalTelephoneNumberType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <i:Base i:namespace="http://niem.gov/niem/structures/2.0" i:name="Object" />
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="s:ComplexObjectType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" ref="nc:TelephoneCountryCodeID" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" ref="nc:TelephoneNumberID" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" ref="nc:TelephoneSuffixID" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="LatitudeCoordinateType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <i:Base i:namespace="http://niem.gov/niem/structures/2.0" i:name="Object" />
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="s:ComplexObjectType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" ref="nc:LatitudeDegreeValue" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" ref="nc:LatitudeMinuteValue" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" ref="nc:LatitudeSecondValue" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:simpleType name="LatitudeDegreeSimpleType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <i:Base i:namespace="http://niem.gov/niem/structures/2.0" i:name="Object" />
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:decimal">
+      <xsd:maxInclusive value="90" />
+      <xsd:minInclusive value="-90" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="LatitudeDegreeType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <i:Base i:namespace="http://niem.gov/niem/structures/2.0" i:name="Object" />
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base="nc:LatitudeDegreeSimpleType">
+        <xsd:attributeGroup ref="s:SimpleObjectAttributeGroup" />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name="LengthMeasureType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <i:Base i:name="MeasureType" />
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="nc:MeasureType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="1" ref="nc:LengthUnitCode" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="LocationType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <i:Base i:namespace="http://niem.gov/niem/structures/2.0" i:name="Object" />
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="s:ComplexObjectType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" ref="nc:LocationAddress" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" ref="nc:LocationArea" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" ref="nc:LocationContactInformation" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" ref="nc:LocationCrossStreet" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" ref="nc:LocationDescriptionText" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" ref="nc:LocationHighway" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" ref="nc:LocationMapLocation" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" ref="nc:LocationMGRSCoordinate" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" ref="nc:LocationName" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" ref="nc:LocationSurroundingAreaDescriptionText" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" ref="nc:LocationTwoDimensionalGeographicCoordinate" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" ref="nc:LocationUTMCoordinate" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="LongitudeCoordinateType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <i:Base i:namespace="http://niem.gov/niem/structures/2.0" i:name="Object" />
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="s:ComplexObjectType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" ref="nc:LongitudeDegreeValue" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" ref="nc:LongitudeMinuteValue" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" ref="nc:LongitudeSecondValue" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:simpleType name="LongitudeDegreeSimpleType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <i:Base i:namespace="http://niem.gov/niem/structures/2.0" i:name="Object" />
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:decimal">
+      <xsd:minInclusive value="-180" />
+      <xsd:maxExclusive value="180" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="LongitudeDegreeType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <i:Base i:namespace="http://niem.gov/niem/structures/2.0" i:name="Object" />
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base="nc:LongitudeDegreeSimpleType">
+        <xsd:attributeGroup ref="s:SimpleObjectAttributeGroup" />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name="MGRSCoordinateType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <i:Base i:name="UTMCoordinateType" />
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="nc:UTMCoordinateType" />
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="MapLocationType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <i:Base i:namespace="http://niem.gov/niem/structures/2.0" i:name="Object" />
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="s:ComplexObjectType" />
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="MeasureType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <i:Base i:namespace="http://niem.gov/niem/structures/2.0" i:name="Object" />
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="s:ComplexObjectType" />
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="MetadataType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <i:Base i:namespace="http://niem.gov/niem/structures/2.0" i:name="MetadataType" />
+        <i:AppliesTo i:namespace="http://niem.gov/niem/structures/2.0" i:name="Object" />
+        <i:AppliesTo i:namespace="http://niem.gov/niem/structures/2.0" i:name="Association" />
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="s:MetadataType" />
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="NANPTelephoneNumberType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <i:Base i:namespace="http://niem.gov/niem/structures/2.0" i:name="Object" />
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="s:ComplexObjectType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" ref="nc:TelephoneAreaCodeID" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" ref="nc:TelephoneExchangeID" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" ref="nc:TelephoneLineID" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" ref="nc:TelephoneSuffixID" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="OrganizationType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <i:Base i:namespace="http://niem.gov/niem/structures/2.0" i:name="Object" />
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="s:ComplexObjectType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" ref="nc:OrganizationAbbreviationText" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" ref="nc:OrganizationActivityText" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" ref="nc:OrganizationDescriptionText" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" ref="nc:OrganizationEmergencyContactInformation" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" ref="nc:OrganizationIdentification" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" ref="nc:OrganizationLocation" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" ref="nc:OrganizationName" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" ref="nc:OrganizationParent" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" ref="nc:OrganizationPrimaryContactInformation" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" ref="nc:OrganizationPrincipalOfficial" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" ref="nc:OrganizationStatus" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" ref="nc:OrganizationSubUnit" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" ref="nc:OrganizationSubUnitName" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" ref="nc:OrganizationTaxIdentification" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="PersonNameTextType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <i:Base i:name="ProperNameTextType" />
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base="nc:ProperNameTextType" />
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name="PersonNameType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <i:Base i:namespace="http://niem.gov/niem/structures/2.0" i:name="Object" />
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="s:ComplexObjectType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" ref="nc:PersonNamePrefixText" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" ref="nc:PersonGivenName" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" ref="nc:PersonMiddleName" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" ref="nc:PersonSurName" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" ref="nc:PersonNameSuffixText" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" ref="nc:PersonMaidenName" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" ref="nc:PersonFullName" />
+        </xsd:sequence>
+        <xsd:attribute ref="nc:personNameCommentText" use="optional" />
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="PersonType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <i:Base i:namespace="http://niem.gov/niem/structures/2.0" i:name="Object" />
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="s:ComplexObjectType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" ref="nc:PersonCapability" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" ref="nc:PersonName" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="ProperNameTextType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <i:Base i:name="TextType" />
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base="nc:TextType" />
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:simpleType name="RelativeLocationHeadingSimpleType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <i:Base i:namespace="http://niem.gov/niem/structures/2.0" i:name="Object" />
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:decimal">
+      <xsd:minInclusive value="0" />
+      <xsd:maxExclusive value="360" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="RelativeLocationHeadingType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <i:Base i:namespace="http://niem.gov/niem/structures/2.0" i:name="Object" />
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base="nc:RelativeLocationHeadingSimpleType">
+        <xsd:attributeGroup ref="s:SimpleObjectAttributeGroup" />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name="RelativeLocationType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <i:Base i:namespace="http://niem.gov/niem/structures/2.0" i:name="Object" />
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="s:ComplexObjectType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" ref="nc:RelativeLocationDescriptionText" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" ref="nc:RelativeLocationDirection" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" ref="nc:RelativeLocationDistanceText" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" ref="nc:RelativeLocationHeadingValue" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" ref="nc:RelativeLocationReferencePoint" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="StatusType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <i:Base i:namespace="http://niem.gov/niem/structures/2.0" i:name="Object" />
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="s:ComplexObjectType" />
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="TelephoneNumberType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <i:Base i:namespace="http://niem.gov/niem/structures/2.0" i:name="Object" />
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="s:ComplexObjectType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" ref="nc:TelephoneNumberRepresentation" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="TextType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <i:Base i:namespace="http://niem.gov/niem/proxy/xsd/2.0" i:name="string" />
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base="niem-xsd:string" />
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name="TwoDimensionalGeographicCoordinateType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <i:Base i:namespace="http://niem.gov/niem/structures/2.0" i:name="Object" />
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="s:ComplexObjectType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="1" ref="nc:GeographicDatumCode" />
+          <xsd:element minOccurs="1" maxOccurs="1" ref="nc:GeographicCoordinateLatitude" />
+          <xsd:element minOccurs="1" maxOccurs="1" ref="nc:GeographicCoordinateLongitude" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="UTMCoordinateType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <i:Base i:namespace="http://niem.gov/niem/structures/2.0" i:name="Object" />
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="s:ComplexObjectType" />
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:attribute name="personNameCommentText" type="xsd:string" />
+  <xsd:element name="ActivityCategoryText" nillable="true" type="nc:TextType" />
+  <xsd:element abstract="true" name="ActivityDateRepresentation" />
+  <xsd:element name="ActivityDescriptionText" nillable="true" type="nc:TextType" />
+  <xsd:element name="ActivityDisposition" nillable="true" type="nc:DispositionType" />
+  <xsd:element name="ActivityIdentification" nillable="true" type="nc:IdentificationType" />
+  <xsd:element name="ActivityName" nillable="true" type="nc:TextType" />
+  <xsd:element name="ActivityReasonText" nillable="true" type="nc:TextType" />
+  <xsd:element name="ActivityStatus" nillable="true" type="nc:StatusType" />
+  <xsd:element name="AddressFullText" nillable="true" substitutionGroup="nc:AddressRepresentation" type="nc:TextType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <i:Base i:name="AddressRepresentation" />
+      </xsd:appinfo>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element abstract="true" name="AddressRepresentation" />
+  <xsd:element name="AreaCircularDescriptionText" nillable="true" type="nc:TextType" />
+  <xsd:element name="AreaCircularRegion" nillable="true" type="nc:CircularRegionType" />
+  <xsd:element name="AreaPolygonDescriptionText" nillable="true" type="nc:TextType" />
+  <xsd:element name="AreaPolygonGeographicCoordinate" nillable="true" type="nc:TwoDimensionalGeographicCoordinateType" />
+  <xsd:element name="CapabilityCategoryText" nillable="true" type="nc:TextType" />
+  <xsd:element name="CapabilityDescriptionText" nillable="true" type="nc:TextType" />
+  <xsd:element name="CapabilityGeneralCategoryText" nillable="true" type="nc:TextType" />
+  <xsd:element name="CapabilityIsLimitationIndicator" nillable="true" type="niem-xsd:boolean" />
+  <xsd:element name="CircularRegionCenterCoordinate" nillable="true" type="nc:TwoDimensionalGeographicCoordinateType" />
+  <xsd:element name="CircularRegionRadiusLengthMeasure" nillable="true" type="nc:LengthMeasureType" />
+  <xsd:element name="ContactEmailID" nillable="true" substitutionGroup="nc:ContactMeans" type="niem-xsd:string">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <i:Base i:name="ContactMeans" />
+      </xsd:appinfo>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="ContactInstantMessenger" nillable="true" substitutionGroup="nc:ContactMeans" type="nc:InstantMessengerType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <i:Base i:name="ContactMeans" />
+      </xsd:appinfo>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="ContactMailingAddress" nillable="true" substitutionGroup="nc:ContactMeans" type="nc:AddressType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <i:Base i:name="ContactMeans" />
+      </xsd:appinfo>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element abstract="true" name="ContactMeans" />
+  <xsd:element name="ContactRadio" nillable="true" substitutionGroup="nc:ContactMeans" type="nc:ContactRadioType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <i:Base i:name="ContactMeans" />
+      </xsd:appinfo>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="ContactRadioCallSignID" nillable="true" type="niem-xsd:string" />
+  <xsd:element name="ContactRadioCategoryText" nillable="true" type="nc:TextType" />
+  <xsd:element name="ContactRadioChannelText" nillable="true" type="nc:TextType" />
+  <xsd:element name="ContactTelephoneNumber" nillable="true" substitutionGroup="nc:ContactMeans" type="nc:TelephoneNumberType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <i:Base i:name="ContactMeans" />
+      </xsd:appinfo>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="ContactWebsiteURI" nillable="true" substitutionGroup="nc:ContactMeans" type="niem-xsd:anyURI">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <i:Base i:name="ContactMeans" />
+      </xsd:appinfo>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="CrossStreetDescriptionText" nillable="true" type="nc:TextType" />
+  <xsd:element name="CrossStreetRelativeLocation" nillable="true" type="nc:RelativeLocationType" />
+  <xsd:element abstract="true" name="DateRepresentation" />
+  <xsd:element name="DateTime" nillable="true" substitutionGroup="nc:DateRepresentation" type="niem-xsd:dateTime">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <i:Base i:name="DateRepresentation" />
+      </xsd:appinfo>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="FullTelephoneNumber" nillable="true" substitutionGroup="nc:TelephoneNumberRepresentation" type="nc:FullTelephoneNumberType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <i:Base i:name="TelephoneNumberRepresentation" />
+      </xsd:appinfo>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="GeographicCoordinateLatitude" nillable="true" type="nc:LatitudeCoordinateType" />
+  <xsd:element name="GeographicCoordinateLongitude" nillable="true" type="nc:LongitudeCoordinateType" />
+  <xsd:element name="GeographicDatumCode" nillable="true" type="nga:DatumCodeType" />
+  <xsd:element name="IdentificationID" nillable="true" type="niem-xsd:string" />
+  <xsd:element name="IncidentEvent" nillable="true" type="nc:ActivityType" />
+  <xsd:element name="IncidentJurisdictionalOrganization" nillable="true" type="nc:OrganizationType" />
+  <xsd:element name="IncidentLocation" nillable="true" type="nc:LocationType" />
+  <xsd:element name="IncidentObservationText" nillable="true" type="nc:TextType" />
+  <xsd:element name="InstantMessengerClientName" nillable="true" type="nc:TextType" />
+  <xsd:element name="InstantMessengerScreenID" nillable="true" type="niem-xsd:string" />
+  <xsd:element name="InternationalTelephoneNumber" nillable="true" substitutionGroup="nc:TelephoneNumberRepresentation" type="nc:InternationalTelephoneNumberType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <i:Base i:name="TelephoneNumberRepresentation" />
+      </xsd:appinfo>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="LatitudeDegreeValue" nillable="true" type="nc:LatitudeDegreeType" />
+  <xsd:element name="LatitudeMinuteValue" nillable="true" type="nc:AngularMinuteType" />
+  <xsd:element name="LatitudeSecondValue" nillable="true" type="nc:AngularSecondType" />
+  <xsd:element name="LengthUnitCode" nillable="true" type="unece:LengthCodeType" />
+  <xsd:element name="LocationAddress" nillable="true" type="nc:AddressType" />
+  <xsd:element name="LocationArea" nillable="true" type="nc:AreaType" />
+  <xsd:element name="LocationContactInformation" nillable="true" type="nc:ContactInformationType" />
+  <xsd:element name="LocationCrossStreet" nillable="true" type="nc:CrossStreetType" />
+  <xsd:element name="LocationDescriptionText" nillable="true" type="nc:TextType" />
+  <xsd:element name="LocationHighway" nillable="true" type="nc:HighwayType" />
+  <xsd:element name="LocationMGRSCoordinate" nillable="true" type="nc:MGRSCoordinateType" />
+  <xsd:element name="LocationMapLocation" nillable="true" type="nc:MapLocationType" />
+  <xsd:element name="LocationName" nillable="true" type="nc:ProperNameTextType" />
+  <xsd:element name="LocationSurroundingAreaDescriptionText" nillable="true" type="nc:TextType" />
+  <xsd:element name="LocationTwoDimensionalGeographicCoordinate" nillable="true" type="nc:TwoDimensionalGeographicCoordinateType" />
+  <xsd:element name="LocationUTMCoordinate" nillable="true" type="nc:UTMCoordinateType" />
+  <xsd:element name="LongitudeDegreeValue" nillable="true" type="nc:LongitudeDegreeType" />
+  <xsd:element name="LongitudeMinuteValue" nillable="true" type="nc:AngularMinuteType" />
+  <xsd:element name="LongitudeSecondValue" nillable="true" type="nc:AngularSecondType" />
+  <xsd:element name="NANPTelephoneNumber" nillable="true" substitutionGroup="nc:TelephoneNumberRepresentation" type="nc:NANPTelephoneNumberType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <i:Base i:name="TelephoneNumberRepresentation" />
+      </xsd:appinfo>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="OrganizationAbbreviationText" nillable="true" type="nc:TextType" />
+  <xsd:element name="OrganizationActivityText" nillable="true" type="nc:TextType" />
+  <xsd:element name="OrganizationDescriptionText" nillable="true" type="nc:TextType" />
+  <xsd:element name="OrganizationEmergencyContactInformation" nillable="true" type="nc:ContactInformationType" />
+  <xsd:element name="OrganizationIdentification" nillable="true" type="nc:IdentificationType" />
+  <xsd:element name="OrganizationLocation" nillable="true" type="nc:LocationType" />
+  <xsd:element name="OrganizationName" nillable="true" type="nc:TextType" />
+  <xsd:element abstract="true" name="OrganizationParent" />
+  <xsd:element name="OrganizationPrimaryContactInformation" nillable="true" type="nc:ContactInformationType" />
+  <xsd:element name="OrganizationPrincipalOfficial" nillable="true" type="nc:PersonType" />
+  <xsd:element name="OrganizationStatus" nillable="true" type="nc:StatusType" />
+  <xsd:element name="OrganizationSubUnit" nillable="true" type="nc:OrganizationType" />
+  <xsd:element name="OrganizationSubUnitName" nillable="true" type="nc:TextType" />
+  <xsd:element name="OrganizationTaxIdentification" nillable="true" type="nc:IdentificationType" />
+  <xsd:element name="PersonCapability" nillable="true" type="nc:CapabilityType" />
+  <xsd:element name="PersonFullName" nillable="true" type="nc:PersonNameTextType" />
+  <xsd:element name="PersonGivenName" nillable="true" type="nc:PersonNameTextType" />
+  <xsd:element name="PersonMaidenName" nillable="true" type="nc:PersonNameTextType" />
+  <xsd:element name="PersonMiddleName" nillable="true" type="nc:PersonNameTextType" />
+  <xsd:element name="PersonName" nillable="true" type="nc:PersonNameType" />
+  <xsd:element name="PersonNamePrefixText" nillable="true" type="nc:TextType" />
+  <xsd:element name="PersonNameSuffixText" nillable="true" type="nc:TextType" />
+  <xsd:element name="PersonSurName" nillable="true" type="nc:PersonNameTextType" />
+  <xsd:element name="RelativeLocationDescriptionText" nillable="true" type="nc:TextType" />
+  <xsd:element abstract="true" name="RelativeLocationDirection" />
+  <xsd:element name="RelativeLocationDistanceText" nillable="true" type="nc:TextType" />
+  <xsd:element name="RelativeLocationHeadingValue" nillable="true" type="nc:RelativeLocationHeadingType" />
+  <xsd:element name="RelativeLocationReferencePoint" nillable="true" type="nc:LocationType" />
+  <xsd:element name="TelephoneAreaCodeID" nillable="true" type="niem-xsd:string" />
+  <xsd:element name="TelephoneCountryCodeID" nillable="true" type="niem-xsd:string" />
+  <xsd:element name="TelephoneExchangeID" nillable="true" type="niem-xsd:string" />
+  <xsd:element name="TelephoneLineID" nillable="true" type="niem-xsd:string" />
+  <xsd:element name="TelephoneNumberFullID" nillable="true" type="niem-xsd:string" />
+  <xsd:element name="TelephoneNumberID" nillable="true" type="niem-xsd:string" />
+  <xsd:element abstract="true" name="TelephoneNumberRepresentation" />
+  <xsd:element name="TelephoneSuffixID" nillable="true" type="niem-xsd:string" />
+</xsd:schema>

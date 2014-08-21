@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:tns="http://uicds.org/TaskingService" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:sch="http://uicds.org/TaskingService" targetNamespace="http://uicds.org/TaskingService" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <schema xmlns:wstop="http://docs.oasis-open.org/wsn/t-1" xmlns:wsa="http://www.w3.org/2005/08/addressing" xmlns:wsnt="http://docs.oasis-open.org/wsn/b-2" xmlns:ns1="http://uicds.org/TaskingService" xmlns:nc="http://niem.gov/niem/niem-core/2.0" xmlns:Q1="http://uicds.org/WorkProductService" xmlns:preciss="http://www.saic.com/precis/2009/06/structures" elementFormDefault="qualified" targetNamespace="http://uicds.org/TaskingService" xmlns="http://www.w3.org/2001/XMLSchema">
+      <import schemaLocation="../../../external/niem/niem-core/2.0/niem-core.xsd" namespace="http://niem.gov/niem/niem-core/2.0" />
+      <import schemaLocation="../../../ws-notification/WS-BaseNotification-1_3.xsd" namespace="http://docs.oasis-open.org/wsn/b-2" />
+      <import schemaLocation="../../../ws-notification/WS-Topics-1_3.xsd" namespace="http://docs.oasis-open.org/wsn/t-1" />
+      <import schemaLocation="../../../ws-notification/WS-Addressing-2005_08.xsd" namespace="http://www.w3.org/2005/08/addressing" />
+      <import schemaLocation="../../../precis/2009/06/Structures.xsd" namespace="http://www.saic.com/precis/2009/06/structures" />
+      <import schemaLocation="../../../services/WorkProduct/0.1/WorkProductService.xsd" namespace="http://uicds.org/WorkProductService" />
+      <element name="CreateTaskListRequest">
+        <complexType>
+          <all>
+            <element minOccurs="0" maxOccurs="1" name="entityID" type="anyURI" />
+            <element name="incidentId" type="string" />
+            <element name="TaskList" type="ns1:TaskListType" />
+          </all>
+        </complexType>
+      </element>
+      <element name="CreateTaskListResponse">
+        <complexType>
+          <sequence>
+            <element ref="Q1:WorkProductPublicationResponse" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetTaskListRequest">
+        <complexType>
+          <all>
+            <element ref="preciss:WorkProductIdentification" />
+          </all>
+        </complexType>
+      </element>
+      <element name="GetTaskListResponse">
+        <complexType>
+          <sequence>
+            <element ref="preciss:WorkProduct" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetTaskListByIdRequest">
+        <complexType>
+          <all>
+            <element name="entityID" type="anyURI" />
+            <element name="incidentId" type="string" />
+          </all>
+        </complexType>
+      </element>
+      <element name="GetTaskListByIdResponse">
+        <complexType>
+          <sequence>
+            <element ref="preciss:WorkProduct" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="UpdateTaskListRequest">
+        <complexType>
+          <all>
+            <element ref="preciss:WorkProductIdentification" />
+            <element name="TaskList" type="ns1:TaskListType" />
+          </all>
+        </complexType>
+      </element>
+      <element name="UpdateTaskListResponse">
+        <complexType>
+          <sequence>
+            <element ref="Q1:WorkProductPublicationResponse" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="DeleteTaskListRequest">
+        <complexType>
+          <all>
+            <element ref="preciss:WorkProductIdentification" />
+          </all>
+        </complexType>
+      </element>
+      <element name="DeleteTaskListResponse">
+        <complexType>
+          <sequence>
+            <element ref="Q1:WorkProductPublicationResponse" />
+          </sequence>
+        </complexType>
+      </element>
+      <complexType name="TaskType">
+        <sequence>
+          <element name="taskID" type="anyURI" />
+          <element name="description" type="string" />
+          <element name="priority" type="int" />
+          <element name="assignedTo">
+            <complexType>
+              <sequence>
+                <element name="id" type="anyURI" />
+                <element name="assigned" type="dateTime" />
+                <element name="accepted" type="dateTime" />
+              </sequence>
+            </complexType>
+          </element>
+          <element name="assignedBy">
+            <complexType>
+              <sequence>
+                <element name="id" type="anyURI" />
+                <element name="assigned" type="dateTime" />
+              </sequence>
+            </complexType>
+          </element>
+          <element name="status">
+            <complexType>
+              <sequence>
+                <element minOccurs="0" maxOccurs="unbounded" name="Status" />
+              </sequence>
+            </complexType>
+          </element>
+          <element name="dueDate" type="dateTime" />
+        </sequence>
+      </complexType>
+      <complexType name="TaskListType">
+        <sequence>
+          <element minOccurs="0" name="entityId" type="anyURI" />
+          <element minOccurs="0" maxOccurs="unbounded" name="Task" type="ns1:TaskType" />
+        </sequence>
+      </complexType>
+      <element name="TaskList" type="ns1:TaskListType" />
+    </schema>
+  </wsdl:types>
+  <wsdl:message name="UpdateTaskListRequest">
+    <wsdl:part name="UpdateTaskListRequest" element="sch:UpdateTaskListRequest" />
+  </wsdl:message>
+  <wsdl:message name="UpdateTaskListResponse">
+    <wsdl:part name="UpdateTaskListResponse" element="sch:UpdateTaskListResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteTaskListResponse">
+    <wsdl:part name="DeleteTaskListResponse" element="sch:DeleteTaskListResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTaskListByIdResponse">
+    <wsdl:part name="GetTaskListByIdResponse" element="sch:GetTaskListByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTaskListResponse">
+    <wsdl:part name="GetTaskListResponse" element="sch:GetTaskListResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateTaskListRequest">
+    <wsdl:part name="CreateTaskListRequest" element="sch:CreateTaskListRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetTaskListByIdRequest">
+    <wsdl:part name="GetTaskListByIdRequest" element="sch:GetTaskListByIdRequest" />
+  </wsdl:message>
+  <wsdl:message name="DeleteTaskListRequest">
+    <wsdl:part name="DeleteTaskListRequest" element="sch:DeleteTaskListRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetTaskListRequest">
+    <wsdl:part name="GetTaskListRequest" element="sch:GetTaskListRequest" />
+  </wsdl:message>
+  <wsdl:message name="CreateTaskListResponse">
+    <wsdl:part name="CreateTaskListResponse" element="sch:CreateTaskListResponse" />
+  </wsdl:message>
+  <wsdl:portType name="TaskingService">
+    <wsdl:operation name="DeleteTaskList">
+      <wsdl:input name="DeleteTaskListRequest" message="sch:DeleteTaskListRequest" />
+      <wsdl:output name="DeleteTaskListResponse" message="sch:DeleteTaskListResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateTaskList">
+      <wsdl:input name="UpdateTaskListRequest" message="sch:UpdateTaskListRequest" />
+      <wsdl:output name="UpdateTaskListResponse" message="sch:UpdateTaskListResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTaskListById">
+      <wsdl:input name="GetTaskListByIdRequest" message="sch:GetTaskListByIdRequest" />
+      <wsdl:output name="GetTaskListByIdResponse" message="sch:GetTaskListByIdResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTaskList">
+      <wsdl:input name="GetTaskListRequest" message="sch:GetTaskListRequest" />
+      <wsdl:output name="GetTaskListResponse" message="sch:GetTaskListResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateTaskList">
+      <wsdl:input name="CreateTaskListRequest" message="sch:CreateTaskListRequest" />
+      <wsdl:output name="CreateTaskListResponse" message="sch:CreateTaskListResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="TaskingServiceSoap11" type="sch:TaskingService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="DeleteTaskList">
+      <soap:operation soapAction="" />
+      <wsdl:input name="DeleteTaskListRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="DeleteTaskListResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateTaskList">
+      <soap:operation soapAction="" />
+      <wsdl:input name="UpdateTaskListRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="UpdateTaskListResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTaskListById">
+      <soap:operation soapAction="" />
+      <wsdl:input name="GetTaskListByIdRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetTaskListByIdResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTaskList">
+      <soap:operation soapAction="" />
+      <wsdl:input name="GetTaskListRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetTaskListResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateTaskList">
+      <soap:operation soapAction="" />
+      <wsdl:input name="CreateTaskListRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="CreateTaskListResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="TaskingServiceService">
+    <wsdl:port name="TaskingServiceSoap11" binding="sch:TaskingServiceSoap11">
+      <soap:address location="http://localhost:8080/uicds/core/ws/Services/TaskingService" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

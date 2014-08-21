@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:tns="http://uicds.org/WorkProductService" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:sch="http://uicds.org/WorkProductService" targetNamespace="http://uicds.org/WorkProductService" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <schema xmlns:wp="http://uicds.org/WorkProductService" xmlns:preciss="http://www.saic.com/precis/2009/06/structures" xmlns:precisb="http://www.saic.com/precis/2009/06/base" elementFormDefault="unqualified" targetNamespace="http://uicds.org/WorkProductService" xmlns="http://www.w3.org/2001/XMLSchema">
+      <import schemaLocation="../../../precis/2009/06/Structures.xsd" namespace="http://www.saic.com/precis/2009/06/structures" />
+      <import schemaLocation="../../../precis/2009/06/BaseTypes.xsd" namespace="http://www.saic.com/precis/2009/06/base" />
+      <include schemaLocation="../../../services/WorkProduct/0.1/WorkProductData.xsd" />
+      <element name="GetProductRequest">
+        <complexType>
+          <sequence>
+            <element ref="preciss:WorkProductIdentification" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetProductResponse">
+        <complexType>
+          <sequence>
+            <element ref="preciss:WorkProduct" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="PublishProductRequest">
+        <complexType>
+          <sequence>
+            <element ref="preciss:WorkProduct" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="PublishProductResponse">
+        <complexType>
+          <sequence>
+            <element ref="wp:WorkProductPublicationResponse" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="AssociateWorkProductToInterestGroupRequest">
+        <complexType>
+          <sequence>
+            <element name="WorkProductID" type="precisb:IdentifierType" />
+            <element name="IncidentID" type="precisb:IdentifierType" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="AssociateWorkProductToInterestGroupResponse">
+        <complexType>
+          <sequence>
+            <element ref="preciss:WorkProductSummary" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetAssociatedWorkProductListRequest" type="string" />
+      <element name="GetAssociatedWorkProductListResponse">
+        <complexType>
+          <sequence>
+            <element ref="wp:WorkProductSummaryList" />
+          </sequence>
+        </complexType>
+      </element>
+    </schema>
+  </wsdl:types>
+  <wsdl:message name="GetProductResponse">
+    <wsdl:part name="GetProductResponse" element="sch:GetProductResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAssociatedWorkProductListRequest">
+    <wsdl:part name="GetAssociatedWorkProductListRequest" element="sch:GetAssociatedWorkProductListRequest" />
+  </wsdl:message>
+  <wsdl:message name="AssociateWorkProductToInterestGroupResponse">
+    <wsdl:part name="AssociateWorkProductToInterestGroupResponse" element="sch:AssociateWorkProductToInterestGroupResponse" />
+  </wsdl:message>
+  <wsdl:message name="PublishProductResponse">
+    <wsdl:part name="PublishProductResponse" element="sch:PublishProductResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAssociatedWorkProductListResponse">
+    <wsdl:part name="GetAssociatedWorkProductListResponse" element="sch:GetAssociatedWorkProductListResponse" />
+  </wsdl:message>
+  <wsdl:message name="AssociateWorkProductToInterestGroupRequest">
+    <wsdl:part name="AssociateWorkProductToInterestGroupRequest" element="sch:AssociateWorkProductToInterestGroupRequest" />
+  </wsdl:message>
+  <wsdl:message name="PublishProductRequest">
+    <wsdl:part name="PublishProductRequest" element="sch:PublishProductRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetProductRequest">
+    <wsdl:part name="GetProductRequest" element="sch:GetProductRequest" />
+  </wsdl:message>
+  <wsdl:portType name="WorkProductService">
+    <wsdl:operation name="PublishProduct">
+      <wsdl:input name="PublishProductRequest" message="sch:PublishProductRequest" />
+      <wsdl:output name="PublishProductResponse" message="sch:PublishProductResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProduct">
+      <wsdl:input name="GetProductRequest" message="sch:GetProductRequest" />
+      <wsdl:output name="GetProductResponse" message="sch:GetProductResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="AssociateWorkProductToInterestGroup">
+      <wsdl:input name="AssociateWorkProductToInterestGroupRequest" message="sch:AssociateWorkProductToInterestGroupRequest" />
+      <wsdl:output name="AssociateWorkProductToInterestGroupResponse" message="sch:AssociateWorkProductToInterestGroupResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAssociatedWorkProductList">
+      <wsdl:input name="GetAssociatedWorkProductListRequest" message="sch:GetAssociatedWorkProductListRequest" />
+      <wsdl:output name="GetAssociatedWorkProductListResponse" message="sch:GetAssociatedWorkProductListResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WorkProductServiceSoap11" type="sch:WorkProductService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="PublishProduct">
+      <soap:operation soapAction="PublishProduct" />
+      <wsdl:input name="PublishProductRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="PublishProductResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProduct">
+      <soap:operation soapAction="GetProduct" />
+      <wsdl:input name="GetProductRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetProductResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AssociateWorkProductToInterestGroup">
+      <soap:operation soapAction="AssociateWorkProductToInterestGroup" />
+      <wsdl:input name="AssociateWorkProductToInterestGroupRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="AssociateWorkProductToInterestGroupResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAssociatedWorkProductList">
+      <soap:operation soapAction="GetAssociatedWorkProductList" />
+      <wsdl:input name="GetAssociatedWorkProductListRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetAssociatedWorkProductListResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WorkProductServiceService">
+    <wsdl:port name="WorkProductServiceSoap11" binding="sch:WorkProductServiceSoap11">
+      <soap:address location="http://localhost:8080/uicds/core/ws/services/WorkProductService" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

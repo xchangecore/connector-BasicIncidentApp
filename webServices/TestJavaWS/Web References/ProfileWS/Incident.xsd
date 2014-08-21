@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:wp="http://uicds.org/WorkProductService" xmlns:inc="http://uicds.org/incident" xmlns:nc="http://niem.gov/niem/niem-core/2.0" elementFormDefault="qualified" targetNamespace="http://uicds.org/incident" xmlns="http://www.w3.org/2001/XMLSchema">
+  <import schemaLocation="../../../external/niem/niem-core/2.0/niem-core.xsd" namespace="http://niem.gov/niem/niem-core/2.0" />
+  <import schemaLocation="../../../services/WorkProduct/0.1/WorkProductService.xsd" namespace="http://uicds.org/WorkProductService" />
+  <element name="incident" type="inc:UICDSIncidentType" />
+  <complexType name="UICDSIncidentType">
+    <complexContent mixed="false">
+      <extension base="nc:IncidentType">
+        <sequence>
+          <element minOccurs="0" maxOccurs="unbounded" name="sharedCoreName" type="string" />
+          <element name="incidentActionPlan" type="string" />
+          <element name="owningCore" type="string" />
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+</schema>

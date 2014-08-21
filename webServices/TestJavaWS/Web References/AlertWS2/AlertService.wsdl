@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:tns="http://uicds.dctd.saic.com/schemas/AlertService" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:sch="http://uicds.dctd.saic.com/schemas/AlertService" targetNamespace="http://uicds.dctd.saic.com/schemas/AlertService" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <schema xmlns:s="http://niem.gov/niem/structures/2.0" xmlns:cap="urn:oasis:names:tc:emergency:cap:1.1" xmlns:sl="http://uicds.dctd.saic.com/schemas/StringList" xmlns:as="http://uicds.dctd.saic.com/schemas/AlertService" xmlns:de="urn:oasis:names:tc:emergency:EDXL:DE:1.0" elementFormDefault="qualified" targetNamespace="http://uicds.dctd.saic.com/schemas/AlertService" xmlns="http://www.w3.org/2001/XMLSchema">
+      <import schemaLocation="../niem-2.0/structures/2.0/structures.xsd" namespace="http://niem.gov/niem/structures/2.0" />
+      <import schemaLocation="../niem-2.0/external/cap/1.1/cap.xsd" namespace="urn:oasis:names:tc:emergency:cap:1.1" />
+      <import schemaLocation="../uicds/StringList.xsd" namespace="http://uicds.dctd.saic.com/schemas/StringList" />
+      <import schemaLocation="../niem-2.0/external/de/1.0/de.xsd" namespace="urn:oasis:names:tc:emergency:EDXL:DE:1.0" />
+      <element name="CreateAlertRequest" type="as:UICDSAlertAdapterType" />
+      <element name="CreateAlertResponse">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" ref="de:EDXLDistribution" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetAlertRequest" type="string" />
+      <element name="GetAlertResponse">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" ref="de:EDXLDistribution" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetListOfAlertsRequest" type="string" />
+      <element name="GetListOfAlertsResponse">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" ref="de:EDXLDistribution" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CancelAlertRequest" type="string" />
+      <complexType name="AlertInfoType">
+        <sequence>
+          <element name="AlertID" type="string" />
+          <element name="WorkProductID" type="string" />
+        </sequence>
+      </complexType>
+      <complexType name="AlertListType">
+        <sequence>
+          <element minOccurs="0" maxOccurs="unbounded" name="AlertList" type="as:AlertInfoType" />
+        </sequence>
+      </complexType>
+      <complexType name="UICDSAlertAdapterType">
+        <complexContent mixed="false">
+          <extension base="s:ComplexObjectType">
+            <sequence>
+              <element minOccurs="1" maxOccurs="1" ref="cap:alert" />
+            </sequence>
+          </extension>
+        </complexContent>
+      </complexType>
+      <element name="CancelAlertResponse">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" ref="de:EDXLDistribution" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetAlertByAlertIdRequest" type="string" />
+      <element name="GetAlertByAlertIdResponse">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" ref="de:EDXLDistribution" />
+          </sequence>
+        </complexType>
+      </element>
+    </schema>
+  </wsdl:types>
+  <wsdl:message name="GetAlertByAlertIdRequest">
+    <wsdl:part name="GetAlertByAlertIdRequest" element="sch:GetAlertByAlertIdRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetListOfAlertsResponse">
+    <wsdl:part name="GetListOfAlertsResponse" element="sch:GetListOfAlertsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAlertRequest">
+    <wsdl:part name="GetAlertRequest" element="sch:GetAlertRequest" />
+  </wsdl:message>
+  <wsdl:message name="CreateAlertRequest">
+    <wsdl:part name="CreateAlertRequest" element="sch:CreateAlertRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetAlertResponse">
+    <wsdl:part name="GetAlertResponse" element="sch:GetAlertResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateAlertResponse">
+    <wsdl:part name="CreateAlertResponse" element="sch:CreateAlertResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAlertByAlertIdResponse">
+    <wsdl:part name="GetAlertByAlertIdResponse" element="sch:GetAlertByAlertIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="CancelAlertResponse">
+    <wsdl:part name="CancelAlertResponse" element="sch:CancelAlertResponse" />
+  </wsdl:message>
+  <wsdl:message name="CancelAlertRequest">
+    <wsdl:part name="CancelAlertRequest" element="sch:CancelAlertRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetListOfAlertsRequest">
+    <wsdl:part name="GetListOfAlertsRequest" element="sch:GetListOfAlertsRequest" />
+  </wsdl:message>
+  <wsdl:portType name="AlertService">
+    <wsdl:operation name="GetAlert">
+      <wsdl:input name="GetAlertRequest" message="sch:GetAlertRequest" />
+      <wsdl:output name="GetAlertResponse" message="sch:GetAlertResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="CancelAlert">
+      <wsdl:input name="CancelAlertRequest" message="sch:CancelAlertRequest" />
+      <wsdl:output name="CancelAlertResponse" message="sch:CancelAlertResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetListOfAlerts">
+      <wsdl:input name="GetListOfAlertsRequest" message="sch:GetListOfAlertsRequest" />
+      <wsdl:output name="GetListOfAlertsResponse" message="sch:GetListOfAlertsResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateAlert">
+      <wsdl:input name="CreateAlertRequest" message="sch:CreateAlertRequest" />
+      <wsdl:output name="CreateAlertResponse" message="sch:CreateAlertResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAlertByAlertId">
+      <wsdl:input name="GetAlertByAlertIdRequest" message="sch:GetAlertByAlertIdRequest" />
+      <wsdl:output name="GetAlertByAlertIdResponse" message="sch:GetAlertByAlertIdResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="AlertServiceSoap11" type="sch:AlertService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetAlert">
+      <soap:operation soapAction="" />
+      <wsdl:input name="GetAlertRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetAlertResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CancelAlert">
+      <soap:operation soapAction="" />
+      <wsdl:input name="CancelAlertRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="CancelAlertResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetListOfAlerts">
+      <soap:operation soapAction="" />
+      <wsdl:input name="GetListOfAlertsRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetListOfAlertsResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateAlert">
+      <soap:operation soapAction="" />
+      <wsdl:input name="CreateAlertRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="CreateAlertResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAlertByAlertId">
+      <soap:operation soapAction="" />
+      <wsdl:input name="GetAlertByAlertIdRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetAlertByAlertIdResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="AlertServiceService">
+    <wsdl:port name="AlertServiceSoap11" binding="sch:AlertServiceSoap11">
+      <soap:address location="https://149.8.167.229:443/uicds/ws/AlertService" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DiscoveryClientResultsFile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Results>
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.ContractReference" url="http://localhost:8080/uicds/core/ws/services/DirectoryService.wsdl" filename="DirectoryService.wsdl" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://localhost:8080/uicds/external/niem/structures/2.0/structures.xsd" filename="structures.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://localhost:8080/uicds/services/IncidentManagement/0.1/IncidentManagementServiceData.xsd" filename="IncidentManagementServiceData.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://localhost:8080/uicds/services/Directory/0.1/UserConfig.xsd" filename="UserConfig.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://localhost:8080/uicds/services/Directory/0.1/ServiceConfig.xsd" filename="ServiceConfig.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://localhost:8080/uicds/services/Directory/0.1/ExternalToolConfig.xsd" filename="ExternalToolConfig.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://localhost:8080/uicds/services/Directory/0.1/CoreConfig.xsd" filename="CoreConfig.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://localhost:8080/uicds/services/Directory/0.1/ExternalDataSourceConfig.xsd" filename="ExternalDataSourceConfig.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://localhost:8080/uicds/services/Directory/0.1/IncidentIdList.xsd" filename="IncidentIdList.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://localhost:8080/uicds/external/niem/appinfo/2.0/appinfo.xsd" filename="appinfo.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://localhost:8080/uicds/services/Directory/0.1/DirectoryServiceData.xsd" filename="DirectoryServiceData.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://localhost:8080/uicds/services/Directory/0.1/SOSConfig.xsd" filename="SOSConfig.xsd" />
+  </Results>
+</DiscoveryClientResultsFile>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:sch="http://uicds.org/BroadcastService" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://uicds.org/BroadcastService" targetNamespace="http://uicds.org/BroadcastService" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <schema xmlns:de="urn:oasis:names:tc:emergency:EDXL:DE:1.0" xmlns:s="http://niem.gov/niem/structures/2.0" elementFormDefault="qualified" targetNamespace="http://uicds.org/BroadcastService" xmlns="http://www.w3.org/2001/XMLSchema">
+      <import schemaLocation="../../../external/niem/external/de/1.0/de.xsd" namespace="urn:oasis:names:tc:emergency:EDXL:DE:1.0" />
+      <import schemaLocation="../../../external/niem/structures/2.0/structures.xsd" namespace="http://niem.gov/niem/structures/2.0" />
+      <complexType name="BroadcastMessageType">
+        <complexContent mixed="false">
+          <extension base="s:ComplexObjectType">
+            <sequence>
+              <element ref="de:EDXLDistribution" />
+            </sequence>
+          </extension>
+        </complexContent>
+      </complexType>
+      <element name="BroadcastMessageRequest" type="tns:BroadcastMessageType" />
+      <element name="BroadcastMessageResponse" type="tns:BroadcastMessageResponseType" />
+      <complexType name="BroadcastMessageResponseType">
+        <sequence>
+          <element name="errorExists" type="boolean" />
+          <element minOccurs="0" maxOccurs="1" name="errorString" type="string" />
+          <element minOccurs="0" maxOccurs="unbounded" name="coreError" type="tns:BroadcastMessageErrorType" />
+        </sequence>
+      </complexType>
+      <complexType name="BroadcastMessageErrorType">
+        <sequence>
+          <element name="coreName" type="string" />
+          <element name="error" type="string" />
+        </sequence>
+      </complexType>
+    </schema>
+  </wsdl:types>
+  <wsdl:message name="BroadcastMessageResponse">
+    <wsdl:part name="BroadcastMessageResponse" element="tns:BroadcastMessageResponse" />
+  </wsdl:message>
+  <wsdl:message name="BroadcastMessageRequest">
+    <wsdl:part name="BroadcastMessageRequest" element="tns:BroadcastMessageRequest" />
+  </wsdl:message>
+  <wsdl:portType name="BroadcastService">
+    <wsdl:operation name="BroadcastMessage">
+      <wsdl:input name="BroadcastMessageRequest" message="tns:BroadcastMessageRequest" />
+      <wsdl:output name="BroadcastMessageResponse" message="tns:BroadcastMessageResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BroadcastServiceSoap11" type="tns:BroadcastService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="BroadcastMessage">
+      <soap:operation soapAction="" />
+      <wsdl:input name="BroadcastMessageRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="BroadcastMessageResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="BroadcastServiceService">
+    <wsdl:port name="BroadcastServiceSoap11" binding="tns:BroadcastServiceSoap11">
+      <soap:address location="http://localhost:80/uicds/core/ws/services/BroadcastService" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

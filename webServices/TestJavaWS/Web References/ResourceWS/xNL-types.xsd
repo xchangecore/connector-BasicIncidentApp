@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="urn:oasis:names:tc:ciq:xnl:3" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="urn:oasis:names:tc:ciq:xnl:3" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:annotation>
+    <xs:documentation> 
+		Specification Name: OASIS CIQ TC - extensible Name Language Types (xNL-types)
+		Description: Defines the W3C schema that provides enumeration lists t support xNL
+		Produced by: OASIS Customer Information Quality Technical Committee
+		Version: 3.0  
+		Status: Public Review Draft
+		Copyright: 2006, OASIS
+		Last Modified: 05 April 2006
+		Last Modified by: Ram Kumar
+		NOTE: This is the schema that users can customise the enumeration lists to meet their
+		exchange requirements 
+		</xs:documentation>
+  </xs:annotation>
+  <xs:simpleType name="string">
+    <xs:annotation>
+      <xs:documentation>A common format for a length - constrained string.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="255" />
+      <xs:whiteSpace value="collapse" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="PersonNameElementEnumeration">
+    <xs:annotation>
+      <xs:documentation>A list of person name element types, e.g. First Name, Last Name, Title, etc.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="PrecedingTitle">
+        <xs:annotation>
+          <xs:documentation>His Excellency, Honorable, etc.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Title">
+        <xs:annotation>
+          <xs:documentation>A title signifies some sort of status, such as Mr, Miss, Ms (marriage status), or education such as Professor, PhD, Dr, etc.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="FirstName">
+        <xs:annotation>
+          <xs:documentation>The most important name element by which this particular individual is identified in the group. E.g. John, Sam, Brian for Anglo-Saxon cultures.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="MiddleName">
+        <xs:annotation>
+          <xs:documentation>Name elements related to additional identification of the individual, such as names are parents or places.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="LastName">
+        <xs:annotation>
+          <xs:documentation>Name element that identifies the group the individual belongs to and is identified by, such as Last Name, Surname, Family Name, etc. </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="OtherName">
+        <xs:annotation>
+          <xs:documentation>Any other additional names that are not directly used to identify or call the individual, such as names of ancestors, saints, etc.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Alias">
+        <xs:annotation>
+          <xs:documentation>A simple nick name that is commonly used as part of the name. E.g. a fancy kick-boxer can be commonly known as Bill "Storm" Bababoons, where "Storm" is obviously an alias.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="GenerationIdentifier">
+        <xs:annotation>
+          <xs:documentation>Junior, Senior, The Second, IV,  etc.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="PlaceName">
+        <xs:annotation>
+          <xs:documentation>The place where the person comes from is often used as part of the name, but this can be mapped to middle name or other names, if necessary.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="AncestorName">
+        <xs:annotation>
+          <xs:documentation>Father's, grand father's, and other ancestors' names that used is part of the individuals name. This is common in some cultures, but can be mapped to middle name or other names if required.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="OrganisationNameElementEnumeration">
+    <xs:annotation>
+      <xs:documentation>A list of organisation name element types, e.g. Name, propriety type, liability type, etc.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="NameOnly">
+        <xs:annotation>
+          <xs:documentation>Only the name part without company type. E.g. "Bug busters" in Bug Busters Ltd.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="OrganisationType">
+        <xs:annotation>
+          <xs:documentation>Only the company (liability) type. E.g. Inc, Ltd, Joint-Stock, etc.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="NameAndType">
+        <xs:annotation>
+          <xs:documentation>Full name that includes company type, e.g. Bug Busters Ltd.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="DataQualityEnumeration">
+    <xs:annotation>
+      <xs:documentation>A list of values to indicate the level of reliability of the data.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Valid">
+        <xs:annotation>
+          <xs:documentation>The data was validated and is considered to be true and correct.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Invalid">
+        <xs:annotation>
+          <xs:documentation>The data was validate and it was established that at least some part of the data is incorrect.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="PersonNameAliasTypeEnumeration">
+    <xs:annotation>
+      <xs:documentation>A list of common alias types for person </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="MaidenName">
+        <xs:annotation>
+          <xs:documentation>Name of an individual before marriage.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="NameChange">
+        <xs:annotation>
+          <xs:documentation>A generic term to indicate that the name was officially changed</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="CommonUse">
+        <xs:annotation>
+          <xs:documentation>Name that is commonly used by others, e.g. a simplified form of the official name.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="NameAtBirth">
+        <xs:annotation>
+          <xs:documentation>A name given to an individual at birth, but later changed (common in some cultures)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="PreferredName">
+        <xs:annotation>
+          <xs:documentation>Indicates that the party prefers to be called by this name</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="OfficialName">
+        <xs:annotation>
+          <xs:documentation>An official name of the person, e.g. as in the passport. incorporation certificate, etc.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="UnofficialName" />
+      <xs:enumeration value="NickName" />
+      <xs:enumeration value="PetName" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="OrganisationNameAliasTypeEnumeration">
+    <xs:annotation>
+      <xs:documentation>A list of common alias types for organisation</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="NameChange" />
+      <xs:enumeration value="CommonUse" />
+      <xs:enumeration value="PublishingName" />
+      <xs:enumeration value="OfficialName" />
+      <xs:enumeration value="UnofficialName" />
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

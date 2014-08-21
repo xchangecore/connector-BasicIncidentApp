@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DiscoveryClientResultsFile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Results>
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://localhost/uicds/ws-notification/WS-Topics-1_3.xsd" filename="WS-Topics-1_3.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://localhost/uicds/ws-notification/WS-Addressing-2005_08.xsd" filename="WS-Addressing-2005_08.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.ContractReference" url="http://localhost/uicds/core/ws/services/ResourceProfileService.wsdl" filename="ResourceProfileService.wsdl" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://www.w3.org/2007/08/xml.xsd" filename="xml.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://localhost/uicds/ws-notification/WS-BaseFaults-1_2.xsd" filename="WS-BaseFaults-1_2.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://localhost/uicds/precis/2009/06/BaseTypes.xsd" filename="BaseTypes.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://localhost/uicds/ws-notification/WS-ResourceLifetime-1_2.xsd" filename="WS-ResourceLifetime-1_2.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://localhost/uicds/ws-notification/WS-BaseNotification-1_3.xsd" filename="WS-BaseNotification-1_3.xsd" />
+  </Results>
+</DiscoveryClientResultsFile>

@@ -1,0 +1,422 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:sch="http://uicds.org/IAPService" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://uicds.org/IAPService" targetNamespace="http://uicds.org/IAPService" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <schema xmlns:iap="http://uicds.org/IAPService" xmlns:wp="http://uicds.org/WorkProductService" xmlns:nc="http://niem.gov/niem/niem-core/2.0" xmlns:icsfc="http://uicds.org/ICSFormCommon" xmlns:s="http://niem.gov/niem/structures/2.0" xmlns:preciss="http://www.saic.com/precis/2009/06/structures" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://uicds.org/IAPService" xmlns="http://www.w3.org/2001/XMLSchema">
+      <import schemaLocation="../../../services/WorkProduct/0.1/WorkProductService.xsd" namespace="http://uicds.org/WorkProductService" />
+      <import schemaLocation="../../../external/niem/structures/2.0/structures.xsd" namespace="http://niem.gov/niem/structures/2.0" />
+      <import schemaLocation="../../../external/niem/niem-core/2.0/niem-core.xsd" namespace="http://niem.gov/niem/niem-core/2.0" />
+      <import schemaLocation="../../../precis/2009/06/Structures.xsd" namespace="http://www.saic.com/precis/2009/06/structures" />
+      <import schemaLocation="../../../services/IncidentForms/0.1/ICSFormCommon.xsd" namespace="http://uicds.org/ICSFormCommon" />
+      <element name="CreateIAPRequest">
+        <complexType>
+          <all>
+            <element minOccurs="0" name="incidentId" type="string" />
+            <element name="IncidentActionPlan" type="iap:IncidentActionPlanType" />
+          </all>
+        </complexType>
+      </element>
+      <element name="CreateIAPResponse">
+        <complexType>
+          <all>
+            <element ref="wp:WorkProductPublicationResponse" />
+          </all>
+        </complexType>
+      </element>
+      <element name="CreateICSFormRequest">
+        <complexType>
+          <all>
+            <element minOccurs="0" name="incidentId" type="string" />
+            <element name="ICSForm" type="icsfc:ICSFormDocumentType" />
+          </all>
+        </complexType>
+      </element>
+      <element name="CreateICSFormResponse">
+        <complexType>
+          <all>
+            <element ref="wp:WorkProductPublicationResponse" />
+          </all>
+        </complexType>
+      </element>
+      <element name="GetApprovedIAPRequest">
+        <complexType>
+          <all>
+            <element minOccurs="0" name="incidentId" type="string" />
+          </all>
+        </complexType>
+      </element>
+      <element name="GetApprovedIAPResponse">
+        <complexType>
+          <sequence>
+            <element ref="preciss:WorkProduct" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetIAPRequest">
+        <complexType>
+          <all>
+            <element ref="preciss:WorkProductIdentification" />
+          </all>
+        </complexType>
+      </element>
+      <element name="GetIAPResponse">
+        <complexType>
+          <sequence>
+            <element ref="preciss:WorkProduct" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetICSFormRequest">
+        <complexType>
+          <all>
+            <element ref="preciss:WorkProductIdentification" />
+          </all>
+        </complexType>
+      </element>
+      <element name="GetICSFormResponse">
+        <complexType>
+          <all>
+            <element ref="preciss:WorkProduct" />
+          </all>
+        </complexType>
+      </element>
+      <element name="AttachWorkProductToIAPRequest">
+        <complexType>
+          <all>
+            <element name="IAP">
+              <annotation>
+                <documentation>The IAP that the work products should be attached to.</documentation>
+              </annotation>
+              <complexType>
+                <sequence>
+                  <element ref="preciss:WorkProductIdentification" />
+                </sequence>
+              </complexType>
+            </element>
+            <element name="WorkProductList">
+              <annotation>
+                <documentation>Identifies the the work products should be attached to the IAP.</documentation>
+              </annotation>
+              <complexType>
+                <sequence>
+                  <element maxOccurs="unbounded" ref="preciss:WorkProductIdentification" />
+                </sequence>
+              </complexType>
+            </element>
+          </all>
+        </complexType>
+      </element>
+      <element name="AttachWorkProductToIAPResponse">
+        <complexType>
+          <all>
+            <element ref="wp:WorkProductPublicationResponse" />
+          </all>
+        </complexType>
+      </element>
+      <element name="GetICSFormListRequest">
+        <complexType>
+          <all>
+            <element name="IncidentID" type="string" />
+          </all>
+        </complexType>
+      </element>
+      <element name="GetICSFormListResponse">
+        <complexType>
+          <all>
+            <element ref="preciss:WorkProduct" />
+          </all>
+        </complexType>
+      </element>
+      <element name="UpdateICSFormRequest">
+        <complexType>
+          <all>
+            <element ref="preciss:WorkProductIdentification" />
+            <element name="ICSForm" type="icsfc:ICSFormDocumentType" />
+          </all>
+        </complexType>
+      </element>
+      <element name="UpdateICSFormResponse">
+        <complexType>
+          <all>
+            <element ref="wp:WorkProductPublicationResponse" />
+          </all>
+        </complexType>
+      </element>
+      <element name="UpdateIAPRequest">
+        <complexType>
+          <all>
+            <element ref="preciss:WorkProductIdentification" />
+            <element name="IncidentActionPlan" type="iap:IncidentActionPlanType" />
+          </all>
+        </complexType>
+      </element>
+      <element name="UpdateIAPResponse">
+        <complexType>
+          <all>
+            <element ref="wp:WorkProductPublicationResponse" />
+          </all>
+        </complexType>
+      </element>
+      <element name="SetApprovedIAPRequest">
+        <complexType>
+          <all>
+            <element minOccurs="0" name="incidentId" type="string" />
+            <element ref="preciss:WorkProductIdentification" />
+          </all>
+        </complexType>
+      </element>
+      <element name="SetApprovedIAPResponse">
+        <complexType>
+          <all>
+            <element ref="wp:WorkProductPublicationResponse" />
+          </all>
+        </complexType>
+      </element>
+      <element name="IncidentActionPlan" type="iap:IncidentActionPlanType" />
+      <complexType name="IncidentActionPlanType">
+        <complexContent mixed="false">
+          <extension base="s:ComplexObjectType">
+            <sequence>
+              <element name="IncidentID" type="string" />
+              <element name="Name" type="string" />
+              <element name="DescriptionText" type="string" />
+              <element name="DocumentEffectiveDate" type="string" />
+              <element name="DocumentExpirationDate" type="string" />
+              <element name="Components" type="iap:IAPComponentListType" />
+            </sequence>
+          </extension>
+        </complexContent>
+      </complexType>
+      <complexType name="IAPComponentListType">
+        <sequence>
+          <element minOccurs="0" maxOccurs="unbounded" name="component" type="iap:IAPComponentType" />
+        </sequence>
+      </complexType>
+      <complexType name="IAPComponentType">
+        <sequence>
+          <element name="ComponentIdentifier">
+            <annotation>
+              <documentation>Identifies the work product that represents the IAP component, i.e. an ICS Form.</documentation>
+            </annotation>
+            <complexType>
+              <sequence>
+                <element ref="preciss:WorkProductIdentification" />
+              </sequence>
+            </complexType>
+          </element>
+          <element name="CompletionTaskIdentification">
+            <annotation>
+              <documentation>Identifies the work product that represents the task to complete this IAP component, i.e. an ICS Form.</documentation>
+            </annotation>
+            <complexType>
+              <sequence>
+                <element ref="preciss:WorkProductIdentification" />
+              </sequence>
+            </complexType>
+          </element>
+          <element name="Description" type="string" />
+          <element name="Status" type="string" />
+        </sequence>
+      </complexType>
+    </schema>
+  </wsdl:types>
+  <wsdl:message name="GetICSFormListResponse">
+    <wsdl:part name="GetICSFormListResponse" element="tns:GetICSFormListResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateICSFormResponse">
+    <wsdl:part name="UpdateICSFormResponse" element="tns:UpdateICSFormResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateICSFormResponse">
+    <wsdl:part name="CreateICSFormResponse" element="tns:CreateICSFormResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetICSFormRequest">
+    <wsdl:part name="GetICSFormRequest" element="tns:GetICSFormRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetApprovedIAPResponse">
+    <wsdl:part name="GetApprovedIAPResponse" element="tns:GetApprovedIAPResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetIAPResponse">
+    <wsdl:part name="GetIAPResponse" element="tns:GetIAPResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetApprovedIAPRequest">
+    <wsdl:part name="GetApprovedIAPRequest" element="tns:GetApprovedIAPRequest" />
+  </wsdl:message>
+  <wsdl:message name="CreateIAPRequest">
+    <wsdl:part name="CreateIAPRequest" element="tns:CreateIAPRequest" />
+  </wsdl:message>
+  <wsdl:message name="AttachWorkProductToIAPResponse">
+    <wsdl:part name="AttachWorkProductToIAPResponse" element="tns:AttachWorkProductToIAPResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateIAPResponse">
+    <wsdl:part name="UpdateIAPResponse" element="tns:UpdateIAPResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetIAPRequest">
+    <wsdl:part name="GetIAPRequest" element="tns:GetIAPRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetICSFormListRequest">
+    <wsdl:part name="GetICSFormListRequest" element="tns:GetICSFormListRequest" />
+  </wsdl:message>
+  <wsdl:message name="UpdateIAPRequest">
+    <wsdl:part name="UpdateIAPRequest" element="tns:UpdateIAPRequest" />
+  </wsdl:message>
+  <wsdl:message name="UpdateICSFormRequest">
+    <wsdl:part name="UpdateICSFormRequest" element="tns:UpdateICSFormRequest" />
+  </wsdl:message>
+  <wsdl:message name="CreateIAPResponse">
+    <wsdl:part name="CreateIAPResponse" element="tns:CreateIAPResponse" />
+  </wsdl:message>
+  <wsdl:message name="SetApprovedIAPResponse">
+    <wsdl:part name="SetApprovedIAPResponse" element="tns:SetApprovedIAPResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetICSFormResponse">
+    <wsdl:part name="GetICSFormResponse" element="tns:GetICSFormResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateICSFormRequest">
+    <wsdl:part name="CreateICSFormRequest" element="tns:CreateICSFormRequest" />
+  </wsdl:message>
+  <wsdl:message name="SetApprovedIAPRequest">
+    <wsdl:part name="SetApprovedIAPRequest" element="tns:SetApprovedIAPRequest" />
+  </wsdl:message>
+  <wsdl:message name="AttachWorkProductToIAPRequest">
+    <wsdl:part name="AttachWorkProductToIAPRequest" element="tns:AttachWorkProductToIAPRequest" />
+  </wsdl:message>
+  <wsdl:portType name="IAPService">
+    <wsdl:operation name="GetICSForm">
+      <wsdl:input name="GetICSFormRequest" message="tns:GetICSFormRequest" />
+      <wsdl:output name="GetICSFormResponse" message="tns:GetICSFormResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetIAP">
+      <wsdl:input name="GetIAPRequest" message="tns:GetIAPRequest" />
+      <wsdl:output name="GetIAPResponse" message="tns:GetIAPResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="SetApprovedIAP">
+      <wsdl:input name="SetApprovedIAPRequest" message="tns:SetApprovedIAPRequest" />
+      <wsdl:output name="SetApprovedIAPResponse" message="tns:SetApprovedIAPResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetICSFormList">
+      <wsdl:input name="GetICSFormListRequest" message="tns:GetICSFormListRequest" />
+      <wsdl:output name="GetICSFormListResponse" message="tns:GetICSFormListResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetApprovedIAP">
+      <wsdl:input name="GetApprovedIAPRequest" message="tns:GetApprovedIAPRequest" />
+      <wsdl:output name="GetApprovedIAPResponse" message="tns:GetApprovedIAPResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateICSForm">
+      <wsdl:input name="UpdateICSFormRequest" message="tns:UpdateICSFormRequest" />
+      <wsdl:output name="UpdateICSFormResponse" message="tns:UpdateICSFormResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateIAP">
+      <wsdl:input name="UpdateIAPRequest" message="tns:UpdateIAPRequest" />
+      <wsdl:output name="UpdateIAPResponse" message="tns:UpdateIAPResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="AttachWorkProductToIAP">
+      <wsdl:input name="AttachWorkProductToIAPRequest" message="tns:AttachWorkProductToIAPRequest" />
+      <wsdl:output name="AttachWorkProductToIAPResponse" message="tns:AttachWorkProductToIAPResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateIAP">
+      <wsdl:input name="CreateIAPRequest" message="tns:CreateIAPRequest" />
+      <wsdl:output name="CreateIAPResponse" message="tns:CreateIAPResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateICSForm">
+      <wsdl:input name="CreateICSFormRequest" message="tns:CreateICSFormRequest" />
+      <wsdl:output name="CreateICSFormResponse" message="tns:CreateICSFormResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="IAPServiceSoap11" type="tns:IAPService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetICSForm">
+      <soap:operation soapAction="" />
+      <wsdl:input name="GetICSFormRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetICSFormResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetIAP">
+      <soap:operation soapAction="" />
+      <wsdl:input name="GetIAPRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetIAPResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetApprovedIAP">
+      <soap:operation soapAction="" />
+      <wsdl:input name="SetApprovedIAPRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="SetApprovedIAPResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetICSFormList">
+      <soap:operation soapAction="" />
+      <wsdl:input name="GetICSFormListRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetICSFormListResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetApprovedIAP">
+      <soap:operation soapAction="" />
+      <wsdl:input name="GetApprovedIAPRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetApprovedIAPResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateICSForm">
+      <soap:operation soapAction="" />
+      <wsdl:input name="UpdateICSFormRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="UpdateICSFormResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateIAP">
+      <soap:operation soapAction="" />
+      <wsdl:input name="UpdateIAPRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="UpdateIAPResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AttachWorkProductToIAP">
+      <soap:operation soapAction="" />
+      <wsdl:input name="AttachWorkProductToIAPRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="AttachWorkProductToIAPResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateIAP">
+      <soap:operation soapAction="" />
+      <wsdl:input name="CreateIAPRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="CreateIAPResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateICSForm">
+      <soap:operation soapAction="" />
+      <wsdl:input name="CreateICSFormRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="CreateICSFormResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="IAPServiceService">
+    <wsdl:port name="IAPServiceSoap11" binding="tns:IAPServiceSoap11">
+      <soap:address location="http://localhost:80/uicds/core/ws/services/IAPService" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

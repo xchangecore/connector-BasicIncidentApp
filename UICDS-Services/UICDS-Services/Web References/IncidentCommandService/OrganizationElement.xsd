@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:s="http://niem.gov/niem/structures/2.0" xmlns:org="http://uicds.org/OrganizationElement" elementFormDefault="qualified" targetNamespace="http://uicds.org/OrganizationElement" xmlns="http://www.w3.org/2001/XMLSchema">
+  <import schemaLocation="../../../external/niem/structures/2.0/structures.xsd" namespace="http://niem.gov/niem/structures/2.0" />
+  <complexType name="OrganizationElementType">
+    <complexContent mixed="false">
+      <extension base="s:ComplexObjectType">
+        <sequence>
+          <element name="OrganizationName" type="string" />
+          <element name="OrganizationType" type="string" />
+          <element name="PersonInCharge" type="org:OrganizationPositionType" />
+          <sequence>
+            <element minOccurs="0" maxOccurs="unbounded" name="Staff" type="org:OrganizationPositionType" />
+            <element minOccurs="0" maxOccurs="unbounded" name="OrganizationElement" type="org:OrganizationElementType" />
+          </sequence>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <simpleType name="OrganizationTypeType">
+    <restriction base="string">
+      <enumeration value="Office" />
+      <enumeration value="Section" />
+      <enumeration value="Branch" />
+      <enumeration value="Division" />
+      <enumeration value="Group" />
+      <enumeration value="Unit" />
+      <enumeration value="Strike Team/Task Force" />
+    </restriction>
+  </simpleType>
+  <simpleType name="OrganizationNameType">
+    <restriction base="string">
+      <enumeration value="Incident Command" />
+      <enumeration value="Operations" />
+      <enumeration value="Planning" />
+      <enumeration value="Logistics" />
+      <enumeration value="Finance" />
+    </restriction>
+  </simpleType>
+  <complexType name="OrganizationPositionType">
+    <complexContent mixed="false">
+      <extension base="s:ComplexObjectType">
+        <sequence>
+          <element name="RoleProfileRef" type="anyURI" />
+          <element name="PersonProfileRef" type="anyURI" />
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <element name="OrganizatioinType" type="org:OrganizationTypeType" />
+  <element name="OrganizationPosition" type="org:OrganizationPositionType" />
+  <element name="OrganizationName" type="org:OrganizationNameType" />
+  <element name="OrganizationElement" type="org:OrganizationElementType" />
+</schema>

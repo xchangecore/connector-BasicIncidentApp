@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:sch="http://uicds.org/DirectoryService" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://uicds.org/DirectoryService" targetNamespace="http://uicds.org/DirectoryService" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <schema xmlns:sc="http://uicds.org/ServiceConfig" xmlns:wp="http://uicds.org/WorkProductService" xmlns:etc="http://uicds.org/ExternalToolConfig" xmlns:edsc="http://uicds.org/ExternalDataSourceConfig" xmlns:dsd="http://uicds.org/DirectoryServiceData" xmlns:sos="http://uicds.org/SOSConfig" xmlns:dir="http://uicds.org/DirectoryService" xmlns:cc="http://uicds.org/CoreConfig" elementFormDefault="qualified" targetNamespace="http://uicds.org/DirectoryService" xmlns="http://www.w3.org/2001/XMLSchema">
+      <import schemaLocation="../../../services/Directory/0.1/DirectoryServiceData.xsd" namespace="http://uicds.org/DirectoryServiceData" />
+      <import schemaLocation="../../../services/Directory/0.1/SOSConfig.xsd" namespace="http://uicds.org/SOSConfig" />
+      <import schemaLocation="../../../services/Directory/0.1/ExternalDataSourceConfig.xsd" namespace="http://uicds.org/ExternalDataSourceConfig" />
+      <import schemaLocation="../../../services/Directory/0.1/ServiceConfig.xsd" namespace="http://uicds.org/ServiceConfig" />
+      <import schemaLocation="../../../services/Directory/0.1/CoreConfig.xsd" namespace="http://uicds.org/CoreConfig" />
+      <import schemaLocation="../../../services/Directory/0.1/ExternalToolConfig.xsd" namespace="http://uicds.org/ExternalToolConfig" />
+      <import schemaLocation="../../../services/WorkProduct/0.1/WorkProductService.xsd" namespace="http://uicds.org/WorkProductService" />
+      <complexType name="RegisterExternalToolRequestType">
+        <sequence>
+          <element name="ExternalTool" type="etc:ExternalToolConfigType" />
+        </sequence>
+      </complexType>
+      <element name="RegisterExternalToolRequest" type="dir:RegisterExternalToolRequestType" />
+      <complexType name="UnregisterExternalToolRequestType">
+        <sequence>
+          <element name="URN" type="string" />
+        </sequence>
+      </complexType>
+      <element name="UnregisterExternalToolRequest" type="dir:UnregisterExternalToolRequestType" />
+      <complexType name="RegisterExternalDataSourceRequestType">
+        <sequence>
+          <element name="URN" type="string" />
+        </sequence>
+      </complexType>
+      <element name="RegisterExternalDataSourceRequest" type="dir:RegisterExternalDataSourceRequestType" />
+      <complexType name="UnregisterExternalDataSourceRequestType">
+        <sequence>
+          <element name="URN" type="string" />
+        </sequence>
+      </complexType>
+      <element name="UnregisterExternalDataSourceRequest" type="dir:UnregisterExternalDataSourceRequestType" />
+      <complexType name="RegisterUICDSServiceRequestType">
+        <sequence>
+          <element name="Service" type="sc:ServiceConfigType" />
+        </sequence>
+      </complexType>
+      <element name="RegisterUICDSServiceRequest" type="dir:RegisterUICDSServiceRequestType" />
+      <complexType name="UnregisterUICDSServiceRequestType">
+        <sequence>
+          <element name="serviceName" type="string" />
+        </sequence>
+      </complexType>
+      <element name="UnregisterUICDSServiceRequest" type="dir:UnregisterUICDSServiceRequestType" />
+      <complexType name="RegisterSOSRequestType">
+        <sequence>
+          <element name="sos" type="sos:SOSConfigType" />
+        </sequence>
+      </complexType>
+      <element name="RegisterSOSRequest" type="dir:RegisterSOSRequestType" />
+      <complexType name="UnregisterSOSRequestType">
+        <sequence>
+          <element name="sosID" type="string" />
+        </sequence>
+      </complexType>
+      <element name="UnregisterSOSRequest" type="dir:UnregisterSOSRequestType" />
+      <complexType name="GetCoreListRequestType" />
+      <element name="GetCoreListRequest" type="dir:GetCoreListRequestType" />
+      <complexType name="GetCoreListResponseType">
+        <sequence>
+          <element name="coreList" type="cc:CoreConfigListType" />
+        </sequence>
+      </complexType>
+      <element name="GetCoreListResponse" type="dir:GetCoreListResponseType" />
+      <complexType name="GetExternalToolListRequestType">
+        <sequence>
+          <element name="coreName" type="string" />
+        </sequence>
+      </complexType>
+      <element name="GetIncidentListRequest" />
+      <element name="GetIncidentListResponse">
+        <complexType>
+          <sequence>
+            <element ref="wp:WorkProductList" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetExternalToolListRequest" type="dir:GetExternalToolListRequestType" />
+      <complexType name="GetExternalToolListResponseType">
+        <sequence>
+          <element name="externalToolList" type="etc:ExternalToolConfigListType" />
+        </sequence>
+      </complexType>
+      <element name="GetExternalToolListResponse" type="dir:GetExternalToolListResponseType" />
+      <complexType name="GetServicetListRequestType">
+        <sequence>
+          <element name="coreName" type="string" />
+        </sequence>
+      </complexType>
+      <element name="GetServiceListRequest" type="dir:GetServicetListRequestType" />
+      <complexType name="GetServiceListResponseType">
+        <sequence>
+          <element name="serviceList" type="sc:ServiceConfigListType" />
+        </sequence>
+      </complexType>
+      <element name="GetServiceListResponse" type="dir:GetServiceListResponseType" />
+      <complexType name="GetSOSListRequestType" />
+      <element name="GetSOSListRequest" type="dir:GetSOSListRequestType" />
+      <complexType name="GetSOSListResponseType">
+        <sequence>
+          <element name="sosList" type="sos:SOSConfigListType" />
+        </sequence>
+      </complexType>
+      <element name="GetSOSListResponse" type="dir:GetSOSListResponseType" />
+      <complexType name="GetExternalDataSourceListRequestType">
+        <sequence>
+          <element name="coreName" type="string" />
+        </sequence>
+      </complexType>
+      <element name="GetExternalDataSourceListRequest" type="dir:GetExternalDataSourceListRequestType" />
+      <complexType name="GetExternalDataSourceListResponseType">
+        <sequence>
+          <element name="externalDataSourceList" type="edsc:ExternalDataSourceConfigListType" />
+        </sequence>
+      </complexType>
+      <element name="GetExternalDataSourceListResponse" type="dir:GetExternalDataSourceListResponseType" />
+    </schema>
+  </wsdl:types>
+  <wsdl:message name="RegisterExternalDataSourceRequest">
+    <wsdl:part name="RegisterExternalDataSourceRequest" element="tns:RegisterExternalDataSourceRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetCoreListResponse">
+    <wsdl:part name="GetCoreListResponse" element="tns:GetCoreListResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetExternalDataSourceListResponse">
+    <wsdl:part name="GetExternalDataSourceListResponse" element="tns:GetExternalDataSourceListResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetServiceListRequest">
+    <wsdl:part name="GetServiceListRequest" element="tns:GetServiceListRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetExternalDataSourceListRequest">
+    <wsdl:part name="GetExternalDataSourceListRequest" element="tns:GetExternalDataSourceListRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetServiceListResponse">
+    <wsdl:part name="GetServiceListResponse" element="tns:GetServiceListResponse" />
+  </wsdl:message>
+  <wsdl:message name="RegisterExternalToolRequest">
+    <wsdl:part name="RegisterExternalToolRequest" element="tns:RegisterExternalToolRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetIncidentListRequest">
+    <wsdl:part name="GetIncidentListRequest" element="tns:GetIncidentListRequest" />
+  </wsdl:message>
+  <wsdl:message name="UnregisterUICDSServiceRequest">
+    <wsdl:part name="UnregisterUICDSServiceRequest" element="tns:UnregisterUICDSServiceRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetIncidentListResponse">
+    <wsdl:part name="GetIncidentListResponse" element="tns:GetIncidentListResponse" />
+  </wsdl:message>
+  <wsdl:message name="UnregisterSOSRequest">
+    <wsdl:part name="UnregisterSOSRequest" element="tns:UnregisterSOSRequest" />
+  </wsdl:message>
+  <wsdl:message name="RegisterUICDSServiceRequest">
+    <wsdl:part name="RegisterUICDSServiceRequest" element="tns:RegisterUICDSServiceRequest" />
+  </wsdl:message>
+  <wsdl:message name="UnregisterExternalDataSourceRequest">
+    <wsdl:part name="UnregisterExternalDataSourceRequest" element="tns:UnregisterExternalDataSourceRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetSOSListResponse">
+    <wsdl:part name="GetSOSListResponse" element="tns:GetSOSListResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSOSListRequest">
+    <wsdl:part name="GetSOSListRequest" element="tns:GetSOSListRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetExternalToolListResponse">
+    <wsdl:part name="GetExternalToolListResponse" element="tns:GetExternalToolListResponse" />
+  </wsdl:message>
+  <wsdl:message name="UnregisterExternalToolRequest">
+    <wsdl:part name="UnregisterExternalToolRequest" element="tns:UnregisterExternalToolRequest" />
+  </wsdl:message>
+  <wsdl:message name="RegisterSOSRequest">
+    <wsdl:part name="RegisterSOSRequest" element="tns:RegisterSOSRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetExternalToolListRequest">
+    <wsdl:part name="GetExternalToolListRequest" element="tns:GetExternalToolListRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetCoreListRequest">
+    <wsdl:part name="GetCoreListRequest" element="tns:GetCoreListRequest" />
+  </wsdl:message>
+  <wsdl:portType name="DirectoryService">
+    <wsdl:operation name="RegisterExternalTool">
+      <wsdl:input name="RegisterExternalToolRequest" message="tns:RegisterExternalToolRequest" />
+    </wsdl:operation>
+    <wsdl:operation name="UnregisterUICDSService">
+      <wsdl:input name="UnregisterUICDSServiceRequest" message="tns:UnregisterUICDSServiceRequest" />
+    </wsdl:operation>
+    <wsdl:operation name="UnregisterExternalTool">
+      <wsdl:input name="UnregisterExternalToolRequest" message="tns:UnregisterExternalToolRequest" />
+    </wsdl:operation>
+    <wsdl:operation name="UnregisterExternalDataSource">
+      <wsdl:input name="UnregisterExternalDataSourceRequest" message="tns:UnregisterExternalDataSourceRequest" />
+    </wsdl:operation>
+    <wsdl:operation name="GetIncidentList">
+      <wsdl:input name="GetIncidentListRequest" message="tns:GetIncidentListRequest" />
+      <wsdl:output name="GetIncidentListResponse" message="tns:GetIncidentListResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="RegisterUICDSService">
+      <wsdl:input name="RegisterUICDSServiceRequest" message="tns:RegisterUICDSServiceRequest" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSOSList">
+      <wsdl:input name="GetSOSListRequest" message="tns:GetSOSListRequest" />
+      <wsdl:output name="GetSOSListResponse" message="tns:GetSOSListResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetExternalToolList">
+      <wsdl:input name="GetExternalToolListRequest" message="tns:GetExternalToolListRequest" />
+      <wsdl:output name="GetExternalToolListResponse" message="tns:GetExternalToolListResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCoreList">
+      <wsdl:input name="GetCoreListRequest" message="tns:GetCoreListRequest" />
+      <wsdl:output name="GetCoreListResponse" message="tns:GetCoreListResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetServiceList">
+      <wsdl:input name="GetServiceListRequest" message="tns:GetServiceListRequest" />
+      <wsdl:output name="GetServiceListResponse" message="tns:GetServiceListResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetExternalDataSourceList">
+      <wsdl:input name="GetExternalDataSourceListRequest" message="tns:GetExternalDataSourceListRequest" />
+      <wsdl:output name="GetExternalDataSourceListResponse" message="tns:GetExternalDataSourceListResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="RegisterExternalDataSource">
+      <wsdl:input name="RegisterExternalDataSourceRequest" message="tns:RegisterExternalDataSourceRequest" />
+    </wsdl:operation>
+    <wsdl:operation name="RegisterSOS">
+      <wsdl:input name="RegisterSOSRequest" message="tns:RegisterSOSRequest" />
+    </wsdl:operation>
+    <wsdl:operation name="UnregisterSOS">
+      <wsdl:input name="UnregisterSOSRequest" message="tns:UnregisterSOSRequest" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="DirectoryServiceSoap11" type="tns:DirectoryService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="RegisterExternalTool">
+      <soap:operation soapAction="" />
+      <wsdl:input name="RegisterExternalToolRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="UnregisterUICDSService">
+      <soap:operation soapAction="" />
+      <wsdl:input name="UnregisterUICDSServiceRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="UnregisterExternalTool">
+      <soap:operation soapAction="" />
+      <wsdl:input name="UnregisterExternalToolRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="UnregisterExternalDataSource">
+      <soap:operation soapAction="" />
+      <wsdl:input name="UnregisterExternalDataSourceRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="GetIncidentList">
+      <soap:operation soapAction="" />
+      <wsdl:input name="GetIncidentListRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetIncidentListResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegisterUICDSService">
+      <soap:operation soapAction="" />
+      <wsdl:input name="RegisterUICDSServiceRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="GetSOSList">
+      <soap:operation soapAction="" />
+      <wsdl:input name="GetSOSListRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetSOSListResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetExternalToolList">
+      <soap:operation soapAction="" />
+      <wsdl:input name="GetExternalToolListRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetExternalToolListResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCoreList">
+      <soap:operation soapAction="" />
+      <wsdl:input name="GetCoreListRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetCoreListResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetServiceList">
+      <soap:operation soapAction="" />
+      <wsdl:input name="GetServiceListRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetServiceListResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetExternalDataSourceList">
+      <soap:operation soapAction="" />
+      <wsdl:input name="GetExternalDataSourceListRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetExternalDataSourceListResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegisterExternalDataSource">
+      <soap:operation soapAction="" />
+      <wsdl:input name="RegisterExternalDataSourceRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="RegisterSOS">
+      <soap:operation soapAction="" />
+      <wsdl:input name="RegisterSOSRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="UnregisterSOS">
+      <soap:operation soapAction="" />
+      <wsdl:input name="UnregisterSOSRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="DirectoryServiceService">
+    <wsdl:port name="DirectoryServiceSoap11" binding="tns:DirectoryServiceSoap11">
+      <soap:address location="http://localhost:80/uicds/core/ws/services/DirectoryService" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:tns="http://uicds.org/IncidentManagementService" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:sch="http://uicds.org/IncidentManagementService" targetNamespace="http://uicds.org/IncidentManagementService" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <schema xmlns:inc="http://uicds.org/incident" xmlns:preciss="http://www.saic.com/precis/2009/06/structures" xmlns:cap="urn:oasis:names:tc:emergency:cap:1.1" xmlns:ims="http://uicds.org/IncidentManagementService" xmlns:wps="http://uicds.org/WorkProductService" elementFormDefault="qualified" targetNamespace="http://uicds.org/IncidentManagementService" xmlns="http://www.w3.org/2001/XMLSchema">
+      <import schemaLocation="../../../external/niem/external/cap/1.1/cap.xsd" namespace="urn:oasis:names:tc:emergency:cap:1.1" />
+      <import schemaLocation="../../../services/IncidentManagement/0.1/Incident.xsd" namespace="http://uicds.org/incident" />
+      <import schemaLocation="../../../services/WorkProduct/0.1/WorkProductService.xsd" namespace="http://uicds.org/WorkProductService" />
+      <import schemaLocation="../../../precis/2009/06/Structures.xsd" namespace="http://www.saic.com/precis/2009/06/structures" />
+      <include schemaLocation="../../../services/IncidentManagement/0.1/IncidentManagementServiceData.xsd" />
+      <element name="CreateIncidentFromCapRequest">
+        <complexType>
+          <sequence>
+            <element ref="cap:alert" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CreateIncidentFromCapResponse">
+        <complexType>
+          <sequence>
+            <element ref="wps:WorkProductPublicationResponse" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CreateIncidentRequest">
+        <complexType>
+          <sequence>
+            <element ref="inc:Incident" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CreateIncidentResponse">
+        <complexType>
+          <sequence>
+            <element ref="wps:WorkProductPublicationResponse" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="UpdateIncidentRequest">
+        <complexType>
+          <all>
+            <element ref="preciss:WorkProductIdentification" />
+            <element name="incident" type="inc:UICDSIncidentType" />
+          </all>
+        </complexType>
+      </element>
+      <element name="UpdateIncidentResponse">
+        <complexType>
+          <sequence>
+            <element ref="wps:WorkProductPublicationResponse" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ShareIncidentRequest">
+        <complexType>
+          <sequence>
+            <element name="IncidentId" type="string" />
+            <element name="CoreName" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ShareIncidentResponse">
+        <complexType>
+          <sequence>
+            <element name="IncidentShareSucessful" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetIncidentRequest">
+        <complexType>
+          <all>
+            <element ref="preciss:WorkProductIdentification" />
+          </all>
+        </complexType>
+      </element>
+      <element name="GetIncidentResponse">
+        <complexType>
+          <sequence>
+            <element ref="preciss:WorkProduct" />
+          </sequence>
+        </complexType>
+      </element>
+    </schema>
+  </wsdl:types>
+  <wsdl:message name="GetIncidentResponse">
+    <wsdl:part name="GetIncidentResponse" element="sch:GetIncidentResponse" />
+  </wsdl:message>
+  <wsdl:message name="ShareIncidentResponse">
+    <wsdl:part name="ShareIncidentResponse" element="sch:ShareIncidentResponse" />
+  </wsdl:message>
+  <wsdl:message name="ShareIncidentRequest">
+    <wsdl:part name="ShareIncidentRequest" element="sch:ShareIncidentRequest" />
+  </wsdl:message>
+  <wsdl:message name="CreateIncidentFromCapResponse">
+    <wsdl:part name="CreateIncidentFromCapResponse" element="sch:CreateIncidentFromCapResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetIncidentRequest">
+    <wsdl:part name="GetIncidentRequest" element="sch:GetIncidentRequest" />
+  </wsdl:message>
+  <wsdl:message name="UpdateIncidentResponse">
+    <wsdl:part name="UpdateIncidentResponse" element="sch:UpdateIncidentResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateIncidentFromCapRequest">
+    <wsdl:part name="CreateIncidentFromCapRequest" element="sch:CreateIncidentFromCapRequest" />
+  </wsdl:message>
+  <wsdl:message name="UpdateIncidentRequest">
+    <wsdl:part name="UpdateIncidentRequest" element="sch:UpdateIncidentRequest" />
+  </wsdl:message>
+  <wsdl:message name="CreateIncidentRequest">
+    <wsdl:part name="CreateIncidentRequest" element="sch:CreateIncidentRequest" />
+  </wsdl:message>
+  <wsdl:message name="CreateIncidentResponse">
+    <wsdl:part name="CreateIncidentResponse" element="sch:CreateIncidentResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IncidentManagementService">
+    <wsdl:operation name="CreateIncident">
+      <wsdl:input name="CreateIncidentRequest" message="sch:CreateIncidentRequest" />
+      <wsdl:output name="CreateIncidentResponse" message="sch:CreateIncidentResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateIncidentFromCap">
+      <wsdl:input name="CreateIncidentFromCapRequest" message="sch:CreateIncidentFromCapRequest" />
+      <wsdl:output name="CreateIncidentFromCapResponse" message="sch:CreateIncidentFromCapResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="ShareIncident">
+      <wsdl:input name="ShareIncidentRequest" message="sch:ShareIncidentRequest" />
+      <wsdl:output name="ShareIncidentResponse" message="sch:ShareIncidentResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateIncident">
+      <wsdl:input name="UpdateIncidentRequest" message="sch:UpdateIncidentRequest" />
+      <wsdl:output name="UpdateIncidentResponse" message="sch:UpdateIncidentResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetIncident">
+      <wsdl:input name="GetIncidentRequest" message="sch:GetIncidentRequest" />
+      <wsdl:output name="GetIncidentResponse" message="sch:GetIncidentResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="IncidentManagementServiceSoap11" type="sch:IncidentManagementService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CreateIncident">
+      <soap:operation soapAction="" />
+      <wsdl:input name="CreateIncidentRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="CreateIncidentResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateIncidentFromCap">
+      <soap:operation soapAction="" />
+      <wsdl:input name="CreateIncidentFromCapRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="CreateIncidentFromCapResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ShareIncident">
+      <soap:operation soapAction="" />
+      <wsdl:input name="ShareIncidentRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="ShareIncidentResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateIncident">
+      <soap:operation soapAction="" />
+      <wsdl:input name="UpdateIncidentRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="UpdateIncidentResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetIncident">
+      <soap:operation soapAction="" />
+      <wsdl:input name="GetIncidentRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetIncidentResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="IncidentManagementServiceService">
+    <wsdl:port name="IncidentManagementServiceSoap11" binding="sch:IncidentManagementServiceSoap11">
+      <soap:address location="http://localhost:80/uicds/core/ws/services/IncidentManagementService" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:s="http://niem.gov/niem/structures/2.0" xmlns:preciss="http://www.saic.com/precis/2009/06/structures" xmlns:ims="http://uicds.org/IncidentManagementService" elementFormDefault="qualified" targetNamespace="http://uicds.org/IncidentManagementService" xmlns="http://www.w3.org/2001/XMLSchema">
+  <import schemaLocation="../../../external/niem/structures/2.0/structures.xsd" namespace="http://niem.gov/niem/structures/2.0" />
+  <import schemaLocation="../../../precis/2009/06/Structures.xsd" namespace="http://www.saic.com/precis/2009/06/structures" />
+  <complexType name="IncidentStateType">
+    <complexContent mixed="false">
+      <extension base="s:MetadataType">
+        <sequence>
+          <element name="state">
+            <simpleType>
+              <restriction base="string">
+                <enumeration value="new" />
+                <enumeration value="share" />
+                <enumeration value="join" />
+                <enumeration value="resign" />
+                <enumeration value="update" />
+              </restriction>
+            </simpleType>
+          </element>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <element name="IncidentState" type="ims:IncidentStateType" />
+  <complexType name="IncidentListType">
+    <sequence>
+      <element minOccurs="0" maxOccurs="unbounded" name="IncidentInfo" type="ims:IncidentInfoType" />
+    </sequence>
+  </complexType>
+  <complexType name="IncidentInfoType">
+    <sequence>
+      <element name="Id" type="string" />
+      <element ref="preciss:WorkProductIdentification" />
+      <element name="Name" type="string" />
+      <element name="Description" type="string" />
+      <element name="Date" type="string" />
+      <element name="Latitude" type="double" />
+      <element name="Longitude" type="double" />
+      <element name="OwningCore" type="string" />
+    </sequence>
+  </complexType>
+  <element name="IncidentList" type="ims:IncidentListType" />
+  <element name="IncidentInfo" type="ims:IncidentInfoType" />
+</schema>

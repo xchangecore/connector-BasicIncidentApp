@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:edsc="http://uicds.org/ExternalDataSourceConfig" elementFormDefault="qualified" targetNamespace="http://uicds.org/ExternalDataSourceConfig" xmlns="http://www.w3.org/2001/XMLSchema">
+  <complexType name="ExternalDataSourceConfigType">
+    <sequence>
+      <element name="URN" type="string">
+        <annotation>
+          <documentation> Endpoint for ExternalDataSource.</documentation>
+        </annotation>
+      </element>
+      <element name="coreName" type="string" />
+    </sequence>
+  </complexType>
+  <element name="ExternalDataSourceConfig" type="edsc:ExternalDataSourceConfigType" />
+  <complexType name="ExternalDataSourceConfigListType">
+    <sequence>
+      <element maxOccurs="unbounded" name="ExternalDataSource" type="edsc:ExternalDataSourceConfigType" />
+    </sequence>
+  </complexType>
+  <element name="ExternalDataSourceList" type="edsc:ExternalDataSourceConfigListType" />
+</schema>

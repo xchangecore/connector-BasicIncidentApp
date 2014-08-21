@@ -1,0 +1,605 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:tns="http://uicds.org/ResourceService" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:sch="http://uicds.org/ResourceService" targetNamespace="http://uicds.org/ResourceService" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <schema xmlns:reqextdepdur="urn:oasis:names:tc:emergency:EDXL:RM:1.0:RequestExtendedDeploymentDuration" xmlns:rptresdepstat="urn:oasis:names:tc:emergency:EDXL:RM:1.0:ReportResourceDeploymentStatus" xmlns:relres="urn:oasis:names:tc:emergency:EDXL:RM:1.0:ReleaseResource" xmlns:rspreqextdepdur="urn:oasis:names:tc:emergency:EDXL:RM:1.0:ResponseToRequestExtendedDeploymentDuration" xmlns:gml="http://www.opengis.net/gml" xmlns:de="urn:oasis:names:tc:emergency:EDXL:DE:1.0" xmlns:rspreqquote="urn:oasis:names:tc:emergency:EDXL:RM:1.0:ResponseToRequestQuote" xmlns:rspreqres="urn:oasis:names:tc:emergency:EDXL:RM:1.0:ResponseToRequestResource" xmlns:reqret="urn:oasis:names:tc:emergency:EDXL:RM:1.0:RequestReturn" xmlns:rqsres="urn:oasis:names:tc:emergency:EDXL:RM:1.0:RequisitionResource" xmlns:reqquote="urn:oasis:names:tc:emergency:EDXL:RM:1.0:RequestQuote" xmlns:rspreqret="urn:oasis:names:tc:emergency:EDXL:RM:1.0:ResponseToRequestReturn" xmlns:rsc="http://uicds.org/ResourceService" xmlns:reqres="urn:oasis:names:tc:emergency:EDXL:RM:1.0:RequestResource" xmlns:ref="urn:oasis:names:tc:emergency:EDXL:RM:1.0:Reference" xmlns:rspreqinfo="urn:oasis:names:tc:emergency:EDXL:RM:1.0:ResponseToRequestInformation" xmlns:niem="http://niem.gov/niem/structures/2.0" xmlns:rm="urn:oasis:names:tc:emergency:EDXL:RM:1.0" xmlns:wsa="http://www.w3.org/2005/08/addressing" xmlns:ofrres="urn:oasis:names:tc:emergency:EDXL:RM:1.0:OfferUnsolicitedResource" xmlns:reqinfo="urn:oasis:names:tc:emergency:EDXL:RM:1.0:RequestInformation" xmlns:comres="urn:oasis:names:tc:emergency:EDXL:RM:1.0:CommitResource" xmlns:reqresdepstat="urn:oasis:names:tc:emergency:EDXL:RM:1.0:RequestResourceDeploymentStatus" elementFormDefault="qualified" targetNamespace="http://uicds.org/ResourceService" xmlns="http://www.w3.org/2001/XMLSchema">
+      <include schemaLocation="../../../services/ResourceManagement/0.1/ResourceData.xsd" />
+      <import schemaLocation="../../../external/edxl-rm/1.0/gml-oasis.xsd" namespace="http://www.opengis.net/gml" />
+      <import schemaLocation="../../../external/niem/structures/2.0/structures.xsd" namespace="http://niem.gov/niem/structures/2.0" />
+      <import schemaLocation="../../../external/edxl-rm/1.0/EDXL-RMRequestInformation.xsd" namespace="urn:oasis:names:tc:emergency:EDXL:RM:1.0:RequestInformation" />
+      <import schemaLocation="../../../external/edxl-rm/1.0/EDXL-RMResponseToRequestInformation.xsd" namespace="urn:oasis:names:tc:emergency:EDXL:RM:1.0:ResponseToRequestInformation" />
+      <import schemaLocation="../../../external/edxl-rm/1.0/EDXL-RMRequestQuote.xsd" namespace="urn:oasis:names:tc:emergency:EDXL:RM:1.0:RequestQuote" />
+      <import schemaLocation="../../../external/edxl-rm/1.0/EDXL-RMResponseToRequestQuote.xsd" namespace="urn:oasis:names:tc:emergency:EDXL:RM:1.0:ResponseToRequestQuote" />
+      <import schemaLocation="../../../external/edxl-rm/1.0/EDXL-RMCommitResource.xsd" namespace="urn:oasis:names:tc:emergency:EDXL:RM:1.0:CommitResource" />
+      <import schemaLocation="../../../external/edxl-rm/1.0/EDXL-RMOfferUnsolicitedResource.xsd" namespace="urn:oasis:names:tc:emergency:EDXL:RM:1.0:OfferUnsolicitedResource" />
+      <import schemaLocation="../../../external/edxl-rm/1.0/EDXL-RMReference.xsd" namespace="urn:oasis:names:tc:emergency:EDXL:RM:1.0:Reference" />
+      <import schemaLocation="../../../external/edxl-rm/1.0/EDXL-RMReleaseResource.xsd" namespace="urn:oasis:names:tc:emergency:EDXL:RM:1.0:ReleaseResource" />
+      <import schemaLocation="../../../external/edxl-rm/1.0/EDXL-RMReportResourceDeploymentStatus.xsd" namespace="urn:oasis:names:tc:emergency:EDXL:RM:1.0:ReportResourceDeploymentStatus" />
+      <import schemaLocation="../../../external/edxl-rm/1.0/EDXL-RMRequestExtendedDeploymentDuration.xsd" namespace="urn:oasis:names:tc:emergency:EDXL:RM:1.0:RequestExtendedDeploymentDuration" />
+      <import schemaLocation="../../../external/edxl-rm/1.0/EDXL-RMRequestResource.xsd" namespace="urn:oasis:names:tc:emergency:EDXL:RM:1.0:RequestResource" />
+      <import schemaLocation="../../../external/edxl-rm/1.0/EDXL-RMRequestResourceDeploymentStatus.xsd" namespace="urn:oasis:names:tc:emergency:EDXL:RM:1.0:RequestResourceDeploymentStatus" />
+      <import schemaLocation="../../../external/edxl-rm/1.0/EDXL-RMRequestReturn.xsd" namespace="urn:oasis:names:tc:emergency:EDXL:RM:1.0:RequestReturn" />
+      <import schemaLocation="../../../external/edxl-rm/1.0/EDXL-RMRequisitionResource.xsd" namespace="urn:oasis:names:tc:emergency:EDXL:RM:1.0:RequisitionResource" />
+      <import schemaLocation="../../../external/edxl-rm/1.0/EDXL-RMResponseToRequestExtendedDeploymentDuration.xsd" namespace="urn:oasis:names:tc:emergency:EDXL:RM:1.0:ResponseToRequestExtendedDeploymentDuration" />
+      <import schemaLocation="../../../external/edxl-rm/1.0/EDXL-RMResponseToRequestResource.xsd" namespace="urn:oasis:names:tc:emergency:EDXL:RM:1.0:ResponseToRequestResource" />
+      <import schemaLocation="../../../external/edxl-rm/1.0/EDXL-RMResponseToRequestReturn.xsd" namespace="urn:oasis:names:tc:emergency:EDXL:RM:1.0:ResponseToRequestReturn" />
+      <import schemaLocation="../../../external/edxl-rm/1.0/EDXL-RMCommonTypes.xsd" namespace="urn:oasis:names:tc:emergency:EDXL:RM:1.0" />
+      <import schemaLocation="../../../external/niem/external/de/1.0/de.xsd" namespace="urn:oasis:names:tc:emergency:EDXL:DE:1.0" />
+      <import schemaLocation="../../../ws-notification/WS-Addressing-2005_08.xsd" namespace="http://www.w3.org/2005/08/addressing" />
+      <element name="RequestInformationRequest">
+        <complexType>
+          <complexContent mixed="false">
+            <extension base="niem:ComplexObjectType">
+              <sequence>
+                <element ref="reqinfo:EDXLResourceMessage" />
+              </sequence>
+            </extension>
+          </complexContent>
+        </complexType>
+      </element>
+      <element name="RequestInformationResponse">
+        <complexType>
+          <complexContent mixed="false">
+            <extension base="niem:ComplexObjectType">
+              <sequence>
+                <element ref="rspreqinfo:EDXLResourceMessage" />
+              </sequence>
+            </extension>
+          </complexContent>
+        </complexType>
+      </element>
+      <element name="RequestQuoteRequest">
+        <complexType>
+          <complexContent mixed="false">
+            <extension base="niem:ComplexObjectType">
+              <sequence>
+                <element ref="reqquote:EDXLResourceMessage" />
+              </sequence>
+            </extension>
+          </complexContent>
+        </complexType>
+      </element>
+      <element name="RequestQuoteResponse">
+        <complexType>
+          <complexContent mixed="false">
+            <extension base="niem:ComplexObjectType">
+              <sequence>
+                <element ref="rspreqquote:EDXLResourceMessage" />
+              </sequence>
+            </extension>
+          </complexContent>
+        </complexType>
+      </element>
+      <element name="OfferUnsolicitedResourceRequest">
+        <complexType>
+          <complexContent mixed="false">
+            <extension base="niem:ComplexObjectType">
+              <sequence>
+                <element ref="ofrres:EDXLResourceMessage" />
+              </sequence>
+            </extension>
+          </complexContent>
+        </complexType>
+      </element>
+      <element name="RequestResourceRequest">
+        <complexType>
+          <complexContent mixed="false">
+            <extension base="niem:ComplexObjectType">
+              <sequence>
+                <element ref="reqres:EDXLResourceMessage" />
+              </sequence>
+            </extension>
+          </complexContent>
+        </complexType>
+      </element>
+      <element name="RequestResourceResponse">
+        <complexType>
+          <complexContent mixed="false">
+            <extension base="niem:ComplexObjectType">
+              <sequence>
+                <element ref="rspreqres:EDXLResourceMessage" />
+              </sequence>
+            </extension>
+          </complexContent>
+        </complexType>
+      </element>
+      <element name="RequisitionResourceRequest">
+        <complexType>
+          <complexContent mixed="false">
+            <extension base="niem:ComplexObjectType">
+              <sequence>
+                <element ref="rqsres:EDXLResourceMessage" />
+              </sequence>
+            </extension>
+          </complexContent>
+        </complexType>
+      </element>
+      <element name="CommitResourceRequest">
+        <complexType>
+          <complexContent mixed="false">
+            <extension base="niem:ComplexObjectType">
+              <sequence>
+                <element ref="comres:EDXLResourceMessage" />
+              </sequence>
+            </extension>
+          </complexContent>
+        </complexType>
+      </element>
+      <element name="RequestReturnRequest">
+        <complexType>
+          <complexContent mixed="false">
+            <extension base="niem:ComplexObjectType">
+              <sequence>
+                <element ref="reqret:EDXLResourceMessage" />
+              </sequence>
+            </extension>
+          </complexContent>
+        </complexType>
+      </element>
+      <element name="RequestReturnResponse">
+        <complexType>
+          <complexContent mixed="false">
+            <extension base="niem:ComplexObjectType">
+              <sequence>
+                <element ref="rspreqret:EDXLResourceMessage" />
+              </sequence>
+            </extension>
+          </complexContent>
+        </complexType>
+      </element>
+      <element name="RequestResourceDeploymentStatusRequest">
+        <complexType>
+          <complexContent mixed="false">
+            <extension base="niem:ComplexObjectType">
+              <sequence>
+                <element ref="reqresdepstat:EDXLResourceMessage" />
+              </sequence>
+            </extension>
+          </complexContent>
+        </complexType>
+      </element>
+      <element name="ReportResourceDeploymentStatusRequest">
+        <complexType>
+          <complexContent mixed="false">
+            <extension base="niem:ComplexObjectType">
+              <sequence>
+                <element ref="rptresdepstat:EDXLResourceMessage" />
+              </sequence>
+            </extension>
+          </complexContent>
+        </complexType>
+      </element>
+      <element name="ReleaseResourceRequest">
+        <complexType>
+          <complexContent mixed="false">
+            <extension base="niem:ComplexObjectType">
+              <sequence>
+                <element ref="relres:EDXLResourceMessage" />
+              </sequence>
+            </extension>
+          </complexContent>
+        </complexType>
+      </element>
+      <element name="RequestExtendedDeploymentDurationRequest">
+        <complexType>
+          <complexContent mixed="false">
+            <extension base="niem:ComplexObjectType">
+              <sequence>
+                <element ref="reqextdepdur:EDXLResourceMessage" />
+              </sequence>
+            </extension>
+          </complexContent>
+        </complexType>
+      </element>
+      <element name="RequestExtendedDeploymentDurationResponse">
+        <complexType>
+          <complexContent mixed="false">
+            <extension base="niem:ComplexObjectType">
+              <sequence>
+                <element ref="rspreqextdepdur:EDXLResourceMessage" />
+              </sequence>
+            </extension>
+          </complexContent>
+        </complexType>
+      </element>
+      <element name="GetAggregatedResourcesRequest">
+        <complexType>
+          <complexContent mixed="false">
+            <extension base="niem:ComplexObjectType">
+              <sequence>
+                <element name="incidentID" type="rm:IncidentIDType" />
+              </sequence>
+            </extension>
+          </complexContent>
+        </complexType>
+      </element>
+      <element name="GetAggregatedResourcesResponse">
+        <complexType>
+          <sequence>
+            <element ref="de:EDXLDistribution" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetRequestedResourcesRequest">
+        <complexType>
+          <complexContent mixed="false">
+            <extension base="niem:ComplexObjectType">
+              <sequence>
+                <element name="incidentID" type="rm:IncidentIDType" />
+              </sequence>
+            </extension>
+          </complexContent>
+        </complexType>
+      </element>
+      <element name="GetRequestedResourcesResponse">
+        <complexType>
+          <sequence>
+            <element ref="de:EDXLDistribution" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetOfferedResourcesRequest">
+        <complexType>
+          <complexContent mixed="false">
+            <extension base="niem:ComplexObjectType">
+              <sequence>
+                <element name="incidentID" type="rm:IncidentIDType" />
+              </sequence>
+            </extension>
+          </complexContent>
+        </complexType>
+      </element>
+      <element name="GetOfferedResourcesResponse">
+        <complexType>
+          <sequence>
+            <element ref="de:EDXLDistribution" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetRequisitionedResourcesRequest">
+        <complexType>
+          <complexContent mixed="false">
+            <extension base="niem:ComplexObjectType">
+              <sequence>
+                <element name="incidentID" type="rm:IncidentIDType" />
+              </sequence>
+            </extension>
+          </complexContent>
+        </complexType>
+      </element>
+      <element name="GetRequisitionedResourcesResponse">
+        <complexType>
+          <sequence>
+            <element ref="de:EDXLDistribution" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetCommittedResourcesRequest">
+        <complexType>
+          <complexContent mixed="false">
+            <extension base="niem:ComplexObjectType">
+              <sequence>
+                <element name="incidentID" type="rm:IncidentIDType" />
+              </sequence>
+            </extension>
+          </complexContent>
+        </complexType>
+      </element>
+      <element name="GetCommittedResourcesResponse">
+        <complexType>
+          <sequence>
+            <element ref="de:EDXLDistribution" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetUnsolicitedResourcesOffersRequest">
+        <complexType>
+          <complexContent mixed="false">
+            <extension base="niem:ComplexObjectType">
+              <sequence>
+                <element name="incidentID" type="rm:IncidentIDType" />
+              </sequence>
+            </extension>
+          </complexContent>
+        </complexType>
+      </element>
+      <element name="GetUnsolicitedResourcesOffersResponse">
+        <complexType>
+          <sequence>
+            <element ref="de:EDXLDistribution" />
+          </sequence>
+        </complexType>
+      </element>
+    </schema>
+  </wsdl:types>
+  <wsdl:message name="RequestResourceDeploymentStatusRequest">
+    <wsdl:part name="RequestResourceDeploymentStatusRequest" element="sch:RequestResourceDeploymentStatusRequest" />
+  </wsdl:message>
+  <wsdl:message name="RequisitionResourceRequest">
+    <wsdl:part name="RequisitionResourceRequest" element="sch:RequisitionResourceRequest" />
+  </wsdl:message>
+  <wsdl:message name="RequestExtendedDeploymentDurationRequest">
+    <wsdl:part name="RequestExtendedDeploymentDurationRequest" element="sch:RequestExtendedDeploymentDurationRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetOfferedResourcesResponse">
+    <wsdl:part name="GetOfferedResourcesResponse" element="sch:GetOfferedResourcesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetOfferedResourcesRequest">
+    <wsdl:part name="GetOfferedResourcesRequest" element="sch:GetOfferedResourcesRequest" />
+  </wsdl:message>
+  <wsdl:message name="RequestReturnRequest">
+    <wsdl:part name="RequestReturnRequest" element="sch:RequestReturnRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetCommittedResourcesRequest">
+    <wsdl:part name="GetCommittedResourcesRequest" element="sch:GetCommittedResourcesRequest" />
+  </wsdl:message>
+  <wsdl:message name="ReleaseResourceRequest">
+    <wsdl:part name="ReleaseResourceRequest" element="sch:ReleaseResourceRequest" />
+  </wsdl:message>
+  <wsdl:message name="RequestResourceRequest">
+    <wsdl:part name="RequestResourceRequest" element="sch:RequestResourceRequest" />
+  </wsdl:message>
+  <wsdl:message name="RequestReturnResponse">
+    <wsdl:part name="RequestReturnResponse" element="sch:RequestReturnResponse" />
+  </wsdl:message>
+  <wsdl:message name="RequestResourceResponse">
+    <wsdl:part name="RequestResourceResponse" element="sch:RequestResourceResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetRequestedResourcesResponse">
+    <wsdl:part name="GetRequestedResourcesResponse" element="sch:GetRequestedResourcesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCommittedResourcesResponse">
+    <wsdl:part name="GetCommittedResourcesResponse" element="sch:GetCommittedResourcesResponse" />
+  </wsdl:message>
+  <wsdl:message name="CommitResourceRequest">
+    <wsdl:part name="CommitResourceRequest" element="sch:CommitResourceRequest" />
+  </wsdl:message>
+  <wsdl:message name="RequestInformationRequest">
+    <wsdl:part name="RequestInformationRequest" element="sch:RequestInformationRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetUnsolicitedResourcesOffersRequest">
+    <wsdl:part name="GetUnsolicitedResourcesOffersRequest" element="sch:GetUnsolicitedResourcesOffersRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetRequestedResourcesRequest">
+    <wsdl:part name="GetRequestedResourcesRequest" element="sch:GetRequestedResourcesRequest" />
+  </wsdl:message>
+  <wsdl:message name="RequestExtendedDeploymentDurationResponse">
+    <wsdl:part name="RequestExtendedDeploymentDurationResponse" element="sch:RequestExtendedDeploymentDurationResponse" />
+  </wsdl:message>
+  <wsdl:message name="RequestQuoteResponse">
+    <wsdl:part name="RequestQuoteResponse" element="sch:RequestQuoteResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReportResourceDeploymentStatusRequest">
+    <wsdl:part name="ReportResourceDeploymentStatusRequest" element="sch:ReportResourceDeploymentStatusRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetAggregatedResourcesResponse">
+    <wsdl:part name="GetAggregatedResourcesResponse" element="sch:GetAggregatedResourcesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUnsolicitedResourcesOffersResponse">
+    <wsdl:part name="GetUnsolicitedResourcesOffersResponse" element="sch:GetUnsolicitedResourcesOffersResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetRequisitionedResourcesRequest">
+    <wsdl:part name="GetRequisitionedResourcesRequest" element="sch:GetRequisitionedResourcesRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetRequisitionedResourcesResponse">
+    <wsdl:part name="GetRequisitionedResourcesResponse" element="sch:GetRequisitionedResourcesResponse" />
+  </wsdl:message>
+  <wsdl:message name="OfferUnsolicitedResourceRequest">
+    <wsdl:part name="OfferUnsolicitedResourceRequest" element="sch:OfferUnsolicitedResourceRequest" />
+  </wsdl:message>
+  <wsdl:message name="RequestQuoteRequest">
+    <wsdl:part name="RequestQuoteRequest" element="sch:RequestQuoteRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetAggregatedResourcesRequest">
+    <wsdl:part name="GetAggregatedResourcesRequest" element="sch:GetAggregatedResourcesRequest" />
+  </wsdl:message>
+  <wsdl:message name="RequestInformationResponse">
+    <wsdl:part name="RequestInformationResponse" element="sch:RequestInformationResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ResourceService">
+    <wsdl:operation name="RequestQuote">
+      <wsdl:input name="RequestQuoteRequest" message="sch:RequestQuoteRequest" />
+      <wsdl:output name="RequestQuoteResponse" message="sch:RequestQuoteResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="OfferUnsolicitedResource">
+      <wsdl:input name="OfferUnsolicitedResourceRequest" message="sch:OfferUnsolicitedResourceRequest" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOfferedResources">
+      <wsdl:input name="GetOfferedResourcesRequest" message="sch:GetOfferedResourcesRequest" />
+      <wsdl:output name="GetOfferedResourcesResponse" message="sch:GetOfferedResourcesResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="CommitResource">
+      <wsdl:input name="CommitResourceRequest" message="sch:CommitResourceRequest" />
+    </wsdl:operation>
+    <wsdl:operation name="RequestInformation">
+      <wsdl:input name="RequestInformationRequest" message="sch:RequestInformationRequest" />
+      <wsdl:output name="RequestInformationResponse" message="sch:RequestInformationResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRequisitionedResources">
+      <wsdl:input name="GetRequisitionedResourcesRequest" message="sch:GetRequisitionedResourcesRequest" />
+      <wsdl:output name="GetRequisitionedResourcesResponse" message="sch:GetRequisitionedResourcesResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="RequestResource">
+      <wsdl:input name="RequestResourceRequest" message="sch:RequestResourceRequest" />
+      <wsdl:output name="RequestResourceResponse" message="sch:RequestResourceResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="RequestReturn">
+      <wsdl:input name="RequestReturnRequest" message="sch:RequestReturnRequest" />
+      <wsdl:output name="RequestReturnResponse" message="sch:RequestReturnResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="ReportResourceDeploymentStatus">
+      <wsdl:input name="ReportResourceDeploymentStatusRequest" message="sch:ReportResourceDeploymentStatusRequest" />
+    </wsdl:operation>
+    <wsdl:operation name="RequisitionResource">
+      <wsdl:input name="RequisitionResourceRequest" message="sch:RequisitionResourceRequest" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUnsolicitedResourcesOffers">
+      <wsdl:input name="GetUnsolicitedResourcesOffersRequest" message="sch:GetUnsolicitedResourcesOffersRequest" />
+      <wsdl:output name="GetUnsolicitedResourcesOffersResponse" message="sch:GetUnsolicitedResourcesOffersResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="RequestExtendedDeploymentDuration">
+      <wsdl:input name="RequestExtendedDeploymentDurationRequest" message="sch:RequestExtendedDeploymentDurationRequest" />
+      <wsdl:output name="RequestExtendedDeploymentDurationResponse" message="sch:RequestExtendedDeploymentDurationResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAggregatedResources">
+      <wsdl:input name="GetAggregatedResourcesRequest" message="sch:GetAggregatedResourcesRequest" />
+      <wsdl:output name="GetAggregatedResourcesResponse" message="sch:GetAggregatedResourcesResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="RequestResourceDeploymentStatus">
+      <wsdl:input name="RequestResourceDeploymentStatusRequest" message="sch:RequestResourceDeploymentStatusRequest" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCommittedResources">
+      <wsdl:input name="GetCommittedResourcesRequest" message="sch:GetCommittedResourcesRequest" />
+      <wsdl:output name="GetCommittedResourcesResponse" message="sch:GetCommittedResourcesResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="ReleaseResource">
+      <wsdl:input name="ReleaseResourceRequest" message="sch:ReleaseResourceRequest" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRequestedResources">
+      <wsdl:input name="GetRequestedResourcesRequest" message="sch:GetRequestedResourcesRequest" />
+      <wsdl:output name="GetRequestedResourcesResponse" message="sch:GetRequestedResourcesResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ResourceServiceSoap11" type="sch:ResourceService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="RequestQuote">
+      <soap:operation soapAction="" />
+      <wsdl:input name="RequestQuoteRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="RequestQuoteResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OfferUnsolicitedResource">
+      <soap:operation soapAction="" />
+      <wsdl:input name="OfferUnsolicitedResourceRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="GetOfferedResources">
+      <soap:operation soapAction="" />
+      <wsdl:input name="GetOfferedResourcesRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetOfferedResourcesResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CommitResource">
+      <soap:operation soapAction="" />
+      <wsdl:input name="CommitResourceRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="RequestInformation">
+      <soap:operation soapAction="" />
+      <wsdl:input name="RequestInformationRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="RequestInformationResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRequisitionedResources">
+      <soap:operation soapAction="" />
+      <wsdl:input name="GetRequisitionedResourcesRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetRequisitionedResourcesResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RequestResource">
+      <soap:operation soapAction="" />
+      <wsdl:input name="RequestResourceRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="RequestResourceResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RequestReturn">
+      <soap:operation soapAction="" />
+      <wsdl:input name="RequestReturnRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="RequestReturnResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReportResourceDeploymentStatus">
+      <soap:operation soapAction="" />
+      <wsdl:input name="ReportResourceDeploymentStatusRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="RequisitionResource">
+      <soap:operation soapAction="" />
+      <wsdl:input name="RequisitionResourceRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="GetUnsolicitedResourcesOffers">
+      <soap:operation soapAction="" />
+      <wsdl:input name="GetUnsolicitedResourcesOffersRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetUnsolicitedResourcesOffersResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RequestExtendedDeploymentDuration">
+      <soap:operation soapAction="" />
+      <wsdl:input name="RequestExtendedDeploymentDurationRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="RequestExtendedDeploymentDurationResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAggregatedResources">
+      <soap:operation soapAction="" />
+      <wsdl:input name="GetAggregatedResourcesRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetAggregatedResourcesResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RequestResourceDeploymentStatus">
+      <soap:operation soapAction="" />
+      <wsdl:input name="RequestResourceDeploymentStatusRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="GetCommittedResources">
+      <soap:operation soapAction="" />
+      <wsdl:input name="GetCommittedResourcesRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetCommittedResourcesResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReleaseResource">
+      <soap:operation soapAction="" />
+      <wsdl:input name="ReleaseResourceRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="GetRequestedResources">
+      <soap:operation soapAction="" />
+      <wsdl:input name="GetRequestedResourcesRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetRequestedResourcesResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ResourceServiceService">
+    <wsdl:port name="ResourceServiceSoap11" binding="sch:ResourceServiceSoap11">
+      <soap:address location="http://localhost:8080/uicds/core/ws/services/ResourceService" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
